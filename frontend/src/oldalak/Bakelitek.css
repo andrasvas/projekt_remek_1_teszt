@@ -1,0 +1,27 @@
+table{
+    border-radius: .4vw;
+    background-color: darkgrey;
+    margin: 1.5vw;
+    box-shadow: .5vw .5vw gray;
+}
+
+td{
+    padding: .2vw;
+    background-color: gray;
+    border-bottom: .1vw solid grey;
+}
+
+img{
+    height: auto;
+    width: 20%;
+}
+
+div{
+    padding: .2vw;
+}
+
+.div-title{
+    display: grid;
+    place-items: center;
+    
+}
