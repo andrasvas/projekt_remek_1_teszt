@@ -4,12 +4,13 @@ table{
     margin: 1.5vw;
     box-shadow: .5vw .5vw gray;
 }
-
+/* 
 td{
     padding: .2vw;
     background-color: gray;
     border-bottom: .1vw solid grey;
-}
+    text-align:center;
+} */
 
 img{
     height: auto;

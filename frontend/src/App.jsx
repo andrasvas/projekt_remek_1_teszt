@@ -11,11 +11,9 @@ function App() {
   return (
     <>
       <div className='row'>
-        <div className='div-title col-md-6'>
+        <div className='div-title container-fluid col-md-6'>
           <h1>Scratch 'n Spin</h1>
-        </div>
-        <div className='col-md-6'>
-          <img className='img-responsive' src={snpLogo} alt="" />
+          <img className='img-responsive col-md-4' src={snpLogo} alt="" />
         </div>
       </div>
       <div className='row'>

@@ -45,7 +45,7 @@ const Vinyls = () => {
 
             <input
                 type="text"
-                placeholder="Írjon ide egy album vagy előadó nevet"
+                placeholder="Kereső"
                 value={term}
                 onChange={searchChange}
             />
@@ -66,7 +66,7 @@ const Vinyls = () => {
                         <tr key={vinyl.vin_id}>
                             <td>{vinyl.vin_name}</td>
                             <td>{vinyl.artist}</td>
-                            <td>{vinyl.runtime}</td>
+                            <td>{vinyl.runtime} perc</td>
                             <td>{vinyl.tracks}</td>
                             <td>{vinyl.color}</td>
                             <td>{vinyl.genre}</td>
