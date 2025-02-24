@@ -1,5 +1,7 @@
 import './Bakelitek.css'
 import React, { useEffect, useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min.js'
 
 const Vinyls = () => {
     const [data, setData] = useState([]);
@@ -50,7 +52,24 @@ const Vinyls = () => {
                 onChange={searchChange}
             />
 
-            <table>
+            <div className='container-fluid'>
+                <article className='row justify-content-center'>
+                    {filteredData.map(vinyl => (    
+
+                        <div className='card col-md-6 col-lg-3'>
+                            <div key={vinyl.vin_id}>
+                                <img className='card-img-top' src="https://www.santarosaforward.com/img/managed/Image/111/file.jpg" alt="placeholder img" />
+                                <h4>{vinyl.vin_name}</h4>
+                                <h6>{vinyl.artist}</h6>
+                                <p>{vinyl.genre}</p>
+                            </div>
+                        </div>
+
+                    ))}
+                </article>
+            </div>
+
+            {/* <table>
                 <thead>
                     <tr>
                         <th>Album neve</th>
@@ -73,7 +92,7 @@ const Vinyls = () => {
                         </tr>
                     ))}
                 </tbody>
-            </table>
+            </table> */}
         </div>
     );
 };
