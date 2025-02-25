@@ -10,6 +10,7 @@ app.use(cors())
 
 const db = mysql.createConnection({
     host: "127.0.0.1",
+    port: "3307",
     user: "root",
     password: "",
     database: "scratch_n_spin_test"
@@ -17,7 +18,7 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
     if(err){
-        console.error("Hiba történt a MySQL szerverhez való kapcsolódáskor")
+        console.error("Hiba történt a MySQL szerverhez való kapcsolódáskor: ", err)
     }
     else{
         console.log("Sikeresen csatlakozott a MySQL szerverhez!")

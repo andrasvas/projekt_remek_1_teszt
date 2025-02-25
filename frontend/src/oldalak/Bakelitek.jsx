@@ -1,7 +1,9 @@
 import './Bakelitek.css'
 import React, { useEffect, useState } from "react";
+import snpLogo from '../assets/a_logo.png'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
+import { Link } from 'react-router-dom';
 
 const Vinyls = () => {
     const [data, setData] = useState([]);
@@ -41,8 +43,20 @@ const Vinyls = () => {
         }
     };
 
+
+    const handleClick =(name)=>{
+        console.log("Haiiii, szeretném megvenni a " + name + " albumot!!!")
+    }
+
+
     return (
         <div>
+            <div className='row'>
+                <div className='div-title container-fluid col-md-6'>
+                    <h1>Scratch 'n Spin</h1>
+                    <img className='img-responsive col-md-4' src={snpLogo} alt="" />
+                </div>
+            </div>
             <h2>Bakelit lemezek</h2>
 
             <input
@@ -56,12 +70,13 @@ const Vinyls = () => {
                 <article className='row justify-content-center'>
                     {filteredData.map(vinyl => (    
 
-                        <div className='card col-md-6 col-lg-3'>
-                            <div key={vinyl.vin_id}>
+                        <div key={vinyl.vin_id} className='card col-md-6 col-lg-3'>
+                            <div>
                                 <img className='card-img-top' src="https://www.santarosaforward.com/img/managed/Image/111/file.jpg" alt="placeholder img" />
                                 <h4>{vinyl.vin_name}</h4>
                                 <h6>{vinyl.artist}</h6>
                                 <p>{vinyl.genre}</p>
+                                <Link className='purchaseBtn' to={'/item/${vinyl.vin_id}'}>Megveszem</Link>
                             </div>
                         </div>
 
