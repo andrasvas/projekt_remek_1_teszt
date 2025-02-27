@@ -4,38 +4,35 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import {useParams} from 'react-router';
 
-const Vinyls = () => {
+function ItemView(){
     const [data, setData] = useState([]);
-    const [term, setTerm] = useState("");
-    const [filteredData, setFilteredData] = useState([]);
-
+    const [id, setId] = useState(1);
     useEffect(() => {
-        fetch("http://127.0.0.1:5000/vinyls")
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error("Nem helyes a válasz a hálózattól");
-                }
-                return res.json();
-            })
-            .then(data => {
-                setData(data);
-                setFilteredData(data);
-            })
-            .catch(error => console.error("Hiba:", error));
-    }, []);
+        const fetchData = async () =>{
+            try{
+                const response = await fetch(`http://127.0.0.1:5000/item/${id}`)
+                const result = await response.json();
+                setId(result);
+            }
+            catch(error) {console.error("Error adat fetchelésekor: ", error)}
+            }
+        };
 
-
-
-    const ItemView = ({match}) =>{
-        return (
-            <>
-                <div>
-                    <h1>Lemezbakelit</h1>
-                    <h1>{match.params.itemId}</h1>
-                </div>
-            </>
-        );
-    }  
-};
-
-export default Vinyls;
+        fetchData();
+    },[id]);
+    return (
+        <>
+            <div>
+                <h1>Lemezbakelit</h1>
+                <article>
+                    {filteredData.map(item =>{
+                        <div key={item.vin_id}>
+                            <h1>{item.vin_name}</h1>
+                        </div>
+                    })}
+                </article>
+            </div>
+        </>
+    );
+}
+export default ItemView;

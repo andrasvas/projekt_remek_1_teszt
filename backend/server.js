@@ -34,6 +34,18 @@ app.get("/vinyls",(request,response) => {
     })
 })
 
+app.get("/item/:itemId",(request, response)=>{
+    const {itemId} = request.query;
+    const query = "SELECT * FROM vinyls WHERE vin_id = ?"
+
+    db.execute(query, [itemId], (err,result)=>{
+        if(err){
+            return response.status(500).json({error: err.message})
+        }
+        response.json(results);
+    })
+})
+
 app.listen(5000, () => {
     console.log("A szerver fut az 5000-es porton!")
 })
