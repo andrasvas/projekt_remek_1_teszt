@@ -34,15 +34,20 @@ app.get("/vinyls",(request,response) => {
     })
 })
 
-app.get("/item/:itemId",(request, response)=>{
+app.get("/vinyls/data",(request, response)=>{
     const {itemId} = request.query;
+
+    if(!itemId){
+        return response.status(400).json({error: "ID paraméter hiányzik"})
+    }
+
     const query = "SELECT * FROM vinyls WHERE vin_id = ?"
 
     db.execute(query, [itemId], (err,result)=>{
         if(err){
             return response.status(500).json({error: err.message})
         }
-        response.json(results);
+        response.json(result);
     })
 })
 

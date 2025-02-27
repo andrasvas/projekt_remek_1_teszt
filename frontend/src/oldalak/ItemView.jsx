@@ -5,34 +5,32 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 import {useParams} from 'react-router';
 
 function ItemView(){
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(null);
     const [id, setId] = useState(1);
-    useEffect(() => {
-        const fetchData = async () =>{
-            try{
-                const response = await fetch(`http://127.0.0.1:5000/item/${id}`)
-                const result = await response.json();
-                setId(result);
-            }
-            catch(error) {console.error("Error adat fetchelésekor: ", error)}
-            }
-        };
 
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+                const response = await fetch(`http://127.0.0.1:5000/vinyls/${id}`);
+                const result = await response.json();
+                setData(result);
+          } 
+          catch (error) { console.error("Error fetching data:", error) }
+        };
+    
         fetchData();
-    },[id]);
+      },[id]);
     return (
         <>
             <div>
                 <h1>Lemezbakelit</h1>
                 <article>
-                    {filteredData.map(item =>{
-                        <div key={item.vin_id}>
-                            <h1>{item.vin_name}</h1>
-                        </div>
-                    })}
+                    <div>
+                        <pre>{JSON.stringify(data, null, 2)}</pre>
+                    </div>
                 </article>
             </div>
         </>
     );
 }
-export default ItemView;
+export default ItemView
