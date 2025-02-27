@@ -43,12 +43,6 @@ const Vinyls = () => {
         }
     };
 
-
-    const handleClick =(name)=>{
-        console.log("Haiiii, szeretném megvenni a " + name + " albumot!!!")
-    }
-
-
     return (
         <div>
             <div className='row'>
@@ -76,7 +70,7 @@ const Vinyls = () => {
                                 <h4>{vinyl.vin_name}</h4>
                                 <h6>{vinyl.artist}</h6>
                                 <p>{vinyl.genre}</p>
-                                <Link className='purchaseBtn' to={'/item/${vinyl.vin_id}'}>Megveszem</Link>
+                                <Link className='purchaseBtn' to={`/item/${vinyl.vin_id}`}>Megveszem</Link>
                             </div>
                         </div>
 

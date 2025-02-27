@@ -4,6 +4,7 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 import './App.css'
 import Bakelitek from './oldalak/Bakelitek.jsx'
 import ItemView from './oldalak/ItemView.jsx'
+import Error from './oldalak/Error'
 import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route index element={<Bakelitek />}/>
           <Route path="/item/:itemId" element={<ItemView />}/>
+          <Route Component={Error}></Route>
         </Routes>
       </BrowserRouter>
     </>

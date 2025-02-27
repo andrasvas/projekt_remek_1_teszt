@@ -2,6 +2,7 @@ import './Bakelitek.css'
 import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
+import {useParams} from 'react-router';
 
 const Vinyls = () => {
     const [data, setData] = useState([]);
@@ -24,13 +25,17 @@ const Vinyls = () => {
     }, []);
 
 
-    return (
-        <>
-            <div>
-                <h1>Szziiiaaaa</h1>
-            </div>
-        </>
-    );
+
+    const ItemView = ({match}) =>{
+        return (
+            <>
+                <div>
+                    <h1>Lemezbakelit</h1>
+                    <h1>{match.params.itemId}</h1>
+                </div>
+            </>
+        );
+    }  
 };
 
 export default Vinyls;

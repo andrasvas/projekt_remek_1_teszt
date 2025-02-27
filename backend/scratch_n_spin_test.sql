@@ -7,6 +7,10 @@
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
+drop database if exists scratch_n_spin_test;
+create database scratch_n_spin_test;
+use scratch_n_spin_test;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
