@@ -34,14 +34,29 @@ app.get("/vinyls",(request,response) => {
     })
 })
 
-function getVinylId(callback){
-    const query = `SELECT * FROM vinyls WHERE vin_id = ?`
-    connection.query(query, [itemId], callback)
-}
-
 app.get('/vinyls/:itemId', (req, res) => {
-    db.query("SELECT * FROM vinyls WHERE vin_id = ?", [itemId])
-})
+    const { itemId } = req.params;
+    db.query('SELECT * FROM vinyls WHERE vin_id = ?', [itemId], (err, results) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(results[0]);
+    });
+});
+
+
+
+
+// function getVinylId(callback){
+//     const query = `SELECT * FROM vinyls WHERE vin_id = ?`
+//     connection.query(query, [itemId], callback)
+// }
+
+// app.get('/vinyls/:itemId', (req, res) => {
+//     db.query("SELECT * FROM vinyls WHERE vin_id = ?", [itemId])
+// })
+
+
+
+
 
 // app.get("/vinyls/:itemId",(request, response)=>{
 //     const {itemId} = request.query;
