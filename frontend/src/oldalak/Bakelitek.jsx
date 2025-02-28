@@ -45,13 +45,13 @@ const Vinyls = () => {
 
     return (
         <div>
-            <div className='row'>
+            {/* <div className='row'>
                 <div className='div-title container-fluid col-md-6'>
                     <h1>Scratch 'n Spin</h1>
                     <img className='img-responsive col-md-4' src={snpLogo} alt="" />
                 </div>
-            </div>
-            <h2>Bakelit lemezek</h2>
+            </div> */}
+            <h1>Lemezeink raktáron</h1>
 
             <input
                 type="text"

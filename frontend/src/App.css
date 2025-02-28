@@ -5,6 +5,18 @@
   text-align: center;
 }
 
+#homeScratch{
+  color: black;
+  font-weight: 900;
+  width: 200px;
+  transition: color 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#homeScratch:hover{
+  color: green;
+  transform: scale(1.1);
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
