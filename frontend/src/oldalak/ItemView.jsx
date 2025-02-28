@@ -1,32 +1,26 @@
 import './Bakelitek.css'
-import React, { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
-import {useParams} from 'react-router';
-import 'axios';
+import {useParams} from "react-router-dom"
+import axios from "axios";
 
-
-function ItemView(){
-    const [data, setData] = useState(null)
-    const [id, setId] = useState(1);
-    const itemId = useParams();
+const ItemView = () => {
+    const {itemId} = useParams();
+    const [listing, setListing] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/vinyls/${itemId}`)
-        .then(response => setData(response.data))
-        .catch(error => console.error("Hiba történt a szobák lekérésekor:", error));
-        }, [itemId]);
-    
-        fetchData();
+        axios.get(`http://127.0.0.1:5000/vinyls/${itemId}`)
+            .then(response => setListing(response.data))
+            .catch(error => console.error("Hiba:", error));
+    }, [itemId]);
+
+
     return (
         <>
             <div>
-                <h1>Lemezbakelit</h1>
-                <article>
-                    <div>
-                        <pre>{JSON.stringify(id, null, 2)}</pre>
-                    </div>
-                </article>
+                <h1>Szziiiaaaa</h1>
+                <pre>{JSON.stringify(listing, null, 2)}</pre>
             </div>
         </>
     );
