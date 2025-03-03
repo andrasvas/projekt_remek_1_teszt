@@ -5,10 +5,9 @@ import './App.css'
 import Bakelitek from './oldalak/Bakelitek.jsx'
 import ItemView from './oldalak/ItemView.jsx'
 import Error from './oldalak/Error'
+import Navbar from './oldalak/Navbar'
 import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom'
 import snpLogo from './assets/a_logo.png'
-import { DarkModeSwitch } from 'react-toggle-dark-mode'
-
 
 function App() {
   const [count, setCount] = useState(0)
@@ -26,7 +25,6 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
       <div className='App'>
         <nav className='navbar container sticky-nav' role='navigation' aria-label='main navigation'>
           <div className='navbar-brand'>
@@ -45,7 +43,6 @@ function App() {
             </label>
           </div>
           <div className={`navbar-menu`}>
-          {/* <DarkModeSwitch onChange={toggleDarkMode}/> */}
             <Link to={"/"} className='navbar-item'>
               Termékeink
                 <span
@@ -74,6 +71,7 @@ function App() {
           <Route Component={Error}></Route>
         </Routes>
       </BrowserRouter>
+      </div>
     </>
   )
 }
