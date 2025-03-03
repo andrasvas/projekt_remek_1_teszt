@@ -7,10 +7,22 @@ import ItemView from './oldalak/ItemView.jsx'
 import Error from './oldalak/Error'
 import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom'
 import snpLogo from './assets/a_logo.png'
+import { DarkModeSwitch } from 'react-toggle-dark-mode'
+
 
 function App() {
   const [count, setCount] = useState(0)
   const [isHovered, setIsHovered] = useState(false);
+  // const [isDarkMode, setDarkMode] = useState(false)
+  
+  // function toggleDarkMode(isDarkMode){
+  //   if(true){
+  //     setDarkMode(false)
+  //   }
+  //   else {
+  //     setDarkMode(true)
+  //   }
+  // }
 
   return (
     <>
@@ -33,6 +45,7 @@ function App() {
             </label>
           </div>
           <div className={`navbar-menu`}>
+          {/* <DarkModeSwitch onChange={toggleDarkMode}/> */}
             <Link to={"/"} className='navbar-item'>
               Termékeink
                 <span
