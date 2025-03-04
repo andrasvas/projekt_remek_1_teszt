@@ -64,7 +64,7 @@ const Vinyls = () => {
                 <article className='row justify-content-center'>
                     {filteredData.map(vinyl => (    
 
-                        <div key={vinyl.vinyl_id} className='card col-md-6 col-lg-3'>
+                        <div key={vinyl.vinyl_id} className='card col-md-6 col-lg-3' style={{backgroundColor: "#c1a9f8"}}>
                             <div>
                                 <img className='card-img-top' src={`./src/album_covers/${vinyl.image_path}`} alt="placeholder img" />
                                 <h4>{vinyl.vinyl_name}</h4>
