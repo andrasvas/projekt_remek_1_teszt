@@ -28,7 +28,7 @@ db.connect((err) => {
 //API-k
 
 app.get("/vinyls",(request,response) => {
-    db.query("SELECT vinyls.vinyl_id, genres.genre_name, vinyls.vinyl_name, vinyls.vinyl_artist FROM vinyls INNER JOIN genres ON vinyls.genre_id = genres.genre_id", (err,results) => {
+    db.query("SELECT vinyls.price, vinyls.vinyl_id, genres.genre_name, vinyls.vinyl_name, vinyls.vinyl_artist FROM vinyls INNER JOIN genres ON vinyls.genre_id = genres.genre_id", (err,results) => {
         if(err) return response.status(500).json(err)
         response.json(results)
     })

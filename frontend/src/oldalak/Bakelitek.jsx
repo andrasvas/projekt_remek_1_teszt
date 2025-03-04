@@ -74,7 +74,10 @@ const Vinyls = () => {
                                 <h4>{vinyl.vinyl_name}</h4>
                                 <h6>{vinyl.vinyl_artist}</h6>
                                 <p>{vinyl.genre_name}</p>
-                                <Link className='purchaseBtn' to={`/item/${vinyl.vinyl_id}`}>Megveszem</Link>
+                                <div className='row'>
+                                    <h6>Ár: ${vinyl.price}</h6>
+                                    <Link className='purchaseBtn' to={`/item/${vinyl.vinyl_id}`}>Megveszem</Link>
+                                </div>
                             </div>
                         </div>
 
