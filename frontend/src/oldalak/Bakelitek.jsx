@@ -43,10 +43,6 @@ const Vinyls = () => {
         }
     };
 
-    const GenreIdConnection = () =>{
-
-    }
-
     return (
         <div>
             {/* <div className='row'>
@@ -70,7 +66,7 @@ const Vinyls = () => {
 
                         <div key={vinyl.vinyl_id} className='card col-md-6 col-lg-3'>
                             <div>
-                                <img className='card-img-top' src="https://www.santarosaforward.com/img/managed/Image/111/file.jpg" alt="placeholder img" />
+                                <img className='card-img-top' src={`./src/album_covers/${vinyl.image_path}`} alt="placeholder img" />
                                 <h4>{vinyl.vinyl_name}</h4>
                                 <h6>{vinyl.vinyl_artist}</h6>
                                 <p>{vinyl.genre_name}</p>
