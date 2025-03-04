@@ -10,10 +10,10 @@ app.use(cors())
 
 const db = mysql.createConnection({
     host: "127.0.0.1",
-    // port: "3307",
+    port: "3307",
     user: "root",
     password: "",
-    database: "scratch_n_spin_db"
+    database: "scratch_and_spin_db"
 })
 
 db.connect((err) => {
@@ -28,15 +28,16 @@ db.connect((err) => {
 //API-k
 
 app.get("/vinyls",(request,response) => {
-    db.query("SELECT * FROM vinyls", (err,results) => {
+    db.query("SELECT vinyls.vinyl_id, genres.genre_name, vinyls.vinyl_name, vinyls.vinyl_artist FROM vinyls INNER JOIN genres ON vinyls.genre_id = genres.genre_id", (err,results) => {
         if(err) return response.status(500).json(err)
         response.json(results)
     })
+
 })
 
 app.get('/vinyls/:itemId', (req, res) => {
     const { itemId } = req.params;
-    db.query('SELECT * FROM vinyls WHERE vin_id = ?', [itemId], (err, results) => {
+    db.query('SELECT vinyls.vinyl_description, vinyls.vinyl_name, vinyls.vinyl_artist, vinyls.in_stock, vinyls.vinyl_color, genres.genre_name, vinyls.vinyl_size, vinyls.vinyl_release FROM vinyls INNER JOIN genres ON genres.genre_id = vinyls.genre_id WHERE vinyls.vinyl_id = ?', [itemId], (err, results) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json(results[0]);
     });

@@ -33,18 +33,15 @@ const ItemView = () => {
             <div className="row">
                 <div style={{backgroundColor: 'darkgrey'}} className='col-md-4 h-300 flex-column'>
                     <img className='card-img-top' src="https://www.santarosaforward.com/img/managed/Image/111/file.jpg" alt="placeholder img" />
-                    <h2>{listing.artist} - {listing.vin_name}</h2>
+                    <h2>{listing.vinyl_artist} - {listing.vinyl_name}</h2>
                 </div>
                     <div className='col-md-4 h-300 flex-column' style={{textAlign: 'left'}}>
-                        <h4>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam, assumenda consequuntur est quibusdam ab saepe culpa aperiam ipsum officiis voluptas nam excepturi itaque incidunt numquam eveniet distinctio! Maiores rerum sunt suscipit itaque, molestiae aspernatur consequatur? Quo ad hic aliquam minus.</h4>
-                        <h6>{listing.artist}</h6>
-                        <p>{listing.genre}</p>
-                        <p>
-                            Lemez színe: {listing.color} <br />
-                            {listing.runtime} perc
-                        </p>
-                        <p></p>
-                        <p></p>
+                        <h4>{listing.vinyl_description}</h4>
+                        <h6>{listing.vinyl_artist}</h6>
+                        <p>{listing.genre_name}</p>
+                        <p>Lemez színe: {listing.vinyl_color}</p>
+                        <p>Lemez mérete: {listing.vinyl_size} ujj</p>
+                        <p>Kiadási év: {listing.vinyl_release}</p>
                     </div>
                 <div className="col-md-4 bg-secondary">
                     <div className="container-fluid h-100 flex-column">

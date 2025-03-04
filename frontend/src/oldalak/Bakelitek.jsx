@@ -34,14 +34,18 @@ const Vinyls = () => {
         } else {
             const filtered = data.filter(vinyl => {
                 return (
-                    vinyl.vin_name.toLowerCase().includes(term) ||
-                    vinyl.artist.toLowerCase().includes(term)
+                    vinyl.vinyl_name.toLowerCase().includes(term) ||
+                    vinyl.vinyl_artist.toLowerCase().includes(term)
                 );
             });
 
             setFilteredData(filtered);
         }
     };
+
+    const GenreIdConnection = () =>{
+
+    }
 
     return (
         <div>
@@ -64,13 +68,13 @@ const Vinyls = () => {
                 <article className='row justify-content-center'>
                     {filteredData.map(vinyl => (    
 
-                        <div key={vinyl.vin_id} className='card col-md-6 col-lg-3'>
+                        <div key={vinyl.vinyl_id} className='card col-md-6 col-lg-3'>
                             <div>
                                 <img className='card-img-top' src="https://www.santarosaforward.com/img/managed/Image/111/file.jpg" alt="placeholder img" />
-                                <h4>{vinyl.vin_name}</h4>
-                                <h6>{vinyl.artist}</h6>
-                                <p>{vinyl.genre}</p>
-                                <Link className='purchaseBtn' to={`/item/${vinyl.vin_id}`}>Megveszem</Link>
+                                <h4>{vinyl.vinyl_name}</h4>
+                                <h6>{vinyl.vinyl_artist}</h6>
+                                <p>{vinyl.genre_name}</p>
+                                <Link className='purchaseBtn' to={`/item/${vinyl.vinyl_id}`}>Megveszem</Link>
                             </div>
                         </div>
 
