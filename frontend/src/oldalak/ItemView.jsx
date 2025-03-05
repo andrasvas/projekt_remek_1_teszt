@@ -32,7 +32,7 @@ const ItemView = () => {
         <div style={{backgroundColor: 'grey'}}>
             <div className="row">
                 <div style={{backgroundColor: 'darkgrey'}} className='col-md-4 h-300 flex-column'>
-                    <img className='card-img-top' src="https://www.santarosaforward.com/img/managed/Image/111/file.jpg" alt="placeholder img" />
+                    <img className='card-img-top' src={`../src/album_covers/${listing.image_path}`} alt="placeholder img" />
                     <h2>{listing.vinyl_artist} - {listing.vinyl_name}</h2>
                 </div>
                     <div className='col-md-4 h-300 flex-column' style={{textAlign: 'left'}}>
