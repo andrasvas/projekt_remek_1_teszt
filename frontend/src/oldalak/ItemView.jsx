@@ -29,32 +29,32 @@ const ItemView = () => {
     if (!listing) return <p>Nem találtuk amit keresel, nézz vissza később!</p>
 
     return (
-        <div style={{backgroundColor: 'grey'}}>
-            <div className="row">
-                <div style={{backgroundColor: 'darkgrey'}} className='col-md-4 h-300 flex-column'>
-<<<<<<< Updated upstream
-                    <img className='card-img-top' src={`../src/album_covers/${listing.image_path}`} alt="placeholder img" />
-=======
-                    <img className='card-img-top' src={`../src/album_covers/${listing.image_path}`} alt="" />
->>>>>>> Stashed changes
-                    <h2>{listing.vinyl_artist} - {listing.vinyl_name}</h2>
-                </div>
-                    <div className='col-md-4 h-300 flex-column' style={{textAlign: 'left'}}>
-                        <h4>{listing.vinyl_description}</h4>
-                        <h6>{listing.vinyl_artist}</h6>
-                        <p>{listing.genre_name}</p>
-                      
-                        <p>Lemez színe: {listing.vinyl_color}</p>
-                        <p>Lemez mérete: {listing.vinyl_size} ujj</p>
-                        <p>Kiadási év: {listing.vinyl_release}</p>
+        <div className='w-100'>
+            <div className="row w-100">
+
+                <div className='col-md-4'>
+                    <div className='col'>
+                        <img className='card-img-top img-thumbnail rounded' src={`../src/album_covers/${listing.image_path}`} alt="" />
+                        <h2>{listing.vinyl_artist} - {listing.vinyl_name}</h2>
                     </div>
-                <div className="col-md-4 bg-secondary">
-                    <div className="container-fluid h-100 flex-column">
-                        <div className="container-fluid col-md-6 mw-100 bg-danger">
-                            <Link>Kosárba vele!</Link>
-                        </div>
-                        <div className="container-fluid col-md-6 mw-100 bg-success">
-                        </div>
+                </div>
+
+                <div className='col-md-6' style={{textAlign: 'left'}}>
+                    <h4>{listing.vinyl_description}</h4>
+                    <h6>{listing.vinyl_artist}</h6>
+                    
+                    {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta totam voluptatum minus suscipit soluta ipsum vero ab, architecto consequuntur, est ex ratione numquam temporibus harum facilis distinctio consectetur esse explicabo, nemo eveniet nostrum? Quas enim quos tenetur, praesentium temporibus quidem.</p> */}
+
+                    <p>{listing.genre_name}</p>
+                    
+                    <p>Lemez színe: {listing.vinyl_color}</p>
+                    <p>Lemez mérete: {listing.vinyl_size} ujj</p>
+                    <p>Kiadási év: {listing.vinyl_release}</p>
+                </div>
+
+                <div className="col-md-2">
+                    <div className="container-fluid col-md-6 mw-100 bg-danger">
+                        <Link>Kosárba vele!</Link>
                     </div>
                 </div>
             </div>

@@ -8,15 +8,15 @@ import snpLogo from '../assets/a_logo.png'
 function Navbar(){
 
     return(
-    <nav className="sticky-nav ba flex justify-between bb b--white-10" style={{backgroundColor: "#ddcfff", border: "3px dotted black"}}>
-        <a className="link white-70 hover-white no-underline flex items-center pa3" href="/">
+    <nav className="sticky-nav flex justify-between b--white-10" style={{backgroundColor: "#ddcfff", position: "sticky", paddingTop: "0px"}}>
+        <a className="link white-70 no-underline flex items-center p-3" href="/">
             <img className='img-responsive' style={{width: "80px"}} src={snpLogo} alt="" />
             <h3 className='main-brand'>Scratch N' Spin</h3>
         </a>
         <div className="flex-grow pa3 flex items-center">
             <a className="f6 link dib hover-black mr3 mr4-ns" href="#0">About</a>
             <a className="f6 link dib hover-black mr3 mr4-ns" href="#0">Sign In</a>
-            <a className="f6 dib black bg-animate hover-bg-white hover-black no-underline pv2 ph4 br-pill ba b--white-20" href="/signup">Sign Up</a>
+            <a className="f6 dib black bg-animate hover-bg-white hover-black no-underline pv2 ph4 br-pill    ba" href="/signup">Sign Up</a>
         </div>
     </nav>
 

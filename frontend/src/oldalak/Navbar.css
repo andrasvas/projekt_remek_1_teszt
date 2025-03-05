@@ -1,7 +1,7 @@
 .sticky-nav{
     padding-top: 20px;
     position: sticky;
-    border-style: dotted;
+    /* border-style: dotted; */
 }
 
 @font-face{
@@ -31,12 +31,16 @@
 .main-brand{
     font-family: 'publicPixel';
     text-transform: capitalize;
-    color: black;
+    color: #000;
+}
+
+.main-brand:hover, .main-brand:focus{
+    color: #7641f2;
 }
 
 .ba {
     border-style: solid;
-    border-width: 1px;
+    border-width: 3px;
 }
 
 .bb {

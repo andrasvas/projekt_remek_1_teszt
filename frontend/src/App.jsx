@@ -8,7 +8,6 @@ import Error from './oldalak/Error'
 import Navbar from './oldalak/Navbar'
 import Signup from './oldalak/SignUp.jsx'
 import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom'
-import snpLogo from './assets/a_logo.png'
 
 function App() {
   const [count, setCount] = useState(0)
