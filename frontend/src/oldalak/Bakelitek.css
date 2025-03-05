@@ -1,8 +1,9 @@
 body{
     background-color: #ddcfff;
 }
-card{
+.card{
     background-color: #c1a9f8;
+    border: 2px dotted ;
 }
 
 

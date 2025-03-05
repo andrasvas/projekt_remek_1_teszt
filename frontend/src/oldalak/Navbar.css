@@ -4,9 +4,35 @@
     border-style: dotted;
 }
 
-/* .main-brand{
-    font-family: ;
-} */
+@font-face{
+    font-family: "ultrakill";
+    src: local("HomeVideo"),
+        url("../fonts/HomeVideo.ttf") format("truetype")
+}
+
+@font-face{
+    font-family: "ultrakillBold";
+    src: local("HomeVideoBold"),
+        url("../fonts/HomeVideoBold.ttf") format("truetype")
+}
+
+@font-face{
+    font-family: "pixelElegance";
+    src: local("PixelatedEleganceRegular"),
+        url("../fonts/PixelatedEleganceRegular.ttf") format("truetype")
+}
+
+@font-face{
+    font-family: "publicPixel";
+    src: local("PublicPixel"),
+        url("../fonts/PublicPixel.ttf") format("truetype")
+}
+
+.main-brand{
+    font-family: 'publicPixel';
+    text-transform: capitalize;
+    color: black;
+}
 
 .ba {
     border-style: solid;

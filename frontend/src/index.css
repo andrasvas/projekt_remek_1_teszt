@@ -13,6 +13,22 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root[data-theme="light"] {
+  --text: #111014;
+  --background: #faf9fc;
+  --primary: #ddcfff;
+  --secondary: #a385e8;
+  --accent: #7641f2;
+}
+:root[data-theme="dark"] {
+  --text: #ecebef;
+  --background: #050307;
+  --primary: #0e002e;
+  --secondary: #341778;
+  --accent: #430dbf;
+}
+
+
 a {
   font-weight: 500;
   color: #646cff;

@@ -32,13 +32,18 @@ const ItemView = () => {
         <div style={{backgroundColor: 'grey'}}>
             <div className="row">
                 <div style={{backgroundColor: 'darkgrey'}} className='col-md-4 h-300 flex-column'>
+<<<<<<< Updated upstream
                     <img className='card-img-top' src={`../src/album_covers/${listing.image_path}`} alt="placeholder img" />
+=======
+                    <img className='card-img-top' src={`../src/album_covers/${listing.image_path}`} alt="" />
+>>>>>>> Stashed changes
                     <h2>{listing.vinyl_artist} - {listing.vinyl_name}</h2>
                 </div>
                     <div className='col-md-4 h-300 flex-column' style={{textAlign: 'left'}}>
                         <h4>{listing.vinyl_description}</h4>
                         <h6>{listing.vinyl_artist}</h6>
                         <p>{listing.genre_name}</p>
+                      
                         <p>Lemez színe: {listing.vinyl_color}</p>
                         <p>Lemez mérete: {listing.vinyl_size} ujj</p>
                         <p>Kiadási év: {listing.vinyl_release}</p>

@@ -6,6 +6,7 @@ import Bakelitek from './oldalak/Bakelitek.jsx'
 import ItemView from './oldalak/ItemView.jsx'
 import Error from './oldalak/Error'
 import Navbar from './oldalak/Navbar'
+import Signup from './oldalak/SignUp.jsx'
 import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom'
 import snpLogo from './assets/a_logo.png'
 
@@ -30,6 +31,7 @@ function App() {
           <Routes>
             <Route index element={<Bakelitek />}/>
             <Route path="/item/:itemId" element={<ItemView />}/>
+            <Route path="/signup" element={<Signup/>}/>
             <Route Component={Error}></Route>
           </Routes>
       </BrowserRouter>
