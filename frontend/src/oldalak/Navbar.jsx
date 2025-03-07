@@ -11,7 +11,7 @@ function Navbar(){
     <nav className="sticky-nav flex justify-between b--white-10" style={{backgroundColor: "#ddcfff", position: "sticky", paddingTop: "0px"}}>
         <a className="link white-70 no-underline flex items-center p-3" href="/">
             <img className='img-responsive' style={{width: "80px"}} src={snpLogo} alt="" />
-            <h3 className='main-brand'>Scratch N' Spin</h3>
+            <h3 className='main-brand main-brand-hover'>Scratch N' Spin</h3>
         </a>
         <div className="flex-grow pa3 flex items-center">
             <a className="f6 link dib hover-black mr3 mr4-ns" href="#0">About</a>

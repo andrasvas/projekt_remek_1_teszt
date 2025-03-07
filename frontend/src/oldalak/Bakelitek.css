@@ -5,8 +5,6 @@ body{
     background-color: #c1a9f8;
 }
 
-
-
 table{
     border-radius: .4vw;
     background-color: darkgrey;
@@ -35,7 +33,7 @@ div{
     color: rgb(0, 133, 133);
 }
 
-.purchaseBtn:hover{
+.purchaseBtn:hover, .purchaseBtn:focus{
     background-color: rgb(0, 133, 133);
     color: white;
 }

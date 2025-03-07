@@ -34,7 +34,7 @@
     color: #000;
 }
 
-.main-brand:hover, .main-brand:focus{
+.main-brand-hover:hover, .main-brand:focus{
     color: #7641f2;
 }
 

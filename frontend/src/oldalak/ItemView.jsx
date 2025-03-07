@@ -32,14 +32,21 @@ const ItemView = () => {
         <div className='w-100'>
             <div className="row w-100">
 
-                <div className='col-md-4'>
+                <div className='col-md-4 row bg-secondary'>
+                    <div className='col-2 row'>
+                        <img className='img-thumbnail' src="https://th.bing.com/th/id/OIP.qACxVYcdDvLQy23Kl3pqOQHaEK?rs=1&pid=ImgDetMain" alt="" />
+                        <img className='img-thumbnail' src="https://th.bing.com/th/id/OIP.qACxVYcdDvLQy23Kl3pqOQHaEK?rs=1&pid=ImgDetMain" alt="" />
+                        <img className='img-thumbnail' src="https://th.bing.com/th/id/OIP.qACxVYcdDvLQy23Kl3pqOQHaEK?rs=1&pid=ImgDetMain" alt="" />
+                        <img className='img-thumbnail' src="https://th.bing.com/th/id/OIP.qACxVYcdDvLQy23Kl3pqOQHaEK?rs=1&pid=ImgDetMain" alt="" />
+                        <img className='img-thumbnail' src="https://th.bing.com/th/id/OIP.qACxVYcdDvLQy23Kl3pqOQHaEK?rs=1&pid=ImgDetMain" alt="" />
+                    </div>
                     <div className='col'>
                         <img className='card-img-top img-thumbnail rounded' src={`../src/album_covers/${listing.image_path}`} alt="" />
                         <h2>{listing.vinyl_artist} - {listing.vinyl_name}</h2>
                     </div>
                 </div>
 
-                <div className='col-md-6' style={{textAlign: 'left'}}>
+                <div className='col-md-4 bg-success' style={{textAlign: 'left'}}>
                     <h4>{listing.vinyl_description}</h4>
                     <h6>{listing.vinyl_artist}</h6>
                     
@@ -52,7 +59,7 @@ const ItemView = () => {
                     <p>Kiadási év: {listing.vinyl_release}</p>
                 </div>
 
-                <div className="col-md-2">
+                <div className="col-md-2 bg-primary">
                     <div className="container-fluid col-md-6 mw-100 bg-danger">
                         <Link>Kosárba vele!</Link>
                     </div>
