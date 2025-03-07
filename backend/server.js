@@ -11,7 +11,7 @@ app.use(cors())
 
 const db = mysql.createConnection({
     host: "127.0.0.1",
-    // port: "3307",
+    port: "3307",
     user: "root",
     password: "",
     database: "scratch_and_spin_db"
@@ -44,7 +44,7 @@ app.get('/vinyls/:itemId', (req, res) => {
     });
 });
 
-app.post('/register',(req,res) => {
+app.put('/register', async (req,res) => {
     const {first_name, last_name, phone_number, email, password} = req.body
 
     if (!first_name || !last_name || !email || !password || !phone_number) {
@@ -52,21 +52,24 @@ app.post('/register',(req,res) => {
     }
 
     try{
-        const [existingUser] = await db.execute('SELECT * FROM users WHERE users.user_phone_number = ? OR users.user_email = ? ')
+        const [existingUser] = db.execute('SELECT * FROM users WHERE users.user_phone_number = ? OR users.user_email = ? ')
 
         if(existingUser.length > 0){
             return res.status(400).json({message: "Az e-mail vagy a telefonszám már regisztrálva van az oldalon!"})
         }
 
-        const hashedPassword = await bcrypt.hash(password, 10)
+        const hashedPassword = bcrypt.hash(password, 10)
 
-        const [result] = await db.execute('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', [username, email, hashedPassword]);
+        const [result] = await db.execute('INSERT INTO users (user_last_name ,user_first_name, user_phone_number, user_email, user_password) VALUES (?, ?, ?, ?, ?)', [last_name, first_name, email,phone_number ,hashedPassword]);
 
-            res.status(201).json({ message: 'Sikeres regisztráció!' });
-    } catch (error) {
-        console.error('Hiba történt a regisztráció során:', error);
-        res.status(500).json({ message: 'Hiba történt a regisztráció során' });
+        console.log(result)
+        res.json(result)
+        res.status(201).json({ message: 'Sikeres regisztráció!' });
+
     }
+    catch(error){
+        console.error(error);
+        return res.status(500).json({ message: "Szerverhiba történt, próbáld újra később!" });
     }
 })
 
