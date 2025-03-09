@@ -7,6 +7,18 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+async function hashPassword(password) {
+    try{
+        const hashedRounds = 10
+        const hashedPassword = await bcrypt.hash(password,hashedRounds);
+        return hashedPassword
+    }
+    catch(err){
+        console.log(`Hiba történt a jelszó titkositása közben: ${err}`)
+        throw error
+    }
+}
+
 //Adatbázis kapcsolat beállitása
 
 const db = mysql.createConnection({
@@ -44,24 +56,26 @@ app.get('/vinyls/:itemId', (req, res) => {
     });
 });
 
-app.post('/register', (req,res) => {
+app.post('/register',async function (req,res){
     const user_email = req.body.user_email
     const user_password = req.body.user_password
     const user_firstname = req.body.user_firstname
     const user_lastname = req.body.user_lastname
     const user_phonenum = req.body.user_phonenum
 
-    db.query(`SELECT count(*) AS 'count' FROM users WHERE user_phone_number = ? OR user_email = ?`, [user_phonenum,user_email], (err,result) => {
-        console.log(result)
+    db.query(`SELECT count(*) AS 'count' FROM users WHERE user_phone_number = ? OR user_email = ?`, [user_phonenum,user_email], async (err,result) => {
         console.log(err)
         if (result[0].count > 0){
             res.json("A felhasználó már regisztrált")
             console.log("Regisztrált már a felhasználó")
         }
         else{
-            db.query(`INSERT INTO users (user_last_name,user_first_name,user_phone_number,user_email,user_password) VALUES (?,?,?,?,?)`, [user_lastname,user_firstname,user_phonenum,user_email,user_password], (err,result) => {
+            const hashedPassword = await hashPassword(user_password)
+
+            db.query(`INSERT INTO users (user_last_name,user_first_name,user_phone_number,user_email,user_password) VALUES (?,?,?,?,?)`, [user_lastname,user_firstname,user_phonenum,user_email,hashedPassword], (err,result) => {
                 console.log(err)
             })
+
             res.json("Sikeres regisztráció!")
             console.log("Sikeres regisztráció!")
         }
