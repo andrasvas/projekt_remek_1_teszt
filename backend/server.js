@@ -11,7 +11,7 @@ app.use(cors())
 
 const db = mysql.createConnection({
     host: "127.0.0.1",
-    port: "3307",
+    port: "3306",
     user: "root",
     password: "",
     database: "scratch_and_spin_db"
@@ -44,34 +44,31 @@ app.get('/vinyls/:itemId', (req, res) => {
     });
 });
 
-app.put('/register', async (req,res) => {
-    const {first_name, last_name, phone_number, email, password} = req.body
+app.post('/register', (req,res) => {
+    const user_email = req.body.user_email
+    const user_password = req.body.user_password
+    const user_firstname = req.body.user_firstname
+    const user_lastname = req.body.user_lastname
+    const user_phonenum = req.body.user_phonenum
 
-    if (!first_name || !last_name || !email || !password || !phone_number) {
-        return res.status(400).json({message: "Minden csillaggal jelölt mezőt ki kell tölteni!"})
-    }
-
-    try{
-        const [existingUser] = db.execute('SELECT * FROM users WHERE users.user_phone_number = ? OR users.user_email = ? ')
-
-        if(existingUser.length > 0){
-            return res.status(400).json({message: "Az e-mail vagy a telefonszám már regisztrálva van az oldalon!"})
-        }
-
-        const hashedPassword = bcrypt.hash(password, 10)
-
-        const [result] = await db.execute('INSERT INTO users (user_last_name ,user_first_name, user_phone_number, user_email, user_password) VALUES (?, ?, ?, ?, ?)', [last_name, first_name, email,phone_number ,hashedPassword]);
-
+    db.query(`SELECT count(*) AS 'count' FROM users WHERE user_phone_number = ? OR user_email = ?`, [user_phonenum,user_email], (err,result) => {
         console.log(result)
-        res.json(result)
-        res.status(201).json({ message: 'Sikeres regisztráció!' });
-
-    }
-    catch(error){
-        console.error(error);
-        return res.status(500).json({ message: "Szerverhiba történt, próbáld újra később!" });
-    }
+        console.log(err)
+        if (result[0].count > 0){
+            res.json("A felhasználó már regisztrált")
+            console.log("Regisztrált már a felhasználó")
+        }
+        else{
+            db.query(`INSERT INTO users (user_last_name,user_first_name,user_phone_number,user_email,user_password) VALUES (?,?,?,?,?)`, [user_lastname,user_firstname,user_phonenum,user_email,user_password], (err,result) => {
+                console.log(err)
+            })
+            res.json("Sikeres regisztráció!")
+            console.log("Sikeres regisztráció!")
+        }
+        
+    })
 })
+
 
 
 // function getVinylId(callback){

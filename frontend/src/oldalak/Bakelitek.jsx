@@ -1,6 +1,6 @@
 import './Bakelitek.css'
 import React, { useEffect, useState } from "react";
-import snpLogo from '../assets/a_logo.png'
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import { Link } from 'react-router-dom';
