@@ -52,13 +52,15 @@ function SignUp() {
 
         if(CheckPassword(formData.regPassword,conPassword) === true && CheckPhoneNumber(formData.regPhoneNum) === true){
             axios.post(`http://localhost:5000/register`, {
-                    user_email: formData.regEmail, 
-                    user_password: formData.regPassword, 
-                    user_firstname: formData.regFirstname, 
-                    user_lastname: formData.regLastname, 
-                    user_phonenum: formData.regPhoneNum
-                })
-                .then((response) => console.log(response))
+                user_email: formData.regEmail, 
+                user_password: formData.regPassword, 
+                user_firstname: formData.regFirstname, 
+                user_lastname: formData.regLastname, 
+                user_phonenum: formData.regPhoneNum
+            })
+            .then((response) => console.log(response))
+            alert("Sikeres regisztráció!")
+            window.location.href = '/signin'   
         }
 
 
@@ -117,7 +119,7 @@ function SignUp() {
                     <br />
                     <br />
 
-                    <input type="submit" value="Regisztráció"/>
+                    <input type="submit" value="Regisztráció"></input>
                 </form>
 
             </div>

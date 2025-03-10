@@ -9,6 +9,7 @@ import Error from './oldalak/Error'
 import Navbar from './oldalak/Navbar'
 import Signup from './oldalak/SignUp.jsx'
 import Signin from './oldalak/SignIn.jsx'
+import About from './oldalak/About.jsx'
 
 import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom'
 
@@ -35,6 +36,7 @@ function App() {
             <Route path="/item/:itemId" element={<ItemView />}/>
             <Route path="/signup" element={<Signup/>}/>
             <Route path="/signin" element={<Signin/>}></Route>
+            <Route path="/about" element={<About/>}></Route>
             <Route Component={Error}></Route>
           </Routes>
       </BrowserRouter>
