@@ -15,7 +15,7 @@ function SignIn(){
             </div>
 
             <div>
-                <a href="/signup">Még nincs fiókod? Katt ide!</a>
+                <a href="/signup">Még nincs fiókod?</a>
             </div>
         </>
     )

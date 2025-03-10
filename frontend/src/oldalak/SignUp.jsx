@@ -119,7 +119,11 @@ function SignUp() {
 
                     <input type="submit" value="Regisztráció"/>
                 </form>
-                
+
+            </div>
+
+            <div>
+                <a href="/signin">Van már fiókod?</a>
             </div>
         </>
     );
