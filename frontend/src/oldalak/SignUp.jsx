@@ -9,7 +9,7 @@ function SignUp() {
     function CheckPhoneNumber(phonenum){
         var regularExpression = /[a-z]/i
 
-        if(phonenum.length > 15 || phonenum.length < 11) return alert("Nem megfeleő telefonszámot adott meg!")
+        if(phonenum.length > 15 || phonenum.length < 11) return alert("A telefon szám nem elég hosszú!")
         if(regularExpression.test(phonenum) === true) return alert("A telefonszám nem tartalmazhat betűt!")
 
         return true
@@ -24,7 +24,6 @@ function SignUp() {
         
         return true
     }
-    
 
     const [formData, setFormData] = useState({
         regEmail:"",
@@ -61,6 +60,8 @@ function SignUp() {
                 })
                 .then((response) => console.log(response))
         }
+
+
     } 
 
     return (
@@ -118,6 +119,7 @@ function SignUp() {
 
                     <input type="submit" value="Regisztráció"/>
                 </form>
+                
             </div>
         </>
     );
