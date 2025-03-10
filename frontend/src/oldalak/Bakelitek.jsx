@@ -11,18 +11,14 @@ const Vinyls = () => {
     const [filteredData, setFilteredData] = useState([]);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:5000/vinyls")
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error("Nem helyes a válasz a hálózattól");
-                }
-                return res.json();
+        axios.get("http://127.0.0.1:5000/vinyls")
+            .then(response => {
+                setData(response.data);
+                setFilteredData(response.data);
             })
-            .then(data => {
-                setData(data);
-                setFilteredData(data);
-            })
-            .catch(error => console.error("Hiba:", error));
+            .catch(error => {
+                console.error("Hiba:", error);
+            });
     }, []);
 
     const searchChange = (x) => {

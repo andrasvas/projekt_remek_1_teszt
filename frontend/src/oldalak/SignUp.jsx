@@ -4,7 +4,28 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import axios from 'axios'
 
-function SignUp() {  
+function SignUp() {
+    
+    function CheckPhoneNumber(phonenum){
+        var regularExpression = /[a-z]/i
+
+        if(phonenum.length > 15 || phonenum.length < 11) return alert("Nem megfeleő telefonszámot adott meg!")
+        if(regularExpression.test(phonenum) === true) return alert("A telefonszám nem tartalmazhat betűt!")
+
+        return true
+    }
+
+    function CheckPassword(password,confirmPassword){
+        var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    
+        if(password.length < 8) return alert("A jelszó nem elég hosszú, minimum 8 karakter kell hogy legyen!")
+        if(password !== confirmPassword) return alert("A jelszavak nem egyeznek!")
+        if(regularExpression.test(password) == false) return alert("Nincs benne minimum egy szám vagy egy speciális karakter!")
+        
+        return true
+    }
+    
+
     const [formData, setFormData] = useState({
         regEmail:"",
         regPhoneNum:"",
@@ -30,15 +51,8 @@ function SignUp() {
     const Register = (e) => {
         e.preventDefault()
 
-        if(formData.regPassword.length < 8){
-            alert("A jelszó nem elég hosszú! Minimum 8 karakter legyen!")
-        }
-        else{
-            if(conPassword !== formData.regPassword){
-                alert("A jelszavak nem egyeznek meg!")
-            }
-            else{
-                axios.post(`http://localhost:5000/register`, {
+        if(CheckPassword(formData.regPassword,conPassword) === true && CheckPhoneNumber(formData.regPhoneNum) === true){
+            axios.post(`http://localhost:5000/register`, {
                     user_email: formData.regEmail, 
                     user_password: formData.regPassword, 
                     user_firstname: formData.regFirstname, 
@@ -46,12 +60,7 @@ function SignUp() {
                     user_phonenum: formData.regPhoneNum
                 })
                 .then((response) => console.log(response))
-
-                console.log("Sikeres regisztráció!")
-            }
         }
-
-        
     } 
 
     return (
