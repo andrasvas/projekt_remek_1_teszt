@@ -61,14 +61,16 @@ const Vinyls = () => {
                     {filteredData.map(vinyl => (    
 
                         <div key={vinyl.vinyl_id} className='card col-md-6 col-lg-3 g-4 p-4'>
+
                             <div className='main-brand'>
                                 <img className='card-img-top border rounded border-black' src={`./src/album_covers/${vinyl.image_path}`} alt="placeholder img" />
                                 <h5>{vinyl.vinyl_artist} - {vinyl.vinyl_name}</h5>
                                 <p className='p-2'>{vinyl.genre_name}</p>
-                                    <div className='row'>
-                                    <h4>Ár: ${vinyl.price}</h4>
-                                        <Link className='purchaseBtn' to={`/item/${vinyl.vinyl_id}`}>Megveszem</Link>
-                                    </div>
+                            </div>
+
+                            <div className='row'>
+                                <h4>Ár: ${vinyl.price}</h4>
+                                <Link className='purchaseBtn' to={`/item/${vinyl.vinyl_id}`}>Megveszem</Link>
                             </div>
                         </div>
 
