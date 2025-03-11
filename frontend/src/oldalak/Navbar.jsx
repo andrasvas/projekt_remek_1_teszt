@@ -8,7 +8,7 @@ import snpLogo from '../assets/a_logo.png'
 function Navbar(){
 
     return(
-    <nav className="sticky-nav flex justify-between b--white-10" style={{backgroundColor: "#ddcfff", position: "sticky", paddingTop: "0px"}}>
+    <nav className="flex justify-between b--white-10 w-100 border border-black" style={{backgroundColor: "#ddcfff", position: "sticky", paddingTop: "0px"}}>
         <a className="link white-70 no-underline flex items-center p-3" href="/">
             <img className='img-responsive' style={{width: "80px"}} src={snpLogo} alt="" />
             <h3 className='main-brand main-brand-hover'>Scratch N' Spin</h3>

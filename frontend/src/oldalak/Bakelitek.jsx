@@ -56,15 +56,15 @@ const Vinyls = () => {
                 onChange={searchChange}
             />
 
-            <div className='container-fluid'>
+            <div className='container-fluid border border-red'>
                 <article className='row justify-content-center'>
                     {filteredData.map(vinyl => (    
 
-                        <div key={vinyl.vinyl_id} className='card col-sm-6 col-md-6 col-lg-3 g-4 p-4'>
+                        <div key={vinyl.vinyl_id} className='card col-md-6 col-lg-3'>
 
                             <div className='main-brand'>
                                 <img className='card-img-top border rounded border-black' src={`./src/album_covers/${vinyl.image_path}`} alt=""/>
-                                <h5>{vinyl.vinyl_artist} - {vinyl.vinyl_name}</h5>
+                                <h5>{vinyl.vinyl_artist}<br />-<br />{vinyl.vinyl_name}</h5>
                                 <p className='p-2'>{vinyl.genre_name}</p>
                             </div>
 
