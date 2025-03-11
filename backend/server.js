@@ -23,7 +23,7 @@ async function hashPassword(password) {
 
 const db = mysql.createConnection({
     host: "127.0.0.1",
-    port: "3306",
+    port: "3307",
     user: "root",
     password: "",
     database: "scratch_and_spin_db"
@@ -67,7 +67,7 @@ app.post('/register',async function (req,res){
         console.log(err)
         if (result[0].count > 0){
             res.json("A felhasználó már regisztrált")
-            console.log("Regisztrált már a felhasználó")
+            console.log("A felhasználó már regisztrált")
         }
         else{
             const hashedPassword = await hashPassword(user_password)
@@ -84,6 +84,28 @@ app.post('/register',async function (req,res){
 })
 
 
+app.get('/login', async function (req,res){
+    const user_email = req.body.user_email
+    const user_password = req.body.user_password
+
+    if(!user_email || !user_password){
+        return res.json(400).json({error: 'Felhasználó vagy jelszó szükséges'})
+    }
+
+    db.query(`SELECT user_id, user_email, user_password FROM users WHERE user_email = ?`[user_email],async (err,results) => {
+        if (err) return res.json(500).json({error: "A felhasználó nem található"})
+
+        const user = results[0]
+
+        const isMatch = await bcrypt.compare(user_password,user.user_password)
+
+        if(!isMatch){
+            return res.json(500).json({error: "Helytelen jelszó!"})
+        }
+
+        return res.json(500).json({error: "Sikeres bejelentkezés!"})
+    })
+})
 
 // function getVinylId(callback){
 //     const query = `SELECT * FROM vinyls WHERE vin_id = ?`
