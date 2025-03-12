@@ -91,45 +91,41 @@ app.post('/register',async function (req,res){
                 console.log(err)
             })
 
-            res.json("Sikeres regisztráció!")
             console.log("Sikeres regisztráció!")
+            return res.json("Sikeres regisztráció!")
         }
         
     })
 })
 
 
-app.get('/login', async function (req,res){
-    console.log("Valasz kuldese")
-    const user_email = req.body.user_email
-    const user_password = req.body.user_password
+app.post('/login', async function (req, res){
+    const user_email = req.body.user_email;
+    const user_password = req.body.user_password;
 
     if(!user_email || !user_password){
-        return res.json(400).json({error: 'Felhasználó vagy jelszó szükséges'})
+        return res.status(400).json({error: 'Felhasználó vagy jelszó szükséges'}); // Helyes hívás
     }
 
-    db.query(`SELECT user_id, user_email, user_password FROM users WHERE user_email = ?`[user_email],async (err,results) => {
-        console.log("Válász küldése")
+    db.query(`SELECT user_id, user_email, user_password FROM users WHERE user_email = ?`, [user_email], async (err, results) => {
         if (err) {
-            return res.json(500).json({error: "A felhasználó nem található!"})
+            return res.status(500).json({error: "A felhasználó nem található!"}); // Helyes hívás
         }
 
-        if(results.length === 0){
-            return res.json(404).json({error: "A felhasználó nem található!"})
+        if (results.length === 0) {
+            return res.status(404).json({error: "A felhasználó nem található!"}); // Helyes hívás
         }
 
-        const user = results[0]
+        const user = results[0];
+        const isMatch = await bcrypt.compare(user_password, user.user_password);
 
-        const isMatch = await bcrypt.compare(user_password,user.user_password)
-
-        if(!isMatch){
-            return res.json(500).json({error: "Helytelen jelszó!"})
+        if (!isMatch) {
+            return res.status(400).json({error: "Helytelen jelszó!"}); // Helyes hívás
+        } else {
+            return res.json({message: "Sikeres bejelentkezés!"}); // Helyes hívás
         }
-        else{
-            return res.json("Sikeres bejelentkezés!")
-        }
-    })
-})
+    });
+});
 
 // function getVinylId(callback){
 //     const query = `SELECT * FROM vinyls WHERE vin_id = ?`

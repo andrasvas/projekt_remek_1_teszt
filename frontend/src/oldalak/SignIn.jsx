@@ -15,16 +15,27 @@ function SignIn(){
         })
     }
 
-    function Login(){
+    function Login(e){
         e.preventDefault()
 
-        axios.get("http://localhost:5000/login", {
+        axios.post("http://localhost:5000/login", {
             user_email: formData.logEmail,
             user_password: formData.logPassword
         })
-        .then(response => console.log(response))
-        alert("Sikeres bejelentkezés")
-        window.location.href = "/signup"
+        .then(response => {
+            if(response.ok){
+                console.log("Sikeres bejelentkezés!")
+            }
+        })
+        .catch(error =>{
+            if(error.response){
+                console.log("Hiba: ", error.response.data)
+            }
+            else{
+                console.log('Hiba: ', error.message)
+            }
+        })
+        
     }
 
 
@@ -41,11 +52,11 @@ function SignIn(){
 
                     <br />
                     
-                    <input type="text"
+                    <input type="password"
                     required
                     onChange={HandleChange}
                     placeholder='Jelszó'
-                    name='logPassword'
+                    name="logPassword"
                     value={formData.logPassword} />
 
                     <br />

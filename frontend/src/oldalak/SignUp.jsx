@@ -58,11 +58,8 @@ function SignUp() {
                 user_phonenum: formData.regPhoneNum
             })
             .then((response) => console.log(response))
-            alert("Sikeres regisztráció!")
             window.location.href = '/signin'   
         }
-
-
     } 
 
     return (
