@@ -28,15 +28,6 @@
         url("../fonts/PublicPixel.ttf") format("truetype")
 }
 
-.main-brand{
-    font-family: 'publicPixel';
-    text-transform: capitalize;
-    color: #000;
-}
-
-.main-brand-hover:hover, .main-brand:focus{
-    color: #7641f2;
-}
 
 .ba {
     border-style: solid;

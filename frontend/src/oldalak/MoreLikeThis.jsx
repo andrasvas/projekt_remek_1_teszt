@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import { Link } from 'react-router-dom';
 
-const Vinyls = () => {
+const MoreLikeThis = () => {
     const [data, setData] = useState([]);
     const [term, setTerm] = useState("");
     const [filteredData, setFilteredData] = useState([]);
@@ -41,27 +41,15 @@ const Vinyls = () => {
 
     return (
         <div>
-            {/* <div className='row'>
-                <div className='div-title container-fluid col-md-6'>
-                    <h1>Scratch 'n Spin</h1>
-                    <img className='img-responsive col-md-4' src={snpLogo} alt="" />
-                </div>
-            </div> */}
-            <h1 className='default-text'>Lemezeink raktáron</h1>
-
-            <input
-                type="text"
-                placeholder="Kereső"
-                value={term}
-                onChange={searchChange}
-            />
 
             <div className='container-fluid'>
                 <article className='row justify-content-center'>
                     {filteredData.map(vinyl => (    
 
-                        <div key={vinyl.vinyl_id} className='card col-xs-6 col-sm-6 col-md-4 col-lg-3'>
+                        <div key={vinyl.vinyl_id} className='card col-md-6 col-lg-3'>
 
+
+                            <a href={`/item/${vinyl.vinyl_id}`}>
                             <div className='main-brand'>
                                 <img className='card-img-top border rounded border-black' src={`./src/album_covers/${vinyl.image_path}`} alt=""/>
                                 <hr />
@@ -71,8 +59,9 @@ const Vinyls = () => {
 
                             <div className='row'>
                                 <h4>Ár: ${vinyl.price}</h4>
-                                <Link className='purchaseBtn main-brand' to={`/item/${vinyl.vinyl_id}`}>Megnézem</Link>
+                            
                             </div>
+                            </a>
                         </div>
 
                     ))}
@@ -107,4 +96,4 @@ const Vinyls = () => {
     );
 };
 
-export default Vinyls;
+export default MoreLikeThis;

@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -26,6 +26,31 @@
   --primary: #0e002e;
   --secondary: #341778;
   --accent: #430dbf;
+}
+
+
+@font-face{
+  font-family: "ultrakill";
+  src: local("HomeVideo"),
+      url("../fonts/HomeVideo.ttf") format("truetype")
+}
+
+@font-face{
+  font-family: "ultrakillBold";
+  src: local("HomeVideoBold"),
+      url("../fonts/HomeVideoBold.ttf") format("truetype")
+}
+
+@font-face{
+  font-family: "pixelElegance";
+  src: local("PixelatedEleganceRegular"),
+      url("../fonts/PixelatedEleganceRegular.ttf") format("truetype")
+}
+
+@font-face{
+  font-family: "publicPixel";
+  src: local("PublicPixel"),
+      url("../fonts/PublicPixel.ttf") format("truetype")
 }
 
 
@@ -71,9 +96,15 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.default-text{
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+.main-brand{
+  font-family: 'publicPixel';
+  color: #000;
 }
+
+.main-brand-hover:hover, .main-brand:focus{
+  color: #7641f2;
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {

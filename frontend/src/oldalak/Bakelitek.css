@@ -1,8 +1,27 @@
+:root{
+    --text: #111014;
+    --alt-text: #eee5f8;
+    --background: #faf9fc;
+    --primary: #ddcfff;
+    --card-bg: #c1a9f8;
+    --secondary: #a385e8;
+    --accent: #7641f2;   
+}
+
+/* :root[data-theme="dark"] {
+  --text: #ecebef;
+  --background: #050307;
+  --primary: #0e002e;
+  --secondary: #341778;
+  --accent: #430dbf;
+} */
+
+
 body{
-    background-color: #ddcfff;
+    background-color: var(--primary);
 }
 .card{
-    background-color: #c1a9f8;
+    background-color: var(--card-bg);
 }
 
 table{
@@ -29,13 +48,18 @@ div{
 }
 
 .purchaseBtn{
-    background-color: white;
-    color: rgb(0, 133, 133);
+    background-color: var(--accent);
+    color: var(--alt-text);
+    padding: 0.3rem;
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    border-radius: 2px;
+    margin: 0.5rem;
 }
 
 .purchaseBtn:hover, .purchaseBtn:focus{
-    background-color: rgb(0, 133, 133);
-    color: white;
+    background-color: var(--alt-text);
+    color: var(--accent);
+    transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .div-title{
