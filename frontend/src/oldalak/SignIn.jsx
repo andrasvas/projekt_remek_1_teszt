@@ -1,4 +1,5 @@
 import './Bakelitek.css'
+import axios from 'axios'
 import { useState } from 'react'
 
 function SignIn(){
@@ -14,23 +15,43 @@ function SignIn(){
         })
     }
 
-    const Login = () => {
+    function Login(){
+        e.preventDefault()
 
+        axios.get("http://localhost:5000/login", {
+            user_email: formData.logEmail,
+            user_password: formData.logPassword
+        })
+        .then(response => console.log(response))
+        alert("Sikeres bejelentkezés")
+        window.location.href = "/signup"
     }
 
 
     return(
         <>
             <div>
-                <form action={Login}>
+                <form onSubmit={Login}>
                     <input type="text"
                     required
                     onChange={HandleChange}
                     placeholder='E-mail'
-                    name="regFirstname"
+                    name="logEmail"
                     value={formData.logEmail} />
 
+                    <br />
                     
+                    <input type="text"
+                    required
+                    onChange={HandleChange}
+                    placeholder='Jelszó'
+                    name='logPassword'
+                    value={formData.logPassword} />
+
+                    <br />
+
+                    <input type="submit" 
+                    value="Bejelentkezés" />
                 </form>
             </div>
 

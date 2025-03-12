@@ -85,6 +85,7 @@ app.post('/register',async function (req,res){
 
 
 app.get('/login', async function (req,res){
+    console.log("Valasz kuldese")
     const user_email = req.body.user_email
     const user_password = req.body.user_password
 
@@ -93,7 +94,14 @@ app.get('/login', async function (req,res){
     }
 
     db.query(`SELECT user_id, user_email, user_password FROM users WHERE user_email = ?`[user_email],async (err,results) => {
-        if (err) return res.json(500).json({error: "A felhasználó nem található"})
+        console.log("Válász küldése")
+        if (err) {
+            return res.json(500).json({error: "A felhasználó nem található!"})
+        }
+
+        if(results.length === 0){
+            return res.json(404).json({error: "A felhasználó nem található!"})
+        }
 
         const user = results[0]
 
@@ -102,8 +110,9 @@ app.get('/login', async function (req,res){
         if(!isMatch){
             return res.json(500).json({error: "Helytelen jelszó!"})
         }
-
-        return res.json(500).json({error: "Sikeres bejelentkezés!"})
+        else{
+            return res.json("Sikeres bejelentkezés!")
+        }
     })
 })
 

@@ -5,7 +5,6 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 import axios from 'axios'
 
 function SignUp() {
-    
     function CheckPhoneNumber(phonenum){
         var regularExpression = /[a-z]/i
 
