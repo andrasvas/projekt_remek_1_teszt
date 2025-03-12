@@ -7,6 +7,7 @@ USE scratch_and_spin_db;
 CREATE TABLE labels (
   label_id INT(11) NOT NULL AUTO_INCREMENT,
   label_name VARCHAR(255) DEFAULT NULL,
+  label_link TEXT DEFAULT NULL,
   PRIMARY KEY (label_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
  
@@ -108,22 +109,22 @@ CREATE TABLE order_item (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
  
 -- Feltöltés a labels táblába valós kiadókkal
-INSERT INTO `labels` (`label_name`) VALUES
-('Roadrunner Records'),
-('Epitaph Records'),
-('Fueled by Ramen'),
-('Hopeless Records'),
-('Rise Records'),
-('Fearless Records'),
-('Spinefarm Records'),
-('Sumerian Records'),
-('Nuclear Blast'),
-('Pure Noise Records'),
-('Republic Records'),
-('Capitol Records'),
-('Island Records'),
-('Def Jam Recordings'),
-('Atlantic Records');
+INSERT INTO `labels` (`label_name`, `label_link`) VALUES
+('Roadrunner Records', 'https://www.elektra.com/roadrunnerrecords'),
+('Epitaph Records', 'https://www.epitaph.com/'),
+('Fueled by Ramen', 'https://www.elektra.com/fueledbyramen'),
+('Hopeless Records', 'https://www.hopelessrecords.com/'),
+('Rise Records', 'https://www.riserecords.com/'),
+('Fearless Records', 'https://www.fearlessrecords.com/'),
+('Spinefarm Records', 'https://www.spinefarmrecords.com/'),
+('Sumerian Records', 'https://www.sumerianrecords.com/'),
+('Nuclear Blast', 'https://www.nuclearblast.com/'),
+('Pure Noise Records', 'https://www.purenoiserecords.com/'),
+('Republic Records', 'https://www.republicrecords.com/'),
+('Capitol Records', 'https://www.capitolrecords.com/'),
+('Island Records', 'https://www.islandrecords.com/'),
+('Def Jam Recordings', 'https://www.defjam.com/'),
+('Atlantic Records', 'https://www.atlanticrecords.com/');
  
 -- Feltöltés a genres táblába specifikus műfajokkal
 INSERT INTO `genres` (`genre_name`) VALUES

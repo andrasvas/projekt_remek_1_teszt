@@ -50,7 +50,7 @@ app.get("/vinyls",(request,response) => {
 
 app.get('/vinyls/:itemId', (req, res) => {
     const { itemId } = req.params;
-    db.query('SELECT vinyls.vinyl_description, vinyls.vinyl_name, vinyls.vinyl_artist, vinyls.in_stock, vinyls.vinyl_color, genres.genre_name, vinyls.vinyl_size, vinyls.vinyl_release, vinyls.image_path FROM vinyls INNER JOIN genres ON genres.genre_id = vinyls.genre_id WHERE vinyls.vinyl_id = ?', [itemId], (err, results) => {
+    db.query('SELECT vinyls.vinyl_description, vinyls.vinyl_name, vinyls.vinyl_artist, vinyls.in_stock, vinyls.vinyl_color, genres.genre_name, vinyls.vinyl_size, vinyls.vinyl_release, vinyls.image_path,labels.label_name,label_link FROM vinyls INNER JOIN genres ON genres.genre_id = vinyls.genre_id INNER JOIN labels ON labels.label_id = vinyls.label_id WHERE vinyls.vinyl_id = ?', [itemId], (err, results) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json(results[0]);
     });
