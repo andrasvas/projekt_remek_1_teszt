@@ -1,6 +1,8 @@
 import './Bakelitek.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min.js'
 import axios from 'axios'
-import { useState } from 'react'
+import {useState} from 'react'
 
 function SignIn(){
     const [formData, setFormData] = useState({
@@ -41,9 +43,11 @@ function SignIn(){
 
     return(
         <>
-            <div>
+        <div className='d-flex justify-content-center'>
+            <div className='card p-5'>
                 <form onSubmit={Login}>
                     <input type="text"
+                    className='m-1 w-100'
                     required
                     onChange={HandleChange}
                     placeholder='E-mail'
@@ -53,6 +57,7 @@ function SignIn(){
                     <br />
                     
                     <input type="password"
+                    className='m-1 w-100'
                     required
                     onChange={HandleChange}
                     placeholder='Jelszó'
@@ -62,9 +67,11 @@ function SignIn(){
                     <br />
 
                     <input type="submit" 
-                    value="Bejelentkezés" />
+                    className='m-1 mt-4 purchaseBtn main-brand w-100'
+                    value="Bejelentkezem" />
                 </form>
             </div>
+        </div>
 
             <div>
                 <a href="/signup">Még nincs fiókod?</a>

@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom';
 import snpLogo from '../assets/a_logo.png'
+import cartIcon from '../assets/shopping-cart-outline.svg'
 
 function Navbar(){
 

@@ -64,60 +64,67 @@ function SignUp() {
 
     return (
         <>
-            <div>
-                <form onSubmit={Register}>
-                    <input type="text"
-                    required
-                    onChange={HandleChange}
-                    placeholder='Keresztnév'
-                    name="regFirstname"
-                    value={formData.regFirstname} />
+            <div className='d-flex justify-content-center'>
+                <div className='card p-3 w-50 '>
+                    <form onSubmit={Register}>
+                        <input type="text"
+                        className='m-1'
+                        required
+                        onChange={HandleChange}
+                        placeholder='Keresztnév'
+                        name="regFirstname"
+                        value={formData.regFirstname} />
 
-                    <input type="text"
-                    required 
-                    onChange={HandleChange} 
-                    placeholder='Vezetéknév' 
-                    name="regLastname"
-                    value={formData.regLastname} />
+                        <input type="text"
+                        className='m-1 mb-3'
+                        required 
+                        onChange={HandleChange} 
+                        placeholder='Vezetéknév' 
+                        name="regLastname"
+                        value={formData.regLastname} />
 
-                    <br />
+                        <br />
 
-                    <input type="email"
-                    required 
-                    onChange={HandleChange}
-                    name="regEmail"
-                    placeholder='E-mail'
-                    value={formData.regEmail} />
+                        <input type="email"
+                        className='m-1'
+                        required 
+                        onChange={HandleChange}
+                        name="regEmail"
+                        placeholder='E-mail'
+                        value={formData.regEmail} />
 
-                    <input type="tel"
-                    required 
-                    name="regPhoneNum" 
-                    onChange={HandleChange} 
-                    placeholder='Telefonszám' 
-                    value={formData.regPhoneNum} />
+                        <input type="tel"
+                        className='m-1'
+                        required 
+                        name="regPhoneNum" 
+                        onChange={HandleChange} 
+                        placeholder='Telefonszám' 
+                        value={formData.regPhoneNum} />
 
-                    <br />
-                    <br />
+                        <br />
+                        <br />
 
-                    <input type="password" 
-                    required 
-                    onChange={HandleChange} 
-                    name="regPassword" 
-                    placeholder='Jelszó'
-                    value={formData.regPassword} />
+                        <input type="password" 
+                        className='m-1'
+                        required 
+                        onChange={HandleChange} 
+                        name="regPassword" 
+                        placeholder='Jelszó'
+                        value={formData.regPassword} />
 
-                    <input type="password"
-                    required
-                    onChange={(e) => {SetConPassword(e.target.value)}} 
-                    name="confirm_password" 
-                    placeholder='Jelszó megerősitése' />
+                        <input type="password"
+                        required
+                        onChange={(e) => {SetConPassword(e.target.value)}} 
+                        name="confirm_password" 
+                        placeholder='Jelszó megerősitése' />
 
-                    <br />
-                    <br />
+                        <br />
+                        <br />
 
-                    <input type="submit" value="Regisztráció"></input>
-                </form>
+                        <input type="submit" className='m-4 purchaseBtn main-brand' value="Regisztráció"></input>
+                    </form>
 
+                </div>
             </div>
 
             <div>
