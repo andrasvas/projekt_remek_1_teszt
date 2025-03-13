@@ -10,7 +10,7 @@ import Navbar from './oldalak/Navbar'
 import Signup from './oldalak/SignUp.jsx'
 import Signin from './oldalak/SignIn.jsx'
 import About from './oldalak/About.jsx'
-
+import Profile from './oldalak/Profile'
 import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom'
 
 function App() {
@@ -35,6 +35,7 @@ function App() {
             <Route index element={<Bakelitek />}/>
             <Route path="/item/:itemId" element={<ItemView />}/>
             <Route path="/signup" element={<Signup/>}/>
+            <Route path="/profile" element={<Profile/>}/>
             <Route path="/signin" element={<Signin/>}></Route>
             <Route path="/about" element={<About/>}></Route>
             <Route Component={Error}></Route>
