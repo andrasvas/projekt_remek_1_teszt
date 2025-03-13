@@ -100,12 +100,16 @@ app.post('/register',async function (req,res){
 
 
 app.post('/login', async function (req, res){
+    console.log("Bejelentkezés próba...")
+
     const user_email = req.body.user_email;
     const user_password = req.body.user_password;
 
     if(!user_email || !user_password){
         return res.status(400).json({error: 'Felhasználó vagy jelszó szükséges'}); // Helyes hívás
     }
+
+    console.log("Felhasználó létezik...")
 
     db.query(`SELECT user_id, user_email, user_password FROM users WHERE user_email = ?`, [user_email], async (err, results) => {
         if (err) {
@@ -122,7 +126,8 @@ app.post('/login', async function (req, res){
         if (!isMatch) {
             return res.status(400).json({error: "Helytelen jelszó!"}); // Helyes hívás
         } else {
-            return res.json({message: "Sikeres bejelentkezés!"}); // Helyes hívás
+            console.log("Felhasználó bejelentkezett.")
+            return res.status(200).json({message: "Sikeres bejelentkezés!"}); // Helyes hívás
         }
     });
 });

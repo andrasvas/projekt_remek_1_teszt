@@ -23,8 +23,11 @@ function SignIn(){
             user_password: formData.logPassword
         })
         .then(response => {
-            if(response.ok){
+            if(response){
                 console.log("Sikeres bejelentkezés!")
+                alert("Sikeres bejelentkezés!")
+                window.localStorage.setItem("isLoggedIn", true)
+                window.location.href = '/'
             }
         })
         .catch(error =>{
