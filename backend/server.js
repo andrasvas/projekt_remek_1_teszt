@@ -26,7 +26,7 @@ async function hashPassword(password) {
 
 const db = mysql.createConnection({
     host: "127.0.0.1",
-    port: "3306",
+    port: "3307",
     user: "root",
     password: "",
     database: "scratch_and_spin_db"
@@ -80,6 +80,7 @@ app.post('/register',async function (req,res){
     const user_firstname = req.body.user_firstname
     const user_lastname = req.body.user_lastname
     const user_phonenum = req.body.user_phonenum
+    const user_pfp_id = (Math.random()*10+2)+1
 
     db.query(`SELECT count(*) AS 'count' FROM users WHERE user_phone_number = ? OR user_email = ?`, [user_phonenum,user_email], async (err,result) => {
         console.log(err)
@@ -90,7 +91,7 @@ app.post('/register',async function (req,res){
         else{
             const hashedPassword = await hashPassword(user_password)
 
-            db.query(`INSERT INTO users (user_last_name,user_first_name,user_phone_number,user_email,user_password) VALUES (?,?,?,?,?)`, [user_lastname,user_firstname,user_phonenum,user_email,hashedPassword], (err,result) => {
+            db.query(`INSERT INTO users (user_last_name,user_first_name,user_phone_number,user_email,user_password,user_pfp_id) VALUES (?,?,?,?,?,?)`, [user_lastname,user_firstname,user_phonenum,user_email,hashedPassword,user_pfp_id], (err,result) => {
                 console.log(err)
             })
 

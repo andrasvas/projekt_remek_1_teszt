@@ -15,6 +15,7 @@ function Navbar(){
             <h3 className='main-brand main-brand-hover'>Scratch N' Spin</h3>
         </a>
         <div className="flex-grow pa3 flex items-center">
+            <a className="f6 link dib hover-black mr3 mr4-ns text-nowrap" href="/profile">My Profile</a>
             <a className="f6 link dib hover-black mr3 mr4-ns text-nowrap" href="/about">About</a>
             <a className="f6 link dib hover-black mr3 mr4-ns text-nowrap" href="/signin">Sign In</a>
             <a className="f6 dib black bg-animate hover-bg-white hover-black no-underline pv2 ph4 br-pill text-nowrap ba" href="/signup">Sign Up</a>
