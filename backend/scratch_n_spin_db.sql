@@ -48,6 +48,7 @@ CREATE TABLE users (
   user_phone_number INT(11) DEFAULT NULL,
   user_email VARCHAR(255) DEFAULT NULL,
   user_password VARCHAR(255) DEFAULT NULL,
+  user_pfp INT DEFAULT 1,
   PRIMARY KEY (user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
  
