@@ -1,11 +1,14 @@
 const express = require("express")
 const mysql = require("mysql2")
 const cors = require("cors")
+const jwt = require("jsonwebtoken")
 const bcrypt = require("bcryptjs")
 
 const app = express()
 app.use(express.json())
 app.use(cors())
+
+const SecretKey = "let_me_break_it_down_for_you_mark"
 
 async function hashPassword(password) {
     try{
@@ -23,7 +26,7 @@ async function hashPassword(password) {
 
 const db = mysql.createConnection({
     host: "127.0.0.1",
-    port: "3307",
+    port: "3306",
     user: "root",
     password: "",
     database: "scratch_and_spin_db"
@@ -109,8 +112,6 @@ app.post('/login', async function (req, res){
         return res.status(400).json({error: 'Felhasználó vagy jelszó szükséges'}); // Helyes hívás
     }
 
-    console.log("Felhasználó létezik...")
-
     db.query(`SELECT user_id, user_email, user_password FROM users WHERE user_email = ?`, [user_email], async (err, results) => {
         if (err) {
             return res.status(500).json({error: "A felhasználó nem található!"}); // Helyes hívás
@@ -120,6 +121,8 @@ app.post('/login', async function (req, res){
             return res.status(404).json({error: "A felhasználó nem található!"}); // Helyes hívás
         }
 
+        console.log("Felhasználó létezik...")
+
         const user = results[0];
         const isMatch = await bcrypt.compare(user_password, user.user_password);
 
@@ -127,7 +130,8 @@ app.post('/login', async function (req, res){
             return res.status(400).json({error: "Helytelen jelszó!"}); // Helyes hívás
         } else {
             console.log("Felhasználó bejelentkezett.")
-            return res.status(200).json({message: "Sikeres bejelentkezés!"}); // Helyes hívás
+            const token = jwt.sign({user_email}, SecretKey, {expiresIn: "1h"})
+            return res.json({token}) // Helyes hívás
         }
     });
 });
