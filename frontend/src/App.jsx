@@ -16,6 +16,7 @@ import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom'
 function App() {
   const [count, setCount] = useState(0)
   const [isHovered, setIsHovered] = useState(false);
+  const isLogged = window.localStorage.getItem("isLoggedIn")
   // const [isDarkMode, setDarkMode] = useState(false)
   
   // function toggleDarkMode(isDarkMode){
@@ -35,7 +36,7 @@ function App() {
             <Route index element={<Bakelitek />}/>
             <Route path="/item/:itemId" element={<ItemView />}/>
             <Route path="/signup" element={<Signup/>}/>
-            <Route path="/profile" element={<Profile/>}/>
+            <Route path="/profile" element={isLogged?<Profile/>:null}/>
             <Route path="/signin" element={<Signin/>}></Route>
             <Route path="/about" element={<About/>}></Route>
             <Route Component={Error}></Route>
