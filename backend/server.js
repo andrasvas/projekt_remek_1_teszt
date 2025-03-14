@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken")
 const bcrypt = require("bcryptjs")
 
 const app = express()
+const router = express.Router();
 app.use(express.json())
 app.use(cors())
 
@@ -136,6 +137,29 @@ app.post('/login', async function (req, res){
         }
     });
 });
+
+router.get('/userProfile', async function (req, res){
+    console.log('Felhasználói adatok lekérése...')
+    const token = req.headers['authorization'].split(' ')[1];
+
+    if (!token) {
+        return res.status(401).json({ message: 'Token nem található' });
+    }
+
+    jwt.verify(token, SecretKey, (err, decoded) =>{
+        if(err){
+            return res.status(403).json({message: 'Érvénytelen token'});
+        }
+        const userId = decoded.id;
+        const user = getUserDataById(userId);
+
+        if (!user) {
+            return res.status(404).json({ message: 'Felhasználó nem található' });
+        }
+            return res.json(user);
+    })
+})
+module.exports = router;
 
 // function getVinylId(callback){
 //     const query = `SELECT * FROM vinyls WHERE vin_id = ?`
