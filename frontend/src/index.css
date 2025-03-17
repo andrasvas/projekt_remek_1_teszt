@@ -13,20 +13,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-:root[data-theme="light"] {
+/* :root[data-theme="light"] {
   --text: #111014;
-  --background: #faf9fc;
-  --primary: #ddcfff;
-  --secondary: #a385e8;
+  --background: #ddcfff;
+  --primary: #a385e8;
   --accent: #7641f2;
 }
 :root[data-theme="dark"] {
   --text: #ecebef;
-  --background: #050307;
-  --primary: #0e002e;
-  --secondary: #341778;
+  --background: #0e002e;
+  --primary: #341778;
   --accent: #430dbf;
-}
+} */
 
 
 @font-face{
@@ -54,6 +52,9 @@
 }
 
 
+
+
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -69,7 +70,7 @@ body {
   place-items: top;
   min-width: auto;
   min-height: auto;
-  background-color: #ddcfff;
+  background-color: var(--background);
 }
 
 h1 {
@@ -107,14 +108,34 @@ button:focus-visible {
 
 
 @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ddcfff;
+:root{
+  --text: #111014;
+  --background: #ddcfff;
+  --card-bg: #c1a9f8;
+  --primary: #a385e8;
+  --accent: #7641f2;
   }
-  a:hover {
-    color: #747bff;
+
+  .card{
+    background-color: var(--card-bg);
+    color: var(--text);
   }
-  button {
-    background-color: #f9f9f9;
+  
+
+
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="dark"] {
+    --text: #ecebef;
+    --background: #0e002e;
+    --primary: #341778;
+    --accent: #430dbf;
   }
+
+  .card{
+    background-color: var(--card-bg);
+    color: var(--text);
+  }
+
 }

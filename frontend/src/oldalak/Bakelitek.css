@@ -1,27 +1,27 @@
-:root{
+/* :root[data-theme="light"]{
     --text: #111014;
     --alt-text: #eee5f8;
-    --background: #faf9fc;
     --primary: #ddcfff;
     --card-bg: #c1a9f8;
-    --secondary: #a385e8;
-    --accent: #7641f2;   
+    --primary: #a385e8;
+    --accent: #7641f2;
 }
 
-/* :root[data-theme="dark"] {
+:root[data-theme="dark"] {
   --text: #ecebef;
-  --background: #050307;
-  --primary: #0e002e;
-  --secondary: #341778;
+  --alt-text: #111014;
+  --background: #8f84aa;
+  --primary: #341778;
   --accent: #430dbf;
 } */
 
 
 body{
-    background-color: var(--primary);
+    background-color: var(--background);
 }
 .card{
     background-color: var(--card-bg);
+    color: var(--text);
 }
 
 table{
@@ -30,7 +30,7 @@ table{
     margin: 1.5vw;
     box-shadow: .5vw .5vw gray;
 }
-/* 
+/*
 td{
     padding: .2vw;
     background-color: gray;
@@ -66,5 +66,5 @@ div{
 .div-title{
     display: grid;
     place-items: center;
-    
+
 }
