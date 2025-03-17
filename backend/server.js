@@ -140,18 +140,35 @@ app.post('/login', async function (req, res){
 
 app.get('/profile', async function(req,res){
     const token = req.body.token
+    console.log(token)
 
-    db.query(`SELECT user_last_name,user_first_name,user_email,user_pfp_id FROM users WHERE user_email = ?`[jwt.verify(token,SecretKey)], async (err,result) => {
-        if(err){
-            return res.status(500).json({error: "A felhasználó nem található!"})
-        }
-        
-        if (results.length === 0) {
-            return res.status(404).json({error: "A felhasználó nem található!"})
-        }
+    if(!token){
+        return res.status(500).json({error: "Token nem lett megadva!"})
+    }
 
-        const user = results[0]
-    })
+    try{
+        const decodedToken = jwt.verify(token,SecretKey)
+        const userEmail = decodedToken.user_email
+
+        db.query(`SELECT user_last_name,user_first_name,user_email,user_pfp_id FROM users WHERE user_email = ?`,[userEmail], async (err,result) => {
+            if(err){
+                return res.status(500).json({error: "A felhasználó nem található!"})
+            }
+            
+            if (result.length === 0) {
+                return res.status(404).json({error: "A felhasználó nem található!"})
+            }
+            else{
+                const user = result[0]
+                return res.json(user)
+            }
+        })
+    }
+    catch(err){
+        console.log(err)
+    }
+
+    
 })
 
 router.get('/userProfile', async function (req, res){

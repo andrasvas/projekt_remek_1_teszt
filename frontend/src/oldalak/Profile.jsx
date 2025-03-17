@@ -5,23 +5,38 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 
 function Profile(){
-    const fetchUserData = async () =>{
-        try{
-            const res = await axios.get('http://127.0.0.1:5000/vinyls/${userId}')
-        }
-        catch{}
-    }
+    const [userData,setUserData] = useState({
+        user_email:"",
+        user_pfp_id:"",
+        user_last_name:"",
+        user_first_name:""
+    })
+
+    const [userToken, setUserToken] = useState("")
+
+    console.log(userToken)
+
     useEffect(() => {
-        axios.get(`http://127.0.0.1:5000/vinyls/${userId}`)
+        const token = window.localStorage.getItem("userToken")
+        setUserToken(token)
+    })
+
+    useEffect(() =>{
+        if(userToken){
+            axios.get("http://127.0.0.1:5000/profile",{
+            token: userToken
+            })
             .then(response => {
-                setListing(response.data); 
-                setLoading(false);
+                if(response){
+                    console.log(response.data)
+                    setUserData(response.data)
+                }
             })
             .catch(error => {
-                setError("Hiba történt adatszerzéskor");
-                setLoading(false);
+                console.log(error)
             })
-    }, [userId]);
+        }
+    })
 
     return(
         <div>
