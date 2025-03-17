@@ -27,7 +27,7 @@ async function hashPassword(password) {
 
 const db = mysql.createConnection({
     host: "127.0.0.1",
-    port: "3307",
+    port: "3306",
     user: "root",
     password: "",
     database: "scratch_and_spin_db"
@@ -137,6 +137,22 @@ app.post('/login', async function (req, res){
         }
     });
 });
+
+app.get('/profile', async function(req,res){
+    const token = req.body.token
+
+    db.query(`SELECT user_last_name,user_first_name,user_email,user_pfp_id FROM users WHERE user_email = ?`[jwt.verify(token,SecretKey)], async (err,result) => {
+        if(err){
+            return res.status(500).json({error: "A felhasználó nem található!"})
+        }
+        
+        if (results.length === 0) {
+            return res.status(404).json({error: "A felhasználó nem található!"})
+        }
+
+        const user = results[0]
+    })
+})
 
 router.get('/userProfile', async function (req, res){
     console.log('Felhasználói adatok lekérése...')
