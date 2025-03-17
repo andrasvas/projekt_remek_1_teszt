@@ -14,26 +14,29 @@ function Footer(){
 
     return(
     <nav className="flex justify-content-center b--white-10 w-100" style={{backgroundColor: "--background", position: "sticky", paddingTop: "0px"}}>
-        <div className="p-3 mx-5">
-            <a href="/">
-                <img className='img-responsive' style={{width: "80px"}} src={snpLogo} alt="" />
-            </a>
-        </div>
-        <div className="flex-grow pa3 flex items-center justify-between w-50">
-            <div className='h-25 mb-4'>
-                <a target='_blank' rel='noopener noreferrer' href="https://facebook.com"><img className='w-75' src={fbIcon} alt="" /></a>
+        <div className='row'>
+            <div className='mt-5'>
+                <a href="/">
+                    <img className='img-responsive' style={{width: "80px"}} src={snpLogo} alt="" />
+                </a>
             </div>
-            <div className='h-25 mb-4'>
-                <a target='_blank' rel='noopener noreferrer' href="https://instagram.com"><img className='w-75' src={instaIcon} alt="" /></a>
-            </div>
-            <div className='h-25 mb-4'>
-                <a target='_blank' rel='noopener noreferrer' href="https://tiktok.com"><img className='w-75' src={tiktokIcon} alt="" /></a>
-            </div>
-            <div className='h-25 mb-4'>
-                <a target='_blank' rel='noopener noreferrer' href="https://x.com"><img className='w-75' src={twitterIcon} alt="" /></a>
-            </div>
-            <div className='h-25 mb-4'>
-                <a target='_blank' rel='noopener noreferrer' href="https://www.youtube.com/@FreestyleMaci"><img className='w-75' src={youtubeIcon} alt="" /></a>
+            
+            <div className="flex pa3 flex items-center justify-between mt-0 pt-0">
+                <div className='h-25 mb-4'>
+                    <a target='_blank' rel='noopener noreferrer' href="https://facebook.com"><img className='w-75' src={fbIcon} alt="" /></a>
+                </div>
+                <div className='h-25 mb-4'>
+                    <a target='_blank' rel='noopener noreferrer' href="https://instagram.com"><img className='w-75' src={instaIcon} alt="" /></a>
+                </div>
+                <div className='h-25 mb-4'>
+                    <a target='_blank' rel='noopener noreferrer' href="https://tiktok.com"><img className='w-75' src={tiktokIcon} alt="" /></a>
+                </div>
+                <div className='h-25 mb-4'>
+                    <a target='_blank' rel='noopener noreferrer' href="https://x.com"><img className='w-75' src={twitterIcon} alt="" /></a>
+                </div>
+                <div className='h-25 mb-4'>
+                    <a target='_blank' rel='noopener noreferrer' href="https://www.youtube.com/@FreestyleMaci"><img className='w-75' src={youtubeIcon} alt="" /></a>
+                </div>
             </div>
         </div>
     </nav>
