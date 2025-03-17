@@ -11,6 +11,7 @@ import Signup from './oldalak/SignUp.jsx'
 import Signin from './oldalak/SignIn.jsx'
 import About from './oldalak/About.jsx'
 import Profile from './oldalak/Profile'
+import Footer from './oldalak/Footer'
 import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom'
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
             <Route path="/about" element={<About/>}></Route>
             <Route Component={Error}></Route>
           </Routes>
+          <Footer/>
       </BrowserRouter>
     </>
   )

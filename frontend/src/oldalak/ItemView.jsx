@@ -51,7 +51,7 @@ const ItemView = () => {
                 </div>
             </div>
 
-            <div className='col-md-9 bg-success' style={{textAlign: 'left'}}>
+            <div className='col-md-9' style={{textAlign: 'left'}}>
                 <h5>{listing.label_id}</h5>
                 <p className='default-text'>{listing.vinyl_description}</p>
                 <p>{listing.genre_name}</p>

@@ -1,20 +1,27 @@
 import './Bakelitek.css'
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useCallback, useContext, useId} from "react";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 
 function Profile(){
-    const [data, setData] = useState();
+    const fetchUserData = async () =>{
+        try{
+            const res = await axios.get('http://127.0.0.1:5000/vinyls/${userId}')
+        }
+        catch{}
+    }
     useEffect(() => {
-        axios.get("http://127.0.0.1:5000/vinyls")
+        axios.get(`http://127.0.0.1:5000/vinyls/${userId}`)
             .then(response => {
-                setData(response.data);
+                setListing(response.data); 
+                setLoading(false);
             })
             .catch(error => {
-                console.error("Hiba:", error);
-            });
-    }, []);
+                setError("Hiba történt adatszerzéskor");
+                setLoading(false);
+            })
+    }, [userId]);
 
     return(
         <div>
