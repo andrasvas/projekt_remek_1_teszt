@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
-import {ReactSmartScroller} from "react-smart-scroller";
+// import {ReactSmartScroller} from "react-smart-scroller";
 import { Link } from 'react-router-dom';
 
 const MoreLikeThis = () => {
@@ -42,7 +42,7 @@ const MoreLikeThis = () => {
 
     return (
         <div>
-                <ReactSmartScroller>
+                {/* <ReactSmartScroller> */}
                     <article className='row justify-content-center'>
                         {filteredData.map(vinyl => (    
                             
@@ -66,7 +66,7 @@ const MoreLikeThis = () => {
 
                             ))}
                     </article>
-                </ReactSmartScroller>
+                {/* </ReactSmartScroller> */}
 
             {/* <table>
                 <thead>

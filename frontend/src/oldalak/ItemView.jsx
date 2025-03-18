@@ -53,13 +53,13 @@ const ItemView = () => {
 
             <div className='col-md-9' style={{textAlign: 'left'}}>
                 <h5>{listing.label_id}</h5>
-                <p className='default-text'>{listing.vinyl_description}</p>
-                <p>{listing.genre_name}</p>
+                <p className='default-text h5'>{listing.vinyl_description}</p>
+                <Link target='_blank' className='h4 mt-3' to={listing.label_link}>{listing.label_name}</Link>
                 
-                <Link target='_blank' to={listing.label_link}>{listing.label_name}</Link>
-                <p className='m-0'>Lemez színe: {listing.vinyl_color}</p>
-                <p className='m-0'>Lemez mérete: {listing.vinyl_size} ujj</p>
-                <p className='m-0'>Kiadási év: {listing.vinyl_release}</p>
+                <p className='h4'>{listing.genre_name}</p>
+                <p className='m-0 mt-3 h4'>Lemez színe: {listing.vinyl_color}</p>
+                <p className='m-0 h4'>Lemez mérete: {listing.vinyl_size} ujj</p>
+                <p className='m-0 mb-2 h4'>Kiadási év: {listing.vinyl_release}</p>
                 <div className='card p-0'>
                     <MoreLikeThis />
                 </div>
