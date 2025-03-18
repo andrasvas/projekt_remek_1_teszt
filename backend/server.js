@@ -27,7 +27,7 @@ async function hashPassword(password) {
 
 const db = mysql.createConnection({
     host: "127.0.0.1",
-    port: "3307",
+    port: "3306np",
     user: "root",
     password: "",
     database: "scratch_and_spin_db"

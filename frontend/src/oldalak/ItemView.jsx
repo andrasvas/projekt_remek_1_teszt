@@ -3,9 +3,9 @@ import { useEffect, useState} from "react"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import {useParams} from "react-router-dom"
-import axios from "axios";
+import axios from "axios"
 import {Link} from 'react-router-dom'
-// import {MoreLikeThis} from './MoreLikeThis.jsx'
+import MoreLikeThis from './MoreLikeThis.jsx'
 
 const ItemView = () => {
     const {itemId} = useParams();
@@ -60,7 +60,9 @@ const ItemView = () => {
                 <p className='m-0'>Lemez színe: {listing.vinyl_color}</p>
                 <p className='m-0'>Lemez mérete: {listing.vinyl_size} ujj</p>
                 <p className='m-0'>Kiadási év: {listing.vinyl_release}</p>
-                {/* <MoreLikeThis /> */}
+                <div className='card p-0'>
+                    <MoreLikeThis />
+                </div>
             </div>
         </div>
     )
