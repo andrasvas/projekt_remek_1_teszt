@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import {useParams} from 'react-router';
 
-const Vinyls = () => {
+const Error = () => {
 
 
     return (
@@ -16,4 +16,4 @@ const Vinyls = () => {
     );
 };
 
-export default Vinyls;
+export default Error;

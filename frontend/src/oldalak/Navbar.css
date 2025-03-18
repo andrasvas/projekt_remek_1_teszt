@@ -113,6 +113,14 @@
     color: #000;
 }
 
+hover-black-pill:hover{
+    color: #000;
+}
+
+hover-black-pill:focus{
+    color: #000;
+}
+
 .hover-white:hover {
     color: #fff;
 }
@@ -179,3 +187,73 @@
         margin-right: 2rem;
     }
 }
+
+@media (prefers-color-scheme: light) {
+    :root{
+      --text: #111014;
+      --background: #ddcfff;
+      --card-bg: #c1a9f8;
+      --primary: #a385e8;
+      --accent: #7641f2;
+      }
+    
+      .card{
+        background-color: var(--card-bg);
+        color: var(--text);
+      }
+      p, h5, h1{
+        color: var(--text);
+      }
+      main-nav-container{
+        background-color: var(--background);
+      }
+    
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      :root{
+        --text: #ecebef;
+        --background: #0e002e;
+        --card-bg: #453961;
+        --primary: #341778;
+        --accent: #430dbf;
+      }
+    
+      .card{
+        background-color: var(--card-bg);
+        color: var(--text);
+      }
+      p, h5, h1{
+        color: var(--text);
+      }
+      main-nav-container{
+        background-color: var(--background);
+      }
+
+      .hover-black:hover {
+        color: #fff;
+    }
+    
+    .hover-black:focus {
+        color: #fff;
+    }
+
+    .hover-white:hover {
+        color: #000;
+    }
+    
+    .hover-white:focus {
+        color: #000;
+    }
+    .bg-animate, .bg-animate:hover, .bg-animate:focus {
+        transition: background-color .15s ease-in-out;
+    }
+    
+    .black-icon{
+        filter: invert();
+        -webkit-filter: invert();
+    }
+    .black-icon:hover{
+        size: 110%;
+    }
+    }

@@ -99,7 +99,7 @@ button:focus-visible {
 
 .main-brand{
   font-family: 'publicPixel';
-  color: #000;
+  
 }
 
 .main-brand-hover:hover, .main-brand:focus{
@@ -115,27 +115,20 @@ button:focus-visible {
   --primary: #a385e8;
   --accent: #7641f2;
   }
-
-  .card{
-    background-color: var(--card-bg);
-    color: var(--text);
+  .main-brand{
+    color: #000;
   }
-  
-
-
 }
 
 @media (prefers-color-scheme: dark) {
-  :root[data-theme="dark"] {
+  :root{
     --text: #ecebef;
     --background: #0e002e;
+    --card-bg: #453961;
     --primary: #341778;
     --accent: #430dbf;
   }
-
-  .card{
-    background-color: var(--card-bg);
-    color: var(--text);
+  .main-brand{
+    color: #fff;
   }
-
 }

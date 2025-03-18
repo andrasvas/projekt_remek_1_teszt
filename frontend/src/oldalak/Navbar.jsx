@@ -11,7 +11,7 @@ function Navbar(){
     var userToken = window.localStorage.getItem("userToken")
 
     return(
-    <nav className="flex justify-between b--white-10 w-100" style={{backgroundColor: "#ddcfff", position: "sticky", paddingTop: "0px"}}>
+    <nav className="main-nav-container flex justify-between w-100" style={{paddingTop: "0px"}}>
         <a className="link white-70 no-underline flex items-center p-3" href="/">
             <img className='img-responsive' style={{width: "80px"}} src={snpLogo} alt="" />
             <h3 className='main-brand main-brand-hover'>Scratch N' Spin</h3>
@@ -20,7 +20,7 @@ function Navbar(){
             {isLoggedIn?<a className="f6 link dib hover-black mr3 mr4-ns text-nowrap" href="/profile">My Profile</a>:null}
             <a className="f6 link dib hover-black mr3 mr4-ns text-nowrap" href="/about">About</a>
             {isLoggedIn?null:<a className="f6 link dib hover-black mr3 mr4-ns text-nowrap" href="/signin">Sign In</a>}
-            {isLoggedIn?null:<a className="f6 dib black bg-animate hover-bg-white hover-black no-underline pv2 ph4 br-pill text-nowrap ba" href="/signup">Sign Up</a>}
+            {isLoggedIn?null:<a className="f6 dib black bg-animate hover-bg-white hover-black-pill no-underline pv2 ph4 br-pill text-nowrap ba" href="/signup">Sign Up</a>}
         </div>
     </nav>
     )

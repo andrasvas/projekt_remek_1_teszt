@@ -23,19 +23,19 @@ function Footer(){
             
             <div className="flex pa3 flex items-center justify-between mt-0 pt-0">
                 <div className='h-25 mb-4'>
-                    <a target='_blank' rel='noopener noreferrer' href="https://facebook.com"><img className='w-75' src={fbIcon} alt="" /></a>
+                    <a target='_blank' rel='noopener noreferrer' href="https://facebook.com"><img className='w-75 black-icon' src={fbIcon} alt="" /></a>
                 </div>
                 <div className='h-25 mb-4'>
-                    <a target='_blank' rel='noopener noreferrer' href="https://instagram.com"><img className='w-75' src={instaIcon} alt="" /></a>
+                    <a target='_blank' rel='noopener noreferrer' href="https://instagram.com"><img className='w-75 black-icon' src={instaIcon} alt="" /></a>
                 </div>
                 <div className='h-25 mb-4'>
-                    <a target='_blank' rel='noopener noreferrer' href="https://tiktok.com"><img className='w-75' src={tiktokIcon} alt="" /></a>
+                    <a target='_blank' rel='noopener noreferrer' href="https://tiktok.com"><img className='w-75 black-icon' src={tiktokIcon} alt="" /></a>
                 </div>
                 <div className='h-25 mb-4'>
-                    <a target='_blank' rel='noopener noreferrer' href="https://x.com"><img className='w-75' src={twitterIcon} alt="" /></a>
+                    <a target='_blank' rel='noopener noreferrer' href="https://x.com"><img className='w-75 black-icon' src={twitterIcon} alt="" /></a>
                 </div>
                 <div className='h-25 mb-4'>
-                    <a target='_blank' rel='noopener noreferrer' href="https://www.youtube.com/@FreestyleMaci"><img className='w-75' src={youtubeIcon} alt="" /></a>
+                    <a target='_blank' rel='noopener noreferrer' href="https://www.youtube.com/@FreestyleMaci"><img className='w-75 black-icon' src={youtubeIcon} alt="" /></a>
                 </div>
             </div>
         </div>

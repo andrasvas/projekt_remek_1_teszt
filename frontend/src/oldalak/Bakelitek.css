@@ -19,10 +19,10 @@
 body{
     background-color: var(--background);
 }
-.card{
+/* .card{
     background-color: var(--card-bg);
     color: var(--text);
-}
+} */
 
 table{
     border-radius: .4vw;
@@ -56,15 +56,57 @@ div{
     margin: 0.5rem;
 }
 
-.purchaseBtn:hover, .purchaseBtn:focus{
-    background-color: var(--alt-text);
-    color: var(--accent);
-    transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
 
 .div-title{
     display: grid;
     place-items: center;
 
 }
+
+@media (prefers-color-scheme: light) {
+    :root{
+      --text: #111014;
+      --background: #ddcfff;
+      --card-bg: #c1a9f8;
+      --primary: #a385e8;
+      --accent: #7641f2;
+      }
+    
+      .card{
+        background-color: var(--card-bg);
+        color: var(--text);
+      }
+      p, h5, h1{
+        color: var(--text);
+      }
+      .purchaseBtn:hover, .purchaseBtn:focus{
+        background-color: var(--card-bg);
+        color: var(--accent);
+        transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+    
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      :root{
+        --text: #ecebef;
+        --background: #0e002e;
+        --card-bg: #453961;
+        --primary: #341778;
+        --accent: #430dbf;
+      }
+    
+      .card{
+        background-color: var(--card-bg);
+        color: var(--text);
+      }
+      p, h5, h1{
+        color: var(--text);
+      }
+      .purchaseBtn:hover, .purchaseBtn:focus{
+        background-color: var(--text);
+        color: var(--accent);
+        transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+    }
+    

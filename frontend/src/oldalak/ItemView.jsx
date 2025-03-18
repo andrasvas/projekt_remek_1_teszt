@@ -56,6 +56,7 @@ const ItemView = () => {
                 <p className='default-text'>{listing.vinyl_description}</p>
                 <p>{listing.genre_name}</p>
                 
+                <Link target='_blank' to={listing.label_link}>{listing.label_name}</Link>
                 <p className='m-0'>Lemez színe: {listing.vinyl_color}</p>
                 <p className='m-0'>Lemez mérete: {listing.vinyl_size} ujj</p>
                 <p className='m-0'>Kiadási év: {listing.vinyl_release}</p>
