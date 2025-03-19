@@ -30,7 +30,7 @@ function Footer(){
                     <a target='_blank' rel='noopener noreferrer' href="https://instagram.com"><img className='w-75 black-icon' src={instaIcon} alt="" /></a>
                 </div>
                 <div className='h-25 mb-4'>
-                    <a target='_blank' rel='noopener noreferrer' href="https://tiktok.com"><img className='w-75 black-icon' src={tiktokIcon} alt="" /></a>
+                    <a target='_blank' rel='noopener noreferrer' href="https://vm.tiktok.com/ZNddPsL1x/"><img className='w-75 black-icon' src={tiktokIcon} alt="" /></a>
                 </div>
                 <div className='h-25 mb-4'>
                     <a target='_blank' rel='noopener noreferrer' href="https://x.com"><img className='w-75 black-icon' src={twitterIcon} alt="" /></a>

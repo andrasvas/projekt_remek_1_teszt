@@ -43,29 +43,32 @@ const MoreLikeThis = () => {
     return (
         <div>
                 {/* <ReactSmartScroller> */}
-                    <article className='row justify-content-center'>
-                        {filteredData.map(vinyl => (    
-                            
-                            <div key={vinyl.vinyl_id} className='card col-md-6 col-lg-3'>
+                        <div className='grid text-center bg-danger'>
+
+                        {filteredData.map(vinyl => (
+                            <div className='border'>
+
+                                <div key={vinyl.vinyl_id}>
 
 
-                                <a href={`/item/${vinyl.vinyl_id}`}>
-                                <div className='main-brand'>
-                                    <img className='card-img-top border rounded border-black' src={`./src/album_covers/${vinyl.image_path}`} alt=""/>
-                                    <hr />
-                                    <h6>{vinyl.vinyl_artist}<br />-<br />{vinyl.vinyl_name}</h6>
-                                    <p className='p-2'>{vinyl.genre_name}</p>
+                                    <a href={`/item/${vinyl.vinyl_id}`}>
+                                    <div className='main-brand'>
+                                        <img className='card-img-top' src='./src/album_covers/1989.jpg' alt="asddsas"/>
+                                        <hr />
+                                        <h6>{vinyl.vinyl_artist}<br />-<br />{vinyl.vinyl_name}</h6>
+                                        <p className='p-2'>{vinyl.genre_name}</p>
+                                    </div>
+
+                                    <div className='row'>
+                                        <h4>Ár: ${vinyl.price}</h4>
+                                    
+                                    </div>
+                                    </a>
                                 </div>
 
-                                <div className='row'>
-                                    <h4>Ár: ${vinyl.price}</h4>
-                                
-                                </div>
-                                </a>
-                            </div>
-
+                            </div>    
                             ))}
-                    </article>
+                        </div>
                 {/* </ReactSmartScroller> */}
 
             {/* <table>
