@@ -13,7 +13,7 @@ function About(){
         <div className="mw-100">
             <h3>Made by:</h3>
             <div>
-                <Link className="h2">Gombos Benedek Zsombor</Link>
+                <h2 className="default-text">Gombos Benedek Zsombor</h2>
 
                 <div className="pa3 flex justify-content-center">
                     <div className='h-25 mb-4'>
@@ -25,7 +25,7 @@ function About(){
                 </div>
             </div>
             <div>
-                <Link className="h2">Vasilescu András László</Link>
+                <h2>Vasilescu András László</h2>
 
                 <div className="flex pa3 justify-content-center">
                     <div className='h-25 mb-4'>
@@ -38,7 +38,7 @@ function About(){
                 
             </div>
             <div>
-                <Link className="h2">Oláh Gergő</Link>
+                <h2>Oláh Gergő</h2>
 
                 <div className="flex pa3 flex justify-content-center">
                     <div className='h-25 mb-4'>
@@ -48,7 +48,7 @@ function About(){
                         <a target='_blank' rel='noopener noreferrer' href="https://www.youtube.com/@FreestyleMaci"><img className='w-75 black-icon' src={youtubeIcon} alt="" /></a>
                     </div>
                     <div className='h-25 mb-4'>
-                        <a target='_blank' rel='noopener noreferrer' href="https://github.com/andrasvas/projekt_remek_1_teszt"><img className='w-75 black-icon' src={githubIcon} alt="" /></a>
+                        <a target='_blank' rel='noopener noreferrer' href="https://github.com/OlaGergo"><img className='w-75 black-icon' src={githubIcon} alt="" /></a>
                     </div>
                 </div>
             </div>

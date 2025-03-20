@@ -63,7 +63,8 @@ app.get('/vinyls/:itemId', (req, res) => {
             SELECT vinyls.vinyl_description, vinyls.vinyl_id, vinyls.vinyl_name, vinyls.vinyl_artist, 
                     vinyls.in_stock, vinyls.vinyl_color, genres.genre_name, 
                     labels.label_name, labels.label_link, vinyls.vinyl_size, 
-                    vinyls.vinyl_release, vinyls.image_path, vinyls.price
+                    vinyls.vinyl_release, vinyls.image_path, vinyls.price,
+                    vinyls.spotify_link
             FROM vinyls 
                 INNER JOIN genres ON genres.genre_id = vinyls.genre_id
                 INNER JOIN labels ON labels.label_id = vinyls.label_id

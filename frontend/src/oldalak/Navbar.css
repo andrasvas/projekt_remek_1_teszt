@@ -3,12 +3,6 @@
     box-sizing: 0;
 }
 
-.sticky-nav{
-    padding-top: 20px;
-    position: sticky;
-    /* border-style: dotted; */
-}
-
 @font-face{
     font-family: "ultrakill";
     src: local("HomeVideo"),
