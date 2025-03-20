@@ -8,7 +8,6 @@ import cartIcon from '../assets/shopping-cart-outline.svg'
 
 function Navbar(){
     var isLoggedIn = window.localStorage.getItem("isLoggedIn")
-    var userToken = window.localStorage.getItem("userToken")
 
     return(
     <nav className="main-nav-container flex justify-between w-100" style={{paddingTop: "0px"}}>
@@ -17,10 +16,10 @@ function Navbar(){
             <h3 className='main-brand main-brand-hover'>Scratch N' Spin</h3>
         </a>
         <div className="flex-grow pa3 flex items-center">
-            {isLoggedIn?<a className="f6 link dib hover-black mr3 mr4-ns text-nowrap" href="/profile">My Profile</a>:null}
             <a className="f6 link dib hover-black mr3 mr4-ns text-nowrap" href="/about">About</a>
             {isLoggedIn?null:<a className="f6 link dib hover-black mr3 mr4-ns text-nowrap" href="/signin">Sign In</a>}
             {isLoggedIn?null:<a className="f6 dib black bg-animate hover-bg-white hover-black-pill no-underline pv2 ph4 br-pill text-nowrap ba" href="/signup">Sign Up</a>}
+            {isLoggedIn?<a className="f6 link dib hover-black mr3 mr4-ns text-nowrap" href="/profile">My Profile</a>:null}
         </div>
     </nav>
     )
