@@ -27,7 +27,7 @@ async function hashPassword(password) {
 
 const db = mysql.createConnection({
     host: "127.0.0.1",
-    port: "3307",
+    port: "3306",
     user: "root",
     password: "",
     database: "scratch_and_spin_db"
@@ -140,12 +140,14 @@ app.post('/login', async function (req, res){
 });
 
 app.get('/profile', async function(req,res){
-    const token = req.body.token
-    console.log(token)
-
-    if(!token){
-        return res.status(500).json({error: "Token nem lett megadva!"})
+    const authHeader = req.headers['authorization']
+    
+    if(!authHeader || !authHeader.startsWith("Bearer ")){
+        return res.status(401).json({error: "Token nem lett megadva!"})
     }
+
+    const token = authHeader.split(" ")[1]
+    console.log("Kapott token:",token)
 
     try{
         const decodedToken = jwt.verify(token,SecretKey)
@@ -153,10 +155,12 @@ app.get('/profile', async function(req,res){
 
         db.query(`SELECT user_last_name,user_first_name,user_email,user_pfp_id FROM users WHERE user_email = ?`,[userEmail], async (err,result) => {
             if(err){
+                console.log("Adatbázis hiba:", err)
                 return res.status(500).json({error: "A felhasználó nem található!"})
             }
             
             if (result.length === 0) {
+                console.log("A felhasználó nem található!")
                 return res.status(404).json({error: "A felhasználó nem található!"})
             }
             else{

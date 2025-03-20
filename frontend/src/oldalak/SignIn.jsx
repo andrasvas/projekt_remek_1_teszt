@@ -36,9 +36,11 @@ function SignIn(){
         .catch(error =>{
             if(error.response){
                 console.log("Hiba: ", error.response.data)
+                alert(error.response.data.error)
             }
             else{
                 console.log('Hiba: ', error.message)
+                alert(error.response.data.error)
             }
         })
         

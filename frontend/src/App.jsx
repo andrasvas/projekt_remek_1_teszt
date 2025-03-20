@@ -37,8 +37,8 @@ function App() {
             <Route index element={<Bakelitek />}/>
             <Route path="/item/:itemId" element={<ItemView />}/>
             <Route path="/signup" element={<Signup/>}/>
-            <Route path="/profile" element={isLogged?<Profile/>:null}/>
-            <Route path="/signin" element={<Signin/>}></Route>
+            <Route path="/profile" element={isLogged?<Profile/>:<Signin></Signin>}/>
+            <Route path="/signin" element={isLogged?<Profile/>:<Signin/>}></Route>
             <Route path="/about" element={<About/>}></Route>
             <Route Component={Error}></Route>
           </Routes>

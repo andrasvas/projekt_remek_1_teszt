@@ -12,19 +12,27 @@ function Profile(){
         user_first_name:""
     })
 
-    const [userToken, setUserToken] = useState("")
+    function LogOut(){
+        window.localStorage.removeItem("isLoggedIn")
+        window.localStorage.removeItem("userToken")
 
-    console.log(userToken)
+        window.location.href = "/"
+    }
+
+    const [userToken, setUserToken] = useState("")
 
     useEffect(() => {
         const token = window.localStorage.getItem("userToken")
         setUserToken(token)
-    })
+        console.log(userToken)
+    },[])
 
     useEffect(() =>{
         if(userToken){
             axios.get("http://127.0.0.1:5000/profile",{
-            token: userToken
+            headers: {
+                Authorization: `Bearer ${userToken}`
+            }
             })
             .then(response => {
                 if(response){
@@ -36,14 +44,20 @@ function Profile(){
                 console.log(error)
             })
         }
-    })
+    },[userToken])
 
     return(
         <div>
-            <h2>Ez a TE profilod!!!</h2>
-            <p>kys</p>
+            <h2>Üdv, {userData.user_first_name}</h2>
+            <p>Adatok:</p>
+            <br />
+            <h4>{userData.user_email}</h4>
+            <h4>{userData.user_first_name}</h4>
+            <h4>{userData.user_last_name}</h4>
+            <img src={`../src/pfp_pics/${userData.user_pfp_id}.png`} alt="nincs profilkép" />
+            <br />
 
-            <button style={{borderRadius:'100vw'}}>Kys</button>
+            <button onClick={LogOut}>Kijelentkezés</button>
         </div>
     )
 
