@@ -60,6 +60,7 @@ const Vinyls = () => {
                 <article className='row justify-content-center'>
                     {filteredData.map(vinyl => (    
 
+<<<<<<< Updated upstream
                         <div key={vinyl.vinyl_id} className='card col-xs-6 col-sm-6 col-md-4 col-lg-3'>
 
                             <div className='main-brand'>
@@ -72,6 +73,18 @@ const Vinyls = () => {
                             <div className='row'>
                                 <h4>Ár: ${vinyl.price}</h4>
                                 <Link className='purchaseBtn main-brand' to={`/item/${vinyl.vinyl_id}`}>Megnézem</Link>
+=======
+                        <div key={vinyl.vinyl_id} className='card col-md-6 col-lg-3 m-2'>
+                            <div>
+                                <img className='card-img-top' src={`./src/album_covers/${vinyl.image_path}`} alt="placeholder img" />
+                                <h4>{vinyl.vinyl_name}</h4>
+                                <h6>{vinyl.vinyl_artist}</h6>
+                                <p>{vinyl.genre_name}</p>
+                                <div className='row'>
+                                    <h4>Ár: ${vinyl.price}</h4>
+                                    <Link className='purchaseBtn' to={`/item/${vinyl.vinyl_id}`}>Megveszem</Link>
+                                </div>
+>>>>>>> Stashed changes
                             </div>
                         </div>
 
