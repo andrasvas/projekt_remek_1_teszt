@@ -63,9 +63,8 @@ const ItemView = () => {
                     <p className='m-0 mt-3 h4'>Lemez színe: {listing.vinyl_color}</p>
                     <p className='m-0 h4'>Lemez mérete: {listing.vinyl_size} ujj</p>
                     <p className='m-0 mb-2 h4'>Kiadási év: {listing.vinyl_release}</p>
-                    <p className='m-0 mb-2 h4'>{listing.spotify_link}</p>
                     
-                    {/* <Spotify height={"152px"} wide link={"${listing.spotify_link}"} /> */}
+                    <Spotify height={"152px"} wide link={`${listing.spotify_link}`} />
 
 
                 </div>
