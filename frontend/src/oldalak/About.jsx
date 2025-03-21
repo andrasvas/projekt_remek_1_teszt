@@ -13,32 +13,37 @@ function About(){
         <div className="m-auto">
                 <div className="m-auto">
                     <div >
-                        <div className="bg-danger">
-                            <h2 className="m-auto main-brand mb-3">Üdvözlünk az oldalon!</h2>
-                            <p className="m-auto">A bakelitlemezek szerelmeseinek és zenebarátoknak szóló elsőszámú online célponton! Útunk egy egyszerű, 
+                        <div className="m-auto">
+                            <h2 className="m-auto secondary-brand mb-3">Üdvözlünk az oldalon!</h2>
+                            <p className="m-auto main-brand">A bakelitlemezek szerelmeseinek és zenebarátoknak szóló elsőszámú online célponton!</p>
+                            <p className="m-auto main-brand"> Útunk egy egyszerű, 
                             mégis szenvedélyes célból indult: a ritkább, exotikus bakelit lemezeket szeretnénk eljuttatni mindenki számára, 
-                            megőrizve az analóg hang élményét a digitális korban. </p>
-                            <h2 className="m-auto main-brand my-3 mt-5">Mi a küldetésünk?</h2>
-                            <p className="m-auto"> Scratch 'N Spin Records-nál arra törekszünk, hogy egy sokszínű és magas minőségű bakelitlemez-kollekciót állítsunk össze, 
+                            megőrizve az analóg hang élményét a digitális korban.</p>  
+                            
+                            <h2 className="m-auto secondary-brand my-3 mt-5">Mi a küldetésünk?</h2>
+                            <p className="m-auto main-brand"> Scratch 'N Spin Records-nál arra törekszünk, hogy egy sokszínű és magas minőségű bakelitlemez-kollekciót állítsunk össze, 
                             amely átível a zenei műfajokon és korokon. 
-                            Célunk, hogy felülmúlhatatlan vásárlási élményt nyújtsunk vásárlóinknak, kényelmet és nosztalgiát egyaránt kínálva. Hittünk, hogy minden lemez lejátszása történetet mesél, 
-                            és mi itt vagyunk, hogy segítsünk felfedezni és megőrizni ezeket a történeteket.</p>
+                            Célunk, hogy felülmúlhatatlan vásárlási élményt nyújtsunk vásárlóinknak, kényelmet és nosztalgiát egyaránt kínálva. </p>
+                            <p className="m-auto main-brand">
+                            Hittünk, hogy minden lemez lejátszása történetet mesél, 
+                            és mi itt vagyunk, hogy segítsünk felfedezni és megőrizni ezeket a történeteket.
+                            </p> 
                         </div>
                     <div>
-                        <h2 className="m-auto main-brand my-3 mt-5">Miért is hoztunk létre a Scratch 'N Spin Recordsot?</h2>
-                        <p className="m-auto">Egy olyan korban, amikor a digitális streamelés uralkodik, felismertük a vinyllemezek tartós vonzerejét. 
+                        <h2 className="m-auto secondary-brand my-3 mt-5">Miért is hoztunk létre a Scratch 'N Spin Recordsot?</h2>
+                        <p className="m-auto main-brand">Egy olyan korban, amikor a digitális streamelés uralkodik, felismertük a vinyllemezek tartós vonzerejét. 
                             A lemez megfogása, a lejátszóra helyezése és a meleg, gazdag hang, amit produkál, mind része egy egyedi és élvezetes hallgatási élménynek. 
                             A Scratch 'N Spin Records abból a vágyból született, hogy ezt a hagyományt életben tartsuk és mindenkinek hozzáférhetővé tegyük.</p>
-                        <p className="m-auto">Minden támogatást és lelkesedőért nagyon hálásak vagyunk és, ha meg is fogtunk a bemutatkozásunkal akkor tarts velünk nyugodtan!</p>
-                        <p className="m-auto">Kellemes lemezlejátszást!</p>
+                        <p className="m-auto main-brand">Minden támogatást és lelkesedőért nagyon hálásak vagyunk és, ha meg is fogtunk a bemutatkozásunkal akkor tarts velünk nyugodtan!</p>
+                        <p className="m-auto main-brand">Kellemes lemezlejátszást!</p>
                     </div>
                 </div>
         </div>
             <h3 className="main-brand m-auto">Made by:</h3>
-            <div className="container text-center bg-danger">
-                    <div className="row">
+            <div className=" container text-center">
+                    <div className="row d-flex justify-content-center  ">
 
-                    <div className="col-md-5 p-5 m-3" >
+                    <div className="col-md-4 p-4 m-3 " >
                         <h2 className="default-text">Gombos Benedek Zsombor</h2>
 
                         <div className=" d-flex justify-content-center">
@@ -50,7 +55,7 @@ function About(){
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-5 p-5 m-3">
+                    <div className="col-md-3 p-4 m-3">
                         <h2>Vasilescu András László</h2>
 
                         <div className="d-flex justify-content-center  ">
@@ -63,7 +68,7 @@ function About(){
                         </div>
                         
                     </div>
-                    <div className="col-md-5 p-5 m-3">
+                    <div className="col-md-4 p-5 m-3 ">
                         <h2>Oláh Gergő </h2>
 
                         <div className="d-flex justify-content-center pa3  ">
