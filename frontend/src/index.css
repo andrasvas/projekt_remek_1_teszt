@@ -100,6 +100,9 @@ button:focus-visible {
   font-family: 'publicPixel';
   
 }
+.secondary-brand{
+  font-family: 'ultrakillBold';
+}
 
 .main-brand-hover:hover, .main-brand:focus{
   color: #7641f2;
