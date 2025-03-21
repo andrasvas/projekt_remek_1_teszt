@@ -11,6 +11,29 @@ function About(){
 
     return(
         <div className="mw-100">
+                <div className="container-fluid">
+                    <div >
+                        <div>
+                            <h2>Üdvözlünk az oldalon!</h2>
+                            <p>A bakelitlemezek szerelmeseinek és zenebarátoknak szóló elsőszámú online célponton! Útunk egy egyszerű, 
+                            mégis szenvedélyes célból indult: a ritkább, exotikus bakelit lemezeket szeretnénk eljuttatni mindenki számára, 
+                            megőrizve az analóg hang élményét a digitális korban. </p>
+                            <h2 className="">Mi a küldetésünk?</h2>
+                            <p> Scratch 'N Spin Records-nál arra törekszünk, hogy egy sokszínű és magas minőségű bakelitlemez-kollekciót állítsunk össze, 
+                            amely átível a zenei műfajokon és korokon. 
+                            Célunk, hogy felülmúlhatatlan vásárlási élményt nyújtsunk vásárlóinknak, kényelmet és nosztalgiát egyaránt kínálva. Hittünk, hogy minden lemez lejátszása történetet mesél, 
+                            és mi itt vagyunk, hogy segítsünk felfedezni és megőrizni ezeket a történeteket.</p>
+                        </div>
+                    <div>
+                        <h2>Miért is hoztunk létre a Scratch 'N Spin Recordsot?</h2>
+                        <p>Egy olyan korban, amikor a digitális streamelés uralkodik, felismertük a vinyllemezek tartós vonzerejét. 
+                            A lemez megfogása, a lejátszóra helyezése és a meleg, gazdag hang, amit produkál, mind része egy egyedi és élvezetes hallgatási élménynek. 
+                            A Scratch 'N Spin Records abból a vágyból született, hogy ezt a hagyományt életben tartsuk és mindenkinek hozzáférhetővé tegyük.</p>
+                        <p>Minden támogatást és lelkesedőért nagyon hálásak vagyunk és, ha meg is fogtunk a bemutatkozásunkal akkor tarts velünk nyugodtan!</p>
+                        <p>Kellemes lemezlejátszást!</p>
+                    </div>
+                </div>
+        </div>
             <h3>Made by:</h3>
             <div>
                 <h2 className="default-text">Gombos Benedek Zsombor</h2>
