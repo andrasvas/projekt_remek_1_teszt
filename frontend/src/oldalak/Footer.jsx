@@ -1,8 +1,6 @@
 import './Navbar.css'
-import { useEffect, useState} from "react"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
-import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom';
 import snpLogo from '../assets/a_logo.png'
 import fbIcon from '../assets/icons8-facebook.svg'
 import instaIcon from '../assets/icons8-instagram.svg'
@@ -15,10 +13,10 @@ function Footer(){
 
     return(
     <nav className="flex justify-content-center b--white-10 w-100">
-        <div className='row'>
-            <div className=''>
-                <a href="/">
-                    <img className='img-responsive' style={{width: "80px"}} src={snpLogo} alt="" />
+        <div className='row justify-content-center'>
+            <div className='justify-content-center' style={{width: "auto"}}>
+                <a className='bg-success' href="/">
+                    <img className='img-responsive justify-content-center' style={{width: "80px"}} src={snpLogo} alt="" />
                 </a>
             </div>
             

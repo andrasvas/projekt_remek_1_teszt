@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import './App.css'
@@ -17,8 +16,6 @@ import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom'
 import MoreLikeThis from './oldalak/MoreLikeThis'
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [isHovered, setIsHovered] = useState(false);
   const isLogged = window.localStorage.getItem("isLoggedIn")
   // const [isDarkMode, setDarkMode] = useState(false)
   
@@ -38,7 +35,7 @@ function App() {
           <Routes>
             <Route index element={<Bakelitek />}/>
             <Route path="/item/:itemId" element={<ItemView />}/>
-            <Route path="/item/:genre" element={<MoreLikeThis />}/>
+            {/* <Route path="/item/:genre" element={<MoreLikeThis />}/> */}
             <Route path="/signup" element={<Signup/>}/>
             <Route path="/profile" element={isLogged?<Profile/>:<Signin></Signin>}/>
             <Route path="/signin" element={isLogged?<Profile/>:<Signin/>}></Route>
