@@ -1,89 +1,75 @@
 import './Bakelitek.css'
-import React, { useEffect, useState } from "react";
+import './MoreLikeThis.css'
+import React, { useEffect, useState} from "react";
+import { useParams } from "react-router-dom";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
-// import {ReactSmartScroller} from "react-smart-scroller";
-import { Link } from 'react-router-dom';
 
 const MoreLikeThis = () => {
-    const [data, setData] = useState([]);
+    const {genre_id} = useParams();
+    const [vinyl, setVinyl] = useState([]);
     const [term, setTerm] = useState("");
-    const [filteredData, setFilteredData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null)
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:5000/vinyls")
+        axios.get(`http://127.0.0.1:5000/vinyls/${genre_id}`)
             .then(response => {
-                setData(response.data);
-                setFilteredData(response.data);
+                setVinyl(response.data); 
+                setLoading(false);
             })
             .catch(error => {
-                console.error("Hiba:", error);
-            });
-    }, []);
+                setError("Hiba történt adatszerzéskor");
+                setLoading(false);
+            })
+    }, [genre_id]);
 
-    const searchChange = (x) => {
-        const term = x.target.value.toLowerCase();
-        setTerm(term);
+    if (loading) return <p>Kérem várjon...</p>
+    if (error) return <p style={{color : "red"}}>{error}</p>
+    if (!vinyl) return <hr className='m-5'/>
 
-        if (term === "") {
-            setFilteredData(data);
-        } else {
-            const filtered = data.filter(vinyl => {
-                return (
-                    vinyl.vinyl_name.toLowerCase().includes(term) ||
-                    vinyl.vinyl_artist.toLowerCase().includes(term)
-                );
-            });
-
-            setFilteredData(filtered);
-        }
-    };
 
     return (
         <div>
-                {/* <ReactSmartScroller> */}
-                        <div className='grid text-center bg-danger'>
+            <div className='horizontal-scroll'>
 
-                        {filteredData.map(vinyl => (
-                            <div className='border'>
+                <div className='border'>
 
-                                <div key={vinyl.vinyl_id}>
+                    <div key={vinyl.vinyl_id}>
 
 
-                                    <a href={`/item/${vinyl.vinyl_id}`}>
-                                    <div className='main-brand'>
-                                        <img className='card-img-top' src='./src/album_covers/1989.jpg' alt="asddsas"/>
-                                        <hr />
-                                        <h6>{vinyl.vinyl_artist}<br />-<br />{vinyl.vinyl_name}</h6>
-                                        <p className='p-2'>{vinyl.genre_name}</p>
-                                    </div>
-
-                                    <div className='row'>
-                                        <h4>Ár: ${vinyl.price}</h4>
-                                    
-                                    </div>
-                                    </a>
-                                </div>
-
-                            </div>    
-                            ))}
+                        <a href={`/item/${vinyl.vinyl_id}`}>
+                        <div className='main-brand'>
+                            <img className='card-img-top' src={`./src/album_covers/${vinyl.image_path}`} alt=""/>
+                            <hr />
+                            <h6>{vinyl.vinyl_artist}<br />-<br />{vinyl.vinyl_name}</h6>
+                            <p className='p-2'>{vinyl.genre_name}</p>
                         </div>
-                {/* </ReactSmartScroller> */}
+
+                        <div className='row'>
+                            <h4>Ár: ${vinyl.price}</h4>
+                        
+                        </div>
+                        </a>
+                    </div>
+
+                </div>    
+            </div>
 
             {/* <table>
                 <thead>
-                    <tr>
-                        <th>Album neve</th>
-                        <th>Előadó</th>
-                        <th>Hossza</th>
-                        <th>Dalok</th>
-                        <th>Színe</th>
-                        <th>Műfaj</th>
-                    </tr>
+                <tr>
+                <th>Album neve</th>
+                <th>Előadó</th>
+                <th>Hossza</th>
+                <th>Dalok</th>
+                <th>Színe</th>
+                <th>Műfaj</th>
+                </tr>
                 </thead>
                 <tbody>
-                    {filteredData.map(vinyl => (
+                {filteredData.map(vinyl => (
                         <tr key={vinyl.vin_id}>
                             <td>{vinyl.vin_name}</td>
                             <td>{vinyl.artist}</td>

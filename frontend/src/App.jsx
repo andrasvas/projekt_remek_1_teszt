@@ -14,6 +14,7 @@ import Profile from './oldalak/Profile'
 import Footer from './oldalak/Footer'
 import Cart from './oldalak/Cart'
 import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom'
+import MoreLikeThis from './oldalak/MoreLikeThis'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -37,6 +38,7 @@ function App() {
           <Routes>
             <Route index element={<Bakelitek />}/>
             <Route path="/item/:itemId" element={<ItemView />}/>
+            <Route path="/item/:genre" element={<MoreLikeThis />}/>
             <Route path="/signup" element={<Signup/>}/>
             <Route path="/profile" element={isLogged?<Profile/>:<Signin></Signin>}/>
             <Route path="/signin" element={isLogged?<Profile/>:<Signin/>}></Route>

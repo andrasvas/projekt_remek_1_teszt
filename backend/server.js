@@ -27,7 +27,7 @@ async function hashPassword(password) {
 
 const db = mysql.createConnection({
     host: "127.0.0.1",
-    port: "3306",
+    port: "3307",
     user: "root",
     password: "",
     database: "scratch_and_spin_db"
@@ -71,6 +71,25 @@ app.get('/vinyls/:itemId', (req, res) => {
             WHERE vinyls.vinyl_id = ?
             `, 
                 [itemId], (err, results) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(results[0]);
+    });
+});
+
+app.get('/vinyls/:genre', (req, res) => {
+    const { genre } = req.params;
+    db.query(`
+            SELECT vinyls.vinyl_description, vinyls.vinyl_id, vinyls.vinyl_name, vinyls.vinyl_artist, 
+                    vinyls.in_stock, vinyls.vinyl_color, genres.genre_name, 
+                    labels.label_name, labels.label_link, vinyls.vinyl_size, 
+                    vinyls.vinyl_release, vinyls.image_path, vinyls.price,
+                    vinyls.spotify_link
+            FROM vinyls 
+                INNER JOIN genres ON genres.genre_id = vinyls.genre_id
+                INNER JOIN labels ON labels.label_id = vinyls.label_id
+            WHERE vinyls.genre_id = ?
+            `, 
+                [genre], (err, results) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json(results[0]);
     });
