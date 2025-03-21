@@ -21,10 +21,14 @@ const ItemView = () => {
                 setLoading(false);
             })
             .catch(error => {
-                setError("Hiba történt adatszerzéskor");
+                setError(error.response.data.error);
                 setLoading(false);
             })
     }, [itemId]);
+
+    const AddToCart = () =>{
+
+    }
 
     if (loading) return <p>Kérem várjon...</p>
     if (error) return <p style={{color : "red"}}>{error}</p>
@@ -47,7 +51,7 @@ const ItemView = () => {
 
                     <div className='row'>
                         <h4>Ár: ${listing.price}</h4>
-                        <Link className='purchaseBtn main-brand' to={`/item/${listing.vinyl_id}`}>Kosárba vele</Link>
+                        <button className='purchaseBtn main-brand' onClick={AddToCart}>Kosárba vele!</button>
                     </div>
                 </div>
                 </div>

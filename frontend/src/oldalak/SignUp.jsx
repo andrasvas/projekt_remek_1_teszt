@@ -57,8 +57,18 @@ function SignUp() {
                 user_lastname: formData.regLastname, 
                 user_phonenum: formData.regPhoneNum
             })
-            .then((response) => console.log(response))
-            window.location.href = '/signin'   
+            .then((response) => {
+                if(response){
+                    alert(response.data)
+                    window.location.href = '/signin'  
+                }
+            })
+            .catch((error) => {
+                if(error){
+                    console.log(error)
+                    alert(error.response.data.error)
+                }
+            })
         }
     } 
 

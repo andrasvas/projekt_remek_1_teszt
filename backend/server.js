@@ -104,10 +104,9 @@ app.post('/register',async function (req,res){
     const user_pfp_id = (Math.random()*10+2)+1
 
     db.query(`SELECT count(*) AS 'count' FROM users WHERE user_phone_number = ? OR user_email = ?`, [user_phonenum,user_email], async (err,result) => {
-        console.log(err)
         if (result[0].count > 0){
-            res.json("A felhasználó már regisztrált")
             console.log("A felhasználó már regisztrált")
+            return res.status(409).json({error: "A felhasználó már regisztrált"})
         }
         else{
             const hashedPassword = await hashPassword(user_password)
@@ -131,6 +130,7 @@ app.post('/login', async function (req, res){
     const user_password = req.body.user_password;
 
     if(!user_email || !user_password){
+        console.log("Felhasználó vagy jelszó szükséges")
         return res.status(400).json({error: 'Felhasználó vagy jelszó szükséges'}); // Helyes hívás
     }
 
@@ -149,6 +149,7 @@ app.post('/login', async function (req, res){
         const isMatch = await bcrypt.compare(user_password, user.user_password);
 
         if (!isMatch) {
+            console.log("A felhasználó helytelen jelszót adott meg.")
             return res.status(400).json({error: "Helytelen jelszó!"}); // Helyes hívás
         } else {
             console.log("Felhasználó bejelentkezett.")

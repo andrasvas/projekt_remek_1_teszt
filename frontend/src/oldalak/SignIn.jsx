@@ -52,7 +52,7 @@ function SignIn(){
         <div className='d-flex justify-content-center'>
             <div className='card p-5'>
                 <form onSubmit={Login}>
-                    <input type="text"
+                    <input type="email"
                     className='m-1 w-100'
                     required
                     onChange={HandleChange}
