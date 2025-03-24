@@ -49,7 +49,7 @@ function SignIn(){
 
     return(
         <>
-        <div className='d-flex justify-content-center'>
+        <div className='d-flex justify-content-center all-container'>
             <div className='card p-5'>
                 <form onSubmit={Login}>
                     <input type="email"

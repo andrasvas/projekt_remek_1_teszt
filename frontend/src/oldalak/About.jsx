@@ -14,7 +14,7 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 function About(){
 
     return(
-        <div className="">
+        <div className='all-container'>
                 <div>
                     <div>
                         <div>

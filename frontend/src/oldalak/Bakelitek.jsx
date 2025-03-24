@@ -40,7 +40,7 @@ const Vinyls = () => {
     };
 
     return (
-        <div>
+        <div className='all-container'>
             {/* <div className='row'>
                 <div className='div-title container-fluid col-md-6'>
                     <h1>Scratch 'n Spin</h1>

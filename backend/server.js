@@ -173,7 +173,7 @@ app.get('/profile', async function(req,res){
         const decodedToken = jwt.verify(token,SecretKey)
         const userEmail = decodedToken.user_email
 
-        db.query(`SELECT user_last_name,user_first_name,user_email,user_pfp_id FROM users WHERE user_email = ?`,[userEmail], async (err,result) => {
+        db.query(`SELECT user_id, user_last_name, user_first_name, user_email, user_pfp_id FROM users WHERE user_email = ?`,[userEmail], async (err,result) => {
             if(err){
                 console.log("Adatbázis hiba:", err)
                 return res.status(500).json({error: "A felhasználó nem található!"})
