@@ -73,7 +73,7 @@ const ItemView = () => {
 
                 </div>
             </div>
-                    <MoreLikeThis />
+                    {/* <MoreLikeThis to={`/vinyls/${listing.genre_id}`}/> */}
         </div>
     )
 }
