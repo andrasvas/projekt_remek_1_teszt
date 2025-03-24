@@ -40,8 +40,7 @@ function About(){
                         <p className="m-auto secondary-brand">Kellemes lemezlejátszást!</p>
                     </div>
                 </div>
-        </div>
-            <h3 className="main-brand mt-5 m-auto">Made by:</h3>
+        </div>  
             <div className="container text-center">
                     <div className="mt-5 horizontal">
                         <div className="g-col-6 p-3 about-item" >
