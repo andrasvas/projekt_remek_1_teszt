@@ -36,7 +36,7 @@ const ItemView = () => {
 
     return (
         
-        <div className="row">
+        <div className="row all-container">
 
             <div className='col-md-4 col-lg-3 '>
                 <div className='row p-0'>
@@ -73,7 +73,7 @@ const ItemView = () => {
 
                 </div>
             </div>
-                    {/* <MoreLikeThis to={`/vinyls/${listing.genre_id}`}/> */}
+                    <MoreLikeThis to={`/vinyls/${listing.genre_id}`}/>
         </div>
     )
 }

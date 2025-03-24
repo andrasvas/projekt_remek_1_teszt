@@ -40,14 +40,14 @@ const Vinyls = () => {
     };
 
     return (
-        <div>
+        <div className='all-container'>
             {/* <div className='row'>
                 <div className='div-title container-fluid col-md-6'>
                     <h1>Scratch 'n Spin</h1>
                     <img className='img-responsive col-md-4' src={snpLogo} alt="" />
                 </div>
             </div> */}
-            <h1 className='default-text m-auto'>Lemezeink raktáron</h1>
+            <h1 className='default-text m-auto main-brand'>Lemezeink raktáron</h1>
 
             <input
                 type="text"

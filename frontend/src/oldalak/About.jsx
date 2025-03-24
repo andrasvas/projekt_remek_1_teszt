@@ -14,7 +14,7 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 function About(){
 
     return(
-        <div className="">
+        <div className='all-container'>
                 <div>
                     <div>
                         <div>
@@ -37,7 +37,7 @@ function About(){
                             A lemez megfogása, a lejátszóra helyezése és a meleg, gazdag hang, amit produkál, mind része egy egyedi és élvezetes hallgatási élménynek. 
                             A Scratch 'N Spin Records abból a vágyból született, hogy ezt a hagyományt életben tartsuk és mindenkinek hozzáférhetővé tegyük.</p>
                         <p className="m-auto main-brand">Minden támogatást és lelkesedőért nagyon hálásak vagyunk és, ha meg is fogtunk a bemutatkozásunkal akkor tarts velünk nyugodtan!</p>
-                        <p className="m-auto main-brand">Kellemes lemezlejátszást!</p>
+                        <p className="m-auto secondary-brand">Kellemes lemezlejátszást!</p>
                     </div>
                 </div>
         </div>
