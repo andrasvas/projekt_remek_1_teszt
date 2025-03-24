@@ -9,7 +9,7 @@ const Error = () => {
 
     return (
         <>
-            <div>
+            <div className='all-container'>
                 <h1>Ez az oldal nem létezik: 404</h1>
             </div>
         </>

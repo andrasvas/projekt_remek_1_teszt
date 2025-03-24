@@ -4,7 +4,7 @@ import './Bakelitek.css'
 const Cart = () =>{
     
     return(
-        <div>
+        <div className='all-container'>
             <h2>Kosarad:</h2>
             <p>Még nincs itt semmi.</p>
         </div>

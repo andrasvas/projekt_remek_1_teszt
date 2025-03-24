@@ -56,31 +56,6 @@ const MoreLikeThis = () => {
 
                 </div>    
             </div>
-
-            {/* <table>
-                <thead>
-                <tr>
-                <th>Album neve</th>
-                <th>Előadó</th>
-                <th>Hossza</th>
-                <th>Dalok</th>
-                <th>Színe</th>
-                <th>Műfaj</th>
-                </tr>
-                </thead>
-                <tbody>
-                {filteredData.map(vinyl => (
-                        <tr key={vinyl.vin_id}>
-                            <td>{vinyl.vin_name}</td>
-                            <td>{vinyl.artist}</td>
-                            <td>{vinyl.runtime} perc</td>
-                            <td>{vinyl.tracks}</td>
-                            <td>{vinyl.color}</td>
-                            <td>{vinyl.genre}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table> */}
         </div>
     );
 };
