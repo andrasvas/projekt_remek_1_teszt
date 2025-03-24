@@ -47,7 +47,7 @@ const Vinyls = () => {
                     <img className='img-responsive col-md-4' src={snpLogo} alt="" />
                 </div>
             </div> */}
-            <h1 className='default-text m-auto'>Lemezeink raktáron</h1>
+            <h1 className='default-text m-auto main-brand'>Lemezeink raktáron</h1>
 
             <input
                 type="text"

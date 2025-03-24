@@ -35,11 +35,11 @@ function About(){
                             A lemez megfogása, a lejátszóra helyezése és a meleg, gazdag hang, amit produkál, mind része egy egyedi és élvezetes hallgatási élménynek. 
                             A Scratch 'N Spin Records abból a vágyból született, hogy ezt a hagyományt életben tartsuk és mindenkinek hozzáférhetővé tegyük.</p>
                         <p className="m-auto main-brand">Minden támogatást és lelkesedőért nagyon hálásak vagyunk és, ha meg is fogtunk a bemutatkozásunkal akkor tarts velünk nyugodtan!</p>
-                        <p className="m-auto main-brand">Kellemes lemezlejátszást!</p>
+                        <p className="m-auto secondary-brand">Kellemes lemezlejátszást!</p>
                     </div>
                 </div>
         </div>
-            <h3 className="main-brand m-auto">Made by:</h3>
+
             <div className=" container text-center">
                     <div className="row d-flex justify-content-center  ">
 
