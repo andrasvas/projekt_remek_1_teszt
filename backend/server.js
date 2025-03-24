@@ -27,7 +27,7 @@ async function hashPassword(password) {
 
 const db = mysql.createConnection({
     host: "127.0.0.1",
-    port: "3307",
+    port: "3306",
     user: "root",
     password: "",
     database: "scratch_and_spin_db"
@@ -215,7 +215,7 @@ app.get('/profile', async function(req,res){
     }
 })
 
-app.post('/addtocart', async function(req,result){
+app.post('/addtocart', async function(req,res){
     console.log("Hozzáadás a kosárhoz...")
 
     const vinyl_id = req.body.vinyl_id
@@ -230,9 +230,9 @@ app.post('/addtocart', async function(req,result){
         const decodedToken = jwt.verify(token,SecretKey)
         const userEmail = decodedToken.user_email
 
-        db.query(`SELECT vinyls.vinyl_name AS "Bakelit neve",
-        users.user_email AS "Felhasználó E-mail",
-        cart.cart_id AS "Kosár ID"
+        /* db.query(`SELECT vinyls.vinyl_name,
+        users.user_email,
+        cart.cart_id
         FROM users
         INNER JOIN cart
         ON cart.user_id = users.user_id
@@ -242,7 +242,33 @@ app.post('/addtocart', async function(req,result){
         ON cart_item.vinyl_id = vinyls.vinyl_id
         WHERE user_email = ?`,[userEmail],async (err,result) => {
 
+        }) */
+
+        db.query(`SELECT cart_id 
+        FROM cart 
+        INNER JOIN users 
+        ON users.user_id = cart.user_id 
+        WHERE users.user_email = ?`,[userEmail],(err,result) =>{
+            if(err){
+                console.log(err)
+                return res.status(401).json({message: "Kosár nem található!"})
+            }
+
+            console.log(result[0])
+            const cartId = result[0]
+
+            db.query(`INSERT INTO cart_item (cart_id,vinyl_id,qty) VALUES (?,?,?)`,[cartId,vinyl_id,1],(err,result) => {
+                if(err){
+                    console.log(err)
+                    return res.status(500).json({error: "Nem sikerült hozzáadni a kosárhoz."})
+                }
+
+                console.log("Kossárhoz sikeresen hozzáadva")
+                return res.status(201).json({message: "Kosárhoz sikeresen hozzáadva."})
+            })
         })
+
+        
     }
     catch(error){
         console.error(error)
