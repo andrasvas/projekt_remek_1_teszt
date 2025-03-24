@@ -15,7 +15,7 @@ function SignUp() {
     }
 
     function CheckPassword(password,confirmPassword){
-        var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+        var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*?])[a-zA-Z0-9!@#$%^&*?]{6,16}$/;
     
         if(password.length < 8) return alert("A jelszó nem elég hosszú, minimum 8 karakter kell hogy legyen!")
         if(password !== confirmPassword) return alert("A jelszavak nem egyeznek!")

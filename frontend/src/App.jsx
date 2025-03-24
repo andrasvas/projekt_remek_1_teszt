@@ -16,7 +16,7 @@ import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom'
 import MoreLikeThis from './oldalak/MoreLikeThis'
 
 function App() {
-  const isLogged = window.localStorage.getItem("isLoggedIn")
+  const isLogged = window.localStorage.getItem("userToken")
   // const [isDarkMode, setDarkMode] = useState(false)
   
   // function toggleDarkMode(isDarkMode){

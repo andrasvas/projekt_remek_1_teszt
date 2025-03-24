@@ -27,7 +27,7 @@ async function hashPassword(password) {
 
 const db = mysql.createConnection({
     host: "127.0.0.1",
-    port: "3306",
+    port: "3307",
     user: "root",
     password: "",
     database: "scratch_and_spin_db"
@@ -109,15 +109,38 @@ app.post('/register',async function (req,res){
             return res.status(409).json({error: "A felhasználó már regisztrált"})
         }
         else{
-            const hashedPassword = await hashPassword(user_password)
+            try{
+                const hashedPassword = await hashPassword(user_password)
 
-            db.query(`INSERT INTO users (user_last_name,user_first_name,user_phone_number,user_email,user_password,user_pfp_id) VALUES (?,?,?,?,?,?)`, [user_lastname,user_firstname,user_phonenum,user_email,hashedPassword,user_pfp_id], (err,result) => {
-                console.log(err)
-            })
+                db.query(`INSERT INTO users (user_last_name,user_first_name,user_phone_number,user_email,user_password,user_pfp_id) VALUES (?,?,?,?,?,?)`, [user_lastname,user_firstname,user_phonenum,user_email,hashedPassword,user_pfp_id], (err,result) => {
+                    if(err){
+                        console.error("Hiba:", err)
+                        return res.status(500).json({error: "Nem sikerült a regisztráció"})
+                    }
 
-            console.log("Sikeres regisztráció!")
-            return res.json("Sikeres regisztráció!")
+                    const user_id = result.insertId
+                    console.log(user_id)
+
+                    db.query(`INSERT INTO cart (user_id) VALUES (?)`,[user_id],(err) => {
+                        if(err){
+                            console.error("Hiba a kosár létrehozásakor")
+                            return res.status(500).json({error: "Hiba a kosár létrahozásakor"})
+                        }
+
+                        console.log("Sikeres regisztráció és kosár létrehozása")
+                        return res.status(201).json({message: "Sikeres regisztráció!"})
+                    })
+
+                })
+
+                console.log("Sikeres regisztráció!")
+                return res.json("Sikeres regisztráció!")
+            }
+            catch(error){
+                console.error(error)
+            }
         }
+        
         
     })
 })
@@ -136,26 +159,24 @@ app.post('/login', async function (req, res){
 
     db.query(`SELECT user_id, user_email, user_password FROM users WHERE user_email = ?`, [user_email], async (err, results) => {
         if (err) {
-            return res.status(500).json({error: "A felhasználó nem található!"}); // Helyes hívás
+            return res.status(500).json({ error: "Adatbázis hiba történt!" });
         }
-
+    
         if (results.length === 0) {
-            return res.status(404).json({error: "A felhasználó nem található!"}); // Helyes hívás
+            return res.status(404).json({ error: "A felhasználó nem található!" });
         }
-
-        console.log("Felhasználó létezik...")
-
+    
+        console.log("Felhasználó létezik...");
         const user = results[0];
         const isMatch = await bcrypt.compare(user_password, user.user_password);
-
+    
         if (!isMatch) {
-            console.log("A felhasználó helytelen jelszót adott meg.")
-            return res.status(400).json({error: "Helytelen jelszó!"}); // Helyes hívás
-        } else {
-            console.log("Felhasználó bejelentkezett.")
-            const token = jwt.sign({user_email}, SecretKey, {expiresIn: "1h"})
-            return res.json({token}) // Helyes hívás
+            return res.status(400).json({ error: "Helytelen jelszó!" });
         }
+    
+        console.log("Felhasználó bejelentkezett.");
+        const token = jwt.sign({ user_email }, SecretKey, { expiresIn: "1h" });
+        return res.json({ token });
     });
 });
 
@@ -192,8 +213,13 @@ app.get('/profile', async function(req,res){
     catch(err){
         console.log(err)
     }
+})
 
-    
+app.post('/addtocart', async function(req,result){
+    console.log("Hozzáadás a kosárhoz...")
+
+    const vinyl_id = req.body.vinyl_id
+    const user_id = req.body.user_id
 })
 
 router.get('/userProfile', async function (req, res){

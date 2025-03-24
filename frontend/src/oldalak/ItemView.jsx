@@ -27,7 +27,7 @@ const ItemView = () => {
     }, [itemId]);
 
     const AddToCart = () =>{
-
+        
     }
 
     if (loading) return <p>Kérem várjon...</p>
