@@ -219,7 +219,34 @@ app.post('/addtocart', async function(req,result){
     console.log("Hozzáadás a kosárhoz...")
 
     const vinyl_id = req.body.vinyl_id
-    const user_id = req.body.user_id
+    const token = req.headers['authorization'].split(' ')[1]
+    
+    if(!token || !vinyl_id){
+        console.log("Token vagy vinyl_id nem található!")
+        return res.status(401).json({message: "Token/Bakelit nem található!"})
+    }
+
+    try{
+        const decodedToken = jwt.verify(token,SecretKey)
+        const userEmail = decodedToken.user_email
+
+        db.query(`SELECT vinyls.vinyl_name AS "Bakelit neve",
+        users.user_email AS "Felhasználó E-mail",
+        cart.cart_id AS "Kosár ID"
+        FROM users
+        INNER JOIN cart
+        ON cart.user_id = users.user_id
+        INNER JOIN cart_item
+        ON cart.cart_id = cart_item.cart_id
+        INNER JOIN vinyls
+        ON cart_item.vinyl_id = vinyls.vinyl_id
+        WHERE user_email = ?`,[userEmail],async (err,result) => {
+
+        })
+    }
+    catch(error){
+        console.error(error)
+    }
 })
 
 router.get('/userProfile', async function (req, res){
