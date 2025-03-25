@@ -9,7 +9,18 @@ function Cart(){
     const [data,setData] = useState([])
 
     const ClearCart = () => {
-        
+        axios.delete("http://localhost:5000/clearcart",{headers:{Authorization: `Bearer ${userToken}`}})
+        .then(response => {
+            if(response){
+                console.log(response)
+                alert(response.data.message)
+                window.location.href = "/cart"
+            }
+        })
+        .catch(err => {
+            if(err)
+            console.log(err)
+        })
     }
 
     useEffect(() => {
@@ -52,7 +63,7 @@ function Cart(){
             
             <div>
                 {data.length > 0 ? (
-                    <button>Kosár törlése</button>
+                    <button onClick={ClearCart}>Kosár törlése</button>
                 ):(
                     null
                 )}

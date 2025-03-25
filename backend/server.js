@@ -27,7 +27,7 @@ async function hashPassword(password) {
 
 const db = mysql.createConnection({
     host: "127.0.0.1",
-    port: "3307",
+    port: "3306",
     user: "root",
     password: "",
     database: "scratch_and_spin_db"
@@ -132,9 +132,6 @@ app.post('/register',async function (req,res){
                     })
 
                 })
-
-                console.log("Sikeres regisztráció!")
-                return res.json("Sikeres regisztráció!")
             }
             catch(error){
                 console.error(error)
@@ -316,23 +313,50 @@ app.delete('/clearcart',async function(req,res){
     console.log(`Kapott token: ${token}`)
 
     if(!token){
-        console.log("Token vagy vinyl_id nem található!")
-        return res.status(401).json({message: "Token/Bakelit nem található!"})
+        console.log("Token nem található!")
+        return res.status(401).json({message: "Token nem található!"})
     }
 
     try{
         const decodedToken = jwt.verify(token,SecretKey)
         const userEmail = decodedToken.user_email
 
-        
+        db.query(`SELECT cart_item.cart_id
+        FROM cart_item
+        INNER JOIN cart
+        ON cart.cart_id = cart_item.cart_id
+        INNER JOIN users
+        ON users.user_id = cart.user_id
+        WHERE users.user_email = ?`,[userEmail],(err,result) => {
+            if(err){
+                console.log(err)
+                return res.status(500).json({error: "Nem sikerült törölni a kosárból."})
+            }
+
+            if(result.length == 0){
+                console.log("Kosár nem található!")
+                return res.status(404).json({error: "Kosár nem található!"})
+            }
+
+            const cartId = result[0].cart_id
+            
+            db.query(`DELETE FROM cart_item WHERE cart_id = ?`,[cartId],(err,results) => {
+                if(err){
+                    console.log(err)
+                    return res.status(500).json({error: "Nem sikerült kitörölni a kosarat!"})
+                }
+
+                return res.status(200).json({message: "Kosár kitörölve!"})
+            })
+        })
     }
     catch(err){
         console.log(err)
     }
 
-    db.query(`DELETE FROM cart_item
+    /*db.query(`DELETE FROM cart_item
     WHERE cart_id = ?
-    `,[])
+    `,[])*/
 })
 
 app.get('/cart', async function(req,res){
