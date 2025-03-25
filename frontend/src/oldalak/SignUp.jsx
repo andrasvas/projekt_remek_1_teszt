@@ -59,7 +59,7 @@ function SignUp() {
             })
             .then((response) => {
                 if(response){
-                    alert(response.data)
+                    alert(response.data.message)
                     window.location.href = '/signin'  
                 }
             })
