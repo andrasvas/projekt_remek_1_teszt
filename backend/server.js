@@ -227,7 +227,7 @@ app.post('/addtocart', async function(req,res){
 
     if(!token || !vinyl_id){
         console.log("Token vagy vinyl_id nem található!")
-        return res.status(401).json({message: "Token/Bakelit nem található!"})
+        return res.status(404).json({message: "Token/Bakelit nem található!"})
     }
 
     try{
