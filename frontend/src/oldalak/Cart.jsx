@@ -8,6 +8,10 @@ function Cart(){
     const userToken = window.localStorage.getItem("userToken")
     const [data,setData] = useState([])
 
+    const ClearCart = () => {
+        
+    }
+
     useEffect(() => {
         if(userToken){
             axios.get("http://localhost:5000/cart",{headers:{
@@ -15,8 +19,14 @@ function Cart(){
             }})
             .then(response => {
                 if(response){
-                    console.log(response.data)
-                    setData(response.data)
+                    if(response.data.length == 0){
+                        console.log("A kosár üres")
+                        setData(response.data)
+                    }
+                    else{
+                        console.log(response.data)
+                        setData(response.data)
+                    }
                 }
             })
         }
@@ -28,13 +38,25 @@ function Cart(){
 
     return(
         <div className='all-container'>
-            {data.map((item) => (
-                <div key={item.vinyl_id} id={item.vinyl_id}>
-                    <h4>{item.vinyl_name}</h4>
-                    <p>Ár: {item.price}$</p>
-                    <p>Mennyiség: {item.qty}</p>
-                </div>
-            ))}
+            {data.length > 0 ? (
+                data.map((item) => (
+                    <div key={item.vinyl_id} id={item.vinyl_id}>
+                        <h4>{item.vinyl_name}</h4>
+                        <p>Ár: {item.price}$</p>
+                        <p>Mennyiség: {item.qty}</p>
+                    </div>
+                ))
+            ):(
+                <p>A kosár üres.</p>
+            )}
+            
+            <div>
+                {data.length > 0 ? (
+                    <button>Kosár törlése</button>
+                ):(
+                    null
+                )}
+            </div>
         </div>
     )
 }

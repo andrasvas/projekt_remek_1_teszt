@@ -291,7 +291,7 @@ app.get('/cart', async function(req,res){
     const authHeader = req.headers['authorization']
 
     if(!authHeader || !authHeader.startsWith("Bearer ")){
-        console.error("Sikertelen hozzáadás.")
+        console.error("Sikertelen meghivás.")
         return res.status(401).json({error: "Token nem lett megadva!"})
     }
 
