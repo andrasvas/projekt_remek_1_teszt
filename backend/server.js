@@ -304,6 +304,37 @@ app.post('/addtocart', async function(req,res){
     }
 })
 
+app.delete('/clearcart',async function(req,res){
+    const authHeader = req.headers['authorization']
+
+    if(!authHeader || !authHeader.startsWith("Bearer ")){
+        console.error("Sikertelen törlés.")
+        return res.status(401).json({error: "Token nem lett megadva!"})
+    }
+    
+    const token = authHeader.split(" ")[1]
+    console.log(`Kapott token: ${token}`)
+
+    if(!token){
+        console.log("Token vagy vinyl_id nem található!")
+        return res.status(401).json({message: "Token/Bakelit nem található!"})
+    }
+
+    try{
+        const decodedToken = jwt.verify(token,SecretKey)
+        const userEmail = decodedToken.user_email
+
+        
+    }
+    catch(err){
+        console.log(err)
+    }
+
+    db.query(`DELETE FROM cart_item
+    WHERE cart_id = ?
+    `,[])
+})
+
 app.get('/cart', async function(req,res){
     console.log("Kosár megjelenitése...")
     const authHeader = req.headers['authorization']
