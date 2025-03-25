@@ -27,7 +27,7 @@ async function hashPassword(password) {
 
 const db = mysql.createConnection({
     host: "127.0.0.1",
-    port: "3306",
+    port: "3307",
     user: "root",
     password: "",
     database: "scratch_and_spin_db"
@@ -217,10 +217,17 @@ app.get('/profile', async function(req,res){
 
 app.post('/addtocart', async function(req,res){
     console.log("Hozzáadás a kosárhoz...")
-
     const vinyl_id = req.body.vinyl_id
-    const token = req.headers['authorization'].split(' ')[1]
+    const authHeader = req.headers['authorization']
+
+    if(!authHeader || !authHeader.startsWith("Bearer ")){
+        console.error("Sikertelen hozzáadás.")
+        return res.status(401).json({error: "Token nem lett megadva!"})
+    }
     
+    const token = authHeader.split(" ")[1]
+    console.log(`Kapott token: ${token}`)
+
     if(!token || !vinyl_id){
         console.log("Token vagy vinyl_id nem található!")
         return res.status(401).json({message: "Token/Bakelit nem található!"})
@@ -254,8 +261,12 @@ app.post('/addtocart', async function(req,res){
                 return res.status(401).json({message: "Kosár nem található!"})
             }
 
-            console.log(result[0])
-            const cartId = result[0]
+            const cartId = result[0].cart_id
+
+            if(!cartId){
+                console.log("Kosár nem található!")
+                return res.json(401).json({error: "Kosár nem található!"})
+            }
 
             db.query(`INSERT INTO cart_item (cart_id,vinyl_id,qty) VALUES (?,?,?)`,[cartId,vinyl_id,1],(err,result) => {
                 if(err){

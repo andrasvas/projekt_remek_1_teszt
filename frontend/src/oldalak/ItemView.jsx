@@ -13,6 +13,7 @@ const ItemView = () => {
     const [listing, setListing] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null)
+    const userToken = window.localStorage.getItem("userToken")
 
     useEffect(() => {
         axios.get(`http://127.0.0.1:5000/vinyls/${itemId}`)
@@ -27,7 +28,26 @@ const ItemView = () => {
     }, [itemId]);
 
     const AddToCart = () =>{
-        
+        try{
+            axios.post("http://localhost:5000/addtocart", {
+                vinyl_id: listing.vinyl_id
+            }, {
+                headers: {
+                    Authorization: `Bearer ${userToken}`
+                }
+            })
+            .then(response => {
+                if(response){
+                    console.log(response)
+                }
+            })
+            .catch(error => {
+                console.error(error)
+            })
+        }
+        catch(err){
+            console.log(err)
+        }
     }
 
     if (loading) return <p>Kérem várjon...</p>
