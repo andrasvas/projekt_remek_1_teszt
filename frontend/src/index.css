@@ -58,14 +58,10 @@
 }
 
 
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+html, body{
+  height: 100%;;
+  margin: 0;
+  background-color: var(--background);
 }
 
 body {
@@ -74,7 +70,6 @@ body {
   place-items: top;
   min-width: auto;
   min-height: 100vh;
-  background-color: var(--background);
 }
 
 h1 {
@@ -84,17 +79,17 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 3px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: transparent;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--accent);
 }
 button:focus,
 button:focus-visible {
@@ -115,13 +110,14 @@ button:focus-visible {
 
 
 @media (prefers-color-scheme: light) {
-:root{
-  --text: #111014;
-  --background: #ddcfff;
-  --card-bg: #c1a9f8;
-  --primary: #a385e8;
-  --accent: #7641f2;
-  }
+  :root{
+    --text: #111014;
+    --background: #ddcfff;
+    --card-bg: #c1a9f8;
+    --primary: #a385e8;
+    --accent: #7641f2;
+    /* --accent: #430dbf; */
+    }
   .main-brand{
     color: #000;
   }
@@ -133,7 +129,8 @@ button:focus-visible {
     --background: #0e002e;
     --card-bg: #453961;
     --primary: #341778;
-    --accent: #430dbf;
+    --accent: #7641f2;
+    /* --accent: #430dbf; */
   }
   .main-brand{
     color: #fff;

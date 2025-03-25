@@ -1,6 +1,7 @@
 *{
+    padding: 0;
     margin: 0;
-    box-sizing: 0;
+    box-sizing: border-box;
 }
 
 @font-face{
@@ -46,8 +47,13 @@
     border-color: rgba(255, 255, 255, .1);
 }
 
+a{
+    color: var(--accent);
+}
+
 .br-pill {
     border-radius: 9999px;
+    border: 3px solid;
 }
 
 .dib {
@@ -181,6 +187,95 @@ hover-black-pill:focus{
     transition: background-color .15s ease-in-out;
 }
 
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0 2rem;
+}
+
+.nav-container{
+    align-items: center;
+}
+
+nav a{
+    margin: 0 1rem;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+header .nav-btn{
+    padding: 5px;
+    border: none;
+    outline: none;
+    color: var(--text);
+    visibility: hidden;
+    opacity: 0;
+    font-size: 1.8rem;
+}
+
+.main-nav-container{
+    justify-content: end;
+}
+
+@media only screen and (max-width: 1024px){
+    nav{
+        z-index: 1
+    }
+    header .nav-btn{
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .main-nav-container{
+        justify-content: center;
+        align-content: center;
+    }
+
+    .nav-container{
+        flex-direction: column;
+        height: 25rem;
+        justify-content: space-around;
+    }
+
+    header nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        background-color: var(--card-bg);
+        transition: cubic-bezier(0.215, 0.610, 0.355, 1) 750ms;
+        transform: translateY(-100vh);
+    }
+
+    header .responsive_nav{
+        transform: none;
+    }
+
+    nav .nav-close-btn{
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+    }
+
+    nav a{
+        font-size: 1.5rem;
+    }
+}
+
+@media only screen and (max-width: 426px){
+    .scratch-text{
+        display: none;
+    }
+}
+
 @media screen and (min-width: 30em) {
     .mr4-ns {
         margin-right: 2rem;
@@ -194,6 +289,7 @@ hover-black-pill:focus{
       --card-bg: #c1a9f8;
       --primary: #a385e8;
       --accent: #7641f2;
+      /* --accent: #430dbf; */
       }
     
       .card{
@@ -215,7 +311,8 @@ hover-black-pill:focus{
         --background: #0e002e;
         --card-bg: #453961;
         --primary: #341778;
-        --accent: #430dbf;
+        --accent: #7641f2;
+        /* --accent: #430dbf; */
       }
     
       .card{
