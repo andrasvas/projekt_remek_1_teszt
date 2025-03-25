@@ -1,12 +1,40 @@
 import React from "react";
 import './Bakelitek.css'
+import axios from "axios";
+import { useEffect } from "react";
+import { useState } from "react";
 
-const Cart = () =>{
-    
+function Cart(){
+    const userToken = window.localStorage.getItem("userToken")
+    const [data,setData] = useState([])
+
+    useEffect(() => {
+        if(userToken){
+            axios.get("http://localhost:5000/cart",{headers:{
+                Authorization:`Bearer ${userToken}`
+            }})
+            .then(response => {
+                if(response){
+                    console.log(response.data)
+                    setData(response.data)
+                }
+            })
+        }
+        else{
+            alert("Jelentkezz be!")
+        }
+        
+    },[userToken])
+
     return(
         <div className='all-container'>
-            <h2>Kosarad:</h2>
-            <p>Még nincs itt semmi.</p>
+            {data.map((item) => (
+                <div key={item.vinyl_id} id={item.vinyl_id}>
+                    <h4>{item.vinyl_name}</h4>
+                    <p>Ár: {item.price}$</p>
+                    <p>Mennyiség: {item.qty}</p>
+                </div>
+            ))}
         </div>
     )
 }

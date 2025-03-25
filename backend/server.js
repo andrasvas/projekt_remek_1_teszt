@@ -274,7 +274,7 @@ app.post('/addtocart', async function(req,res){
                     return res.status(500).json({error: "Nem sikerült hozzáadni a kosárhoz."})
                 }
 
-                console.log("Kossárhoz sikeresen hozzáadva")
+                console.log("Kosárhoz sikeresen hozzáadva")
                 return res.status(201).json({message: "Kosárhoz sikeresen hozzáadva."})
             })
         })
@@ -283,6 +283,56 @@ app.post('/addtocart', async function(req,res){
     }
     catch(error){
         console.error(error)
+    }
+})
+
+app.get('/cart', async function(req,res){
+    console.log("Kosár megjelenitése...")
+    const authHeader = req.headers['authorization']
+
+    if(!authHeader || !authHeader.startsWith("Bearer ")){
+        console.error("Sikertelen hozzáadás.")
+        return res.status(401).json({error: "Token nem lett megadva!"})
+    }
+
+    const token = authHeader.split(" ")[1]
+    console.log(`Kapott token: ${token}`)
+
+    if(!token){
+        console.log("Token vagy vinyl_id nem található!")
+        return res.status(401).json({message: "Token nem található!"})
+    }
+
+    try{
+        const decodedToken = jwt.verify(token,SecretKey)
+        const userEmail = decodedToken.user_email
+
+        db.query(`SELECT vinyls.vinyl_id, vinyls.vinyl_name,cart_item.qty,(vinyls.price*cart_item.qty) as "price",users.user_email 
+        FROM cart_item
+        INNER JOIN vinyls
+        ON vinyls.vinyl_id = cart_item.vinyl_id
+        INNER JOIN cart
+        ON cart.cart_id = cart_item.cart_id
+        INNER JOIN users
+        ON users.user_id = cart.user_id
+        WHERE user_email = ?`,[userEmail],(err,results)=>{
+            if(err){
+                console.log(err)
+                return res.status(401).json("Kosár nem található!")
+            }
+
+            if(results.length < 0){
+                console.log("A kosár üres")
+                return res.status(204).json({message: "A kosár üres"})
+            }
+
+            console.log(results)
+
+            return res.status(200).json(results)
+        })
+    }
+    catch(err){
+        console.log(err)
     }
 })
 
