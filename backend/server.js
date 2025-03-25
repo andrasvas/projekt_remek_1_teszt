@@ -268,14 +268,32 @@ app.post('/addtocart', async function(req,res){
                 return res.json(401).json({error: "Kosár nem található!"})
             }
 
-            db.query(`INSERT INTO cart_item (cart_id,vinyl_id,qty) VALUES (?,?,?)`,[cartId,vinyl_id,1],(err,result) => {
-                if(err){
-                    console.log(err)
-                    return res.status(500).json({error: "Nem sikerült hozzáadni a kosárhoz."})
+            db.query(`SELECT cart_id,vinyl_id,qty FROM cart_item WHERE cart_id = ? AND vinyl_id = ?`,[cartId,vinyl_id], (err,results) => {
+                if(results.length == 0){
+                    console.log("Nincs még benne, kosárhoz adás")
+                    db.query(`INSERT INTO cart_item (cart_id,vinyl_id,qty) VALUES (?,?,?)`,[cartId,vinyl_id,1],(err,result) => {
+                        if(err){
+                            console.log(err)
+                            return res.status(500).json({error: "Nem sikerült hozzáadni a kosárhoz."})
+                        }
+        
+                        console.log("Kosárhoz sikeresen hozzáadva")
+                        return res.status(201).json({message: "Kosárhoz sikeresen hozzáadva."})
+                    })
                 }
+                else{
+                    db.query(`UPDATE cart_item
+                    SET qty = (qty+1)
+                    WHERE cart_id = ? AND vinyl_id = ?`,[cartId,vinyl_id],(err,result) =>{
+                        if(err){
+                            console.log(err)
+                            return res.status(500).json({error: "Nem sikerült hozzáadni a kosárhoz."})
+                        }
 
-                console.log("Kosárhoz sikeresen hozzáadva")
-                return res.status(201).json({message: "Kosárhoz sikeresen hozzáadva."})
+                        console.log("Kosár frissítve!")
+                        return res.status(200).json({message: "Kosár sikeresen frissítve."})
+                    })
+                }
             })
         })
 
