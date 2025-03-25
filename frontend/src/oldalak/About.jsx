@@ -19,11 +19,11 @@ function About(){
                     <div>
                         <div>
                             <h2 className="m-auto main-brand mb-3">Üdvözlünk az oldalon!</h2>
-                            <p className="m-auto">A bakelitlemezek szerelmeseinek és zenebarátoknak szóló elsőszámú online célponton! Útunk egy egyszerű, 
+                            <p className="m-auto main-brand">A bakelitlemezek szerelmeseinek és zenebarátoknak szóló elsőszámú online célponton! Útunk egy egyszerű, 
                             mégis szenvedélyes célból indult: a ritkább, exotikus bakelit lemezeket szeretnénk eljuttatni mindenki számára, 
                             megőrizve az analóg hang élményét a digitális korban. </p>
                             <h2 className="m-auto main-brand mb-3 mt-5">Mi a küldetésünk?</h2>
-                            <p className="m-auto"> Scratch 'N Spin Records-nál arra törekszünk, hogy egy sokszínű és magas minőségű bakelitlemez-kollekciót állítsunk össze, 
+                            <p className="m-auto main-brand"> Scratch 'N Spin Records-nál arra törekszünk, hogy egy sokszínű és magas minőségű bakelitlemez-kollekciót állítsunk össze, 
                             amely átível a zenei műfajokon és korokon. 
                             Célunk, hogy felülmúlhatatlan vásárlási élményt nyújtsunk vásárlóinknak, kényelmet és nosztalgiát egyaránt kínálva. </p>
                             <p className="m-auto main-brand">
@@ -33,7 +33,7 @@ function About(){
                         </div>
                     <div>
                         <h2 className="m-auto main-brand mb-3 mt-5">Miért is hoztuk létre a Scratch 'N Spin Recordsot?</h2>
-                        <p className="m-auto">Egy olyan korban, amikor a digitális streamelés uralkodik, felismertük a vinyllemezek tartós vonzerejét. 
+                        <p className="m-auto main-brand">Egy olyan korban, amikor a digitális streamelés uralkodik, felismertük a vinyllemezek tartós vonzerejét. 
                             A lemez megfogása, a lejátszóra helyezése és a meleg, gazdag hang, amit produkál, mind része egy egyedi és élvezetes hallgatási élménynek. 
                             A Scratch 'N Spin Records abból a vágyból született, hogy ezt a hagyományt életben tartsuk és mindenkinek hozzáférhetővé tegyük.</p>
                         <p className="m-auto main-brand">Minden támogatást és lelkesedőért nagyon hálásak vagyunk és, ha meg is fogtunk a bemutatkozásunkal akkor tarts velünk nyugodtan!</p>
