@@ -51,10 +51,10 @@ function Profile(){
     return(
         <div className='all-container'>
             <div className='card'>
-                <div className='flex justify-content-center bg-success '>
-                    <div className='dropdown'>
+                <div className='justify-content-center bg-success '>
+                    <div className='dropdown img-thumbnail'>
                         <img className='droppic' src={`../src/pfp_pics/${userData.user_pfp_id}.png`} alt="nincs profilkép" />
-                        <div className='dropdown-content'>
+                        {/* <div className='dropdown-content'>
                             <Link to={`changepfp/${userData.user_id}/1`}><img src="../src/pfp_pics/1.png" alt="" /></Link>
                             <Link to={`changepfp/${userData.user_id}/2`}><img src="../src/pfp_pics/2.png" alt="" /></Link>
                             <Link to={`changepfp/${userData.user_id}/3`}><img src="../src/pfp_pics/3.png" alt="" /></Link>
@@ -67,9 +67,9 @@ function Profile(){
                             <Link to={`changepfp/${userData.user_id}/10`}><img src="../src/pfp_pics/10.png" alt="" /></Link>
                             <Link to={`changepfp/${userData.user_id}/11`}><img src="../src/pfp_pics/11.png" alt="" /></Link>
                             <Link to={`changepfp/${userData.user_id}/12`}><img src="../src/pfp_pics/12.png" alt="" /></Link>
-                        </div>
+                        </div> */}
                     </div>
-                    <div className=''>
+                    <div className='bg-info'>
                         <h2>Üdv, {userData.user_first_name}</h2>
                         <h3>Adatok:</h3>
                         <h4>{userData.user_email}</h4>

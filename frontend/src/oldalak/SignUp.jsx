@@ -74,8 +74,8 @@ function SignUp() {
 
     return (
         <>
-            <div className='d-flex justify-content-center all-container'>
-                <div className='card p-3 w-50 '>
+            <div className='d-flex justify-content-center all-container' id='signup-container'>
+                <div className='card p-3 w-75 '>
                     <form onSubmit={Register}>
                         <input type="text"
                         className='m-1'

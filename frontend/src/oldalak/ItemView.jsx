@@ -93,7 +93,7 @@ const ItemView = () => {
 
                 </div>
             </div>
-                    <MoreLikeThis to={`/vinyls/${listing.genre_id}`}/>
+                    {/* <MoreLikeThis to={`/vinyls/${listing.genre_id}`}/> */}
         </div>
     )
 }

@@ -35,7 +35,7 @@ const MoreLikeThis = () => {
             <div className='horizontal-scroll'>
 
                 <div className='border'>
-
+                    
                     <div key={vinyl.vinyl_id}>
 
 
