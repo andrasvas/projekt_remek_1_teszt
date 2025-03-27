@@ -32,7 +32,7 @@ function Cart(){
 
     const GetTotalPrice = (list) => {
         return list.reduce((sum, item) => sum + item.price, 0);
-    };
+    }
 
     const OrderItems = () => {
 
@@ -62,14 +62,35 @@ function Cart(){
         
     },[userToken])
 
+    const DeleteItem = (vinylId) => {
+        axios.delete(`http://localhost:5000/delete_cart_item/${vinylId}`,{
+            headers: {
+                Authorization: `Bearer ${userToken}`
+            }
+        })
+        .then(response => {
+            if(response){
+                console.log(response)
+                alert(response.data.message)
+                window.location.href = "/cart"
+            }
+        })
+        .catch(err => {
+            if(err){
+                console.log(err)
+            }
+        })
+    }
+
     return(
         <div className='all-container'>
             {data.length > 0 ? (
                 data.map((item) => (
-                    <div key={item.vinyl_id} id={item.vinyl_id}>
+                    <div key={item.vinyl_id}>
                         <h4>{item.vinyl_name}</h4>
                         <p>Mennyiség: {item.qty}</p>
                         <p>Ár: {item.price}$</p>
+                        <button onClick={() => DeleteItem(item.vinyl_id)}>Törlés</button>
                     </div>
                 ))
                 

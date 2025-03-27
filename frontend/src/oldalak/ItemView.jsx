@@ -39,6 +39,7 @@ const ItemView = () => {
             .then(response => {
                 if(response){
                     console.log(response)
+                    window.location.href = "/cart"
                 }
             })
             .catch(error => {
