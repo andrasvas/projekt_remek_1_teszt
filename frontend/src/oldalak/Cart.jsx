@@ -63,11 +63,13 @@ function Cart(){
     },[userToken])
 
     const DeleteItem = (vinylId) => {
-        axios.delete(`http://localhost:5000/delete_cart_item/${vinylId}`,{
-            headers: {
-                Authorization: `Bearer ${userToken}`
-            }
-        })
+        axios.delete(`http://localhost:5000/delete_cart_item`,{
+        headers: {
+            Authorization: `Bearer ${userToken}`
+        },
+        data: {
+            vinyl_id: vinylId
+        }})
         .then(response => {
             if(response){
                 console.log(response)
@@ -86,7 +88,7 @@ function Cart(){
         <div className='all-container'>
             {data.length > 0 ? (
                 data.map((item) => (
-                    <div key={item.vinyl_id}>
+                    <div id={item.vinyl_id} key={item.vinyl_id}>
                         <h4>{item.vinyl_name}</h4>
                         <p>Mennyiség: {item.qty}</p>
                         <p>Ár: {item.price}$</p>

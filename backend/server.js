@@ -298,11 +298,11 @@ app.post('/addtocart', async function(req,res){
     }
 })
 
-app.delete('/delete_cart_item/:itemId',async function(req,res){
-    const {vinylId} = req.params
+app.delete('/delete_cart_item',async function(req,res){
+    const vinyl_id = req.body.vinyl_id
     const authHeader = req.headers['authorization']
 
-    console.log(vinylId)
+    console.log(vinyl_id, "vinyl id-je")
 
     if(!authHeader || !authHeader.startsWith("Bearer ")){
         console.error("Sikertelen meghivás.")
@@ -343,12 +343,13 @@ app.delete('/delete_cart_item/:itemId',async function(req,res){
 
             db.query(`DELETE FROM cart_item
             WHERE cart_item.vinyl_id = ?
-            AND cart_item.cart_id = ?`,[vinylId,cartId],(err,result) => {
+            AND cart_item.cart_id = ?`,[vinyl_id,cartId],(err,result) => {
                 if(err){
                     console.log(err)
                     return res.status(500).json({error: "Nem sikerült kitörölni a kosárból!"})
                 }
                 return res.status(200).json({message: "Kosár elem kitörölve!"})
+                
             })
 
         })
