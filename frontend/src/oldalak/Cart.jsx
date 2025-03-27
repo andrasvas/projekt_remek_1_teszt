@@ -17,7 +17,7 @@ function Cart(){
                 if(response){
                     console.log(response)
                     alert(response.data.message)
-                    window.location.href = "/cart"
+                    window.location.href = "/"
                 }
             })
             .catch(err => {

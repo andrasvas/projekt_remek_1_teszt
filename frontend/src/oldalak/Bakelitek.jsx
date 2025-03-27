@@ -70,7 +70,7 @@ const Vinyls = () => {
                             </div>
 
                             <div className='row'>
-                                <h4>Ár: ${vinyl.price}</h4>
+                                <h4 className='main-brand'>Ár: ${vinyl.price}</h4>
                                 <Link className='purchaseBtn main-brand' to={`/item/${vinyl.vinyl_id}`}>Megnézem</Link>
                             </div>
                         </div>

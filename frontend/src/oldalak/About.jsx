@@ -41,7 +41,7 @@ function About(){
                     </div>
                 </div>
         </div>  
-            <div className="container text-center">
+            <div className="container bg-info text-center">
                     <div className="mt-5 horizontal">
                         <div className="g-col-6 p-3 about-item" >
                             <h2 className="default-text m-auto">Gombos Benedek Zsombor</h2>
@@ -83,6 +83,9 @@ function About(){
                             </div>
                             </div>
                         </div>
+                    </div>
+                    <div className="container bg-info text-center">
+                        <h1>Social media ikonok az <a href="https://icons8.com/"></a></h1>
                     </div>
             </div>
     )
