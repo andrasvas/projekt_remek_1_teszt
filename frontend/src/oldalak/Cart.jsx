@@ -95,15 +95,20 @@ function Cart(){
                 ))
                 
             ):(
-                <p>A kosár üres.</p>
+                <div className="flex flex-column justify-content-center align-items-center">
+                    <div className="flex flex-column justify-content-center align-items-center w-50" style={{height: "45vh"}}>
+                        <img className="sad-cat" src="./src/assets/sad_cat_transparent.png" alt="" style={{width: "200px"}}/>
+                        <p>A kosár üres.</p>                        
+                    </div>
+                </div>
             )}
             
             <div>
                 {data.length > 0 ? (
                     <div>
                         <p>Teljes ár: {GetTotalPrice(data)}$</p>
-                        <button onClick={ClearCart}>Kosár törlése</button>
-                        <button>Megrendelés</button>
+                        <button className='purchaseBtn main-brand m-3' onClick={ClearCart}>Kosár törlése</button>
+                        <button className='purchaseBtn main-brand m-3'>Megrendelés</button>
                     </div>
                 ):(
                     null
