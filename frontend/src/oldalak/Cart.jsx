@@ -9,18 +9,33 @@ function Cart(){
     const [data,setData] = useState([])
 
     const ClearCart = () => {
-        axios.delete("http://localhost:5000/clearcart",{headers:{Authorization: `Bearer ${userToken}`}})
-        .then(response => {
-            if(response){
-                console.log(response)
-                alert(response.data.message)
-                window.location.href = "/cart"
-            }
-        })
-        .catch(err => {
-            if(err)
-            console.log(err)
-        })
+        const confirmClear = confirm("Biztosan törölni szeretnéd a kosarad teljes tartalmát?")
+
+        if(confirmClear === true){
+            axios.delete("http://localhost:5000/clearcart",{headers:{Authorization: `Bearer ${userToken}`}})
+            .then(response => {
+                if(response){
+                    console.log(response)
+                    alert(response.data.message)
+                    window.location.href = "/cart"
+                }
+            })
+            .catch(err => {
+                if(err)
+                console.log(err)
+            })
+        }
+        else{
+            console.log("Kosár törlés megszakitva")
+        } 
+    }
+
+    const GetTotalPrice = (list) => {
+        return list.reduce((sum, item) => sum + item.price, 0);
+    };
+
+    const OrderItems = () => {
+
     }
 
     useEffect(() => {
@@ -53,17 +68,22 @@ function Cart(){
                 data.map((item) => (
                     <div key={item.vinyl_id} id={item.vinyl_id}>
                         <h4>{item.vinyl_name}</h4>
-                        <p>Ár: {item.price}$</p>
                         <p>Mennyiség: {item.qty}</p>
+                        <p>Ár: {item.price}$</p>
                     </div>
                 ))
+                
             ):(
                 <p>A kosár üres.</p>
             )}
             
             <div>
                 {data.length > 0 ? (
-                    <button onClick={ClearCart}>Kosár törlése</button>
+                    <div>
+                        <p>Teljes ár: {GetTotalPrice(data)}$</p>
+                        <button onClick={ClearCart}>Kosár törlése</button>
+                        <button>Megrendelés</button>
+                    </div>
                 ):(
                     null
                 )}
