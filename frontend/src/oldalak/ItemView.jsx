@@ -38,11 +38,13 @@ const ItemView = () => {
                     }
                 })
                 .then(response => {
+                    console.log("Körte")
                     if(response){
                         console.log(response)
                         window.location.href = "/cart"
                     }
                     else{
+                        console.log(response)
                         window.location.href = "/signin"
                     }
                 })
