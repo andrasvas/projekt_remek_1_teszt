@@ -1,5 +1,4 @@
 import "./Bakelitek.css"
-import "./About.css"
 import {Link} from 'react-router-dom'
 import fbIcon from '../assets/icons8-facebook.svg'
 import instaIcon from '../assets/icons8-instagram.svg'
@@ -38,17 +37,17 @@ function About(){
                             A Scratch 'N Spin Records abból a vágyból született, hogy ezt a hagyományt életben tartsuk és mindenkinek hozzáférhetővé tegyük.</p>
                         <p className="m-auto main-brand">Minden támogatást és lelkesedőért nagyon hálásak vagyunk és, ha meg is fogtunk a bemutatkozásunkal akkor tarts velünk nyugodtan!</p>
                         <p className="m-auto secondary-brand">Kellemes lemezlejátszást!</p>
-                        <div className="bg-warning row">
-                            <div className="col-3 bg-info"></div>
-                            <img className="col-6" src="./src/assets/cat_waving.png" alt="" />
-                            <div className="col-3 bg-danger"></div>
+                        <div className="row">
+                            <div className="col-3 col-md-4"></div>
+                            <img className="col-6 col-md-4" src="./src/assets/cat_waving.png" alt="" />
+                            <div className="col-3 col-md-4"></div>
                         </div>
                     </div>
                 </div>
         </div>  
-            <div className="container bg-info text-center">
-                    <div className="mt-5 horizontal">
-                        <div className="g-col-6 p-3 about-item" >
+            <div className="container">
+                <div className="row">
+                        <div className="col-4 p-3" >
                             <h2 className="default-text m-auto">Gombos Benedek Zsombor</h2>
                             <div className=" d-flex justify-content-center">
                                 <div className='h-25 mb-4'>
@@ -60,7 +59,7 @@ function About(){
                             </div>
                         </div>
 
-                        <div className="g-col-6 p-3">
+                        <div className="col-4 p-3">
                             <h2 className="m-auto">Vasilescu András László</h2>
                             <div className="d-flex justify-content-center  ">
                                 <div className='h-25 mb-4'>
@@ -70,11 +69,10 @@ function About(){
                                     <a target='_blank' rel='noopener noreferrer' href="https://github.com/andrasvas"><img className='w-75 black-icon' src={githubIcon} alt="" /></a>
                                 </div>
                             </div>
-                            
                         </div>
-                        <div className="g-col-6 p-3">
+                            
+                        <div className="col-4 p-3">
                             <h2 className="m-auto">Oláh Gergő</h2>
-
                             <div className="d-flex justify-content-center">
                                 <div className='h-25 mb-4'>
                                     <a target='_blank' rel='noopener noreferrer' href="https://www.instagram.com/atreyoos?igsh=ang4NWs0Y2hiZzVl"><img className='w-75 black-icon' src={instaIcon} alt="" /></a>
@@ -86,11 +84,15 @@ function About(){
                                     <a target='_blank' rel='noopener noreferrer' href="https://github.com/OlaGergo"><img className='w-75 black-icon' src={githubIcon} alt="" /></a>
                                 </div>
                             </div>
-                            </div>
                         </div>
+                </div>
                     </div>
-                    <div className="container bg-info text-center">
-                        <h1>Social media ikonok az <a href="https://icons8.com/"></a></h1>
+                    <div className="bg-danger container">
+                        <div className="row">
+                            <h3 className="m-auto my-2">Social media ikonok: <a target="_blank" href="https://icons8.com/">Icons8</a></h3>
+                            <h3 className="m-auto my-2">Fontok: <a target="_blank" href="https://www.dafont.com/">DaFont</a></h3>
+                            <h5 className="bg-warning m-auto my-4">Minden album tartalma a mű készítőjének/készítőinek a tulajdonában van.</h5>
+                        </div>
                     </div>
             </div>
     )
