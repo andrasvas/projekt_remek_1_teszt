@@ -59,7 +59,7 @@ function Cart(){
             })
         }
         else{
-            alert("Jelentkezz be!")
+            window.location.href = "/signin"
         }
         
     },[userToken])

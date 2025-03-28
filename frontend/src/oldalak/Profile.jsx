@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 
 function Profile(){
     const userToken = window.localStorage.getItem("userToken")
-
     const [userData,setUserData] = useState({
         user_email:"",
         user_pfp_id:"",
@@ -25,7 +24,7 @@ function Profile(){
 
     useEffect(() => {
         if (userToken) {
-          console.log("Token létezik:", token)
+          console.log("Token létezik:", userToken)
         } else {
           console.log("Nincs token, irány a bejelentkezés!")
           window.location.href = "/signin"
