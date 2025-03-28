@@ -16,7 +16,7 @@ function About(){
     return(
         <div className='all-container'>
                 <div>
-                    <div>
+                    <div className="container">
                         <div>
                             <h2 className="m-auto main-brand mb-3">Üdvözlünk az oldalon!</h2>
                             <p className="m-auto main-brand">A bakelitlemezek szerelmeseinek és zenebarátoknak szóló elsőszámú online célponton! Útunk egy egyszerű, 
@@ -38,6 +38,11 @@ function About(){
                             A Scratch 'N Spin Records abból a vágyból született, hogy ezt a hagyományt életben tartsuk és mindenkinek hozzáférhetővé tegyük.</p>
                         <p className="m-auto main-brand">Minden támogatást és lelkesedőért nagyon hálásak vagyunk és, ha meg is fogtunk a bemutatkozásunkal akkor tarts velünk nyugodtan!</p>
                         <p className="m-auto secondary-brand">Kellemes lemezlejátszást!</p>
+                        <div className="bg-warning row">
+                            <div className="col-3 bg-info"></div>
+                            <img className="col-6" src="./src/assets/cat_waving.png" alt="" />
+                            <div className="col-3 bg-danger"></div>
+                        </div>
                     </div>
                 </div>
         </div>  

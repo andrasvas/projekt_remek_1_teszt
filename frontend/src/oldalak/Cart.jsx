@@ -1,8 +1,10 @@
 import React from "react";
 import './Bakelitek.css'
+import './Cart.css'
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
+import {FaPlus, FaMinus} from "react-icons/fa"
 
 function Cart(){
     const userToken = window.localStorage.getItem("userToken")
@@ -88,24 +90,39 @@ function Cart(){
         <div className='all-container'>
             {data.length > 0 ? (
                 data.map((item) => (
-                    <div id={item.vinyl_id} key={item.vinyl_id}>
-                        <h4>{item.vinyl_name}</h4>
-                        <p>Mennyiség: {item.qty}</p>
-                        <p>Ár: {item.price}$</p>
-                        <button onClick={() => DeleteItem(item.vinyl_id)}>Törlés</button>
+                    <div key={item.vinyl_id} className="card m-3 row">
+                        <div>
+                            
+                        </div>
+                            <img className="cart_img border rounded border-black" src={`./src/album_covers/${item.image_path}`} alt="" />
+                        <div>
+                            <h4>{item.vinyl_name}</h4>
+                            <p>Ár: {item.price}$</p>
+                            <button onClick={() => DeleteItem(item.vinyl_id)}>Törlés</button>
+                        </div>
+                        <div className="mx-5">
+                            <button><FaPlus/></button>
+                            <p>Mennyiség: {item.qty}</p>
+                            <button><FaMinus/></button>
+                        </div>
                     </div>
                 ))
                 
             ):(
-                <p>A kosár üres.</p>
+                <div className="flex flex-column justify-content-center align-items-center">
+                    <div className="flex flex-column justify-content-center align-items-center w-50" style={{height: "45vh"}}>
+                        <img className="sad-cat" src="./src/assets/sad_cat_transparent.png" alt="" style={{width: "200px"}}/>
+                        <p>A kosár üres.</p>                        
+                    </div>
+                </div>
             )}
             
             <div>
                 {data.length > 0 ? (
                     <div>
                         <p>Teljes ár: {GetTotalPrice(data)}$</p>
-                        <button onClick={ClearCart}>Kosár törlése</button>
-                        <button>Megrendelés</button>
+                        <button className='purchaseBtn main-brand m-3' onClick={ClearCart}>Kosár törlése</button>
+                        <button className='purchaseBtn main-brand m-3'>Megrendelés</button>
                     </div>
                 ):(
                     null
