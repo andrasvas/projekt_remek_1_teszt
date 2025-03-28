@@ -13,11 +13,13 @@ const ItemView = () => {
     const [listing, setListing] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null)
+    const [qty,setQty] = useState(1)
     const userToken = window.localStorage.getItem("userToken")
 
     useEffect(() => {
         axios.get(`http://127.0.0.1:5000/vinyls/${itemId}`)
             .then(response => {
+                console.log(response)
                 setListing(response.data); 
                 setLoading(false);
             })
@@ -26,6 +28,11 @@ const ItemView = () => {
                 setLoading(false);
             })
     }, [itemId]);
+
+    const HandleChange = (e) =>{
+        setQty(e.target.value)
+        console.log(qty)
+    }
 
     const AddToCart = () =>{
         try{
@@ -83,6 +90,10 @@ const ItemView = () => {
 
                     <div className='row'>
                         <h4>Ár: ${listing.price}</h4>
+                        <input type="number"
+                        min={1}
+                        value={qty}
+                        onChange={HandleChange} />
                         <button className='purchaseBtn main-brand' onClick={AddToCart}>Kosárba vele!</button>
                     </div>
                 </div>
