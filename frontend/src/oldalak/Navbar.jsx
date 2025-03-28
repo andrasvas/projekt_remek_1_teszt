@@ -9,7 +9,7 @@ import snpLogo from '../assets/a_logo.png'
 import cartIcon from '../assets/shopping-cart-outline.svg'
 
 function Navbar(){
-    var isLoggedIn = window.localStorage.getItem("isLoggedIn")
+    var isLoggedIn = window.localStorage.getItem("userToken")
     const navRef = useRef();
 
     const showNavbar = () =>{

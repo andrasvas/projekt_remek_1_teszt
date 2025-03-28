@@ -28,7 +28,6 @@ function SignIn(){
             if(response){
                 console.log("Sikeres bejelentkezés!")
                 alert("Sikeres bejelentkezés!")
-                window.localStorage.setItem("isLoggedIn", true)
                 window.localStorage.setItem("userToken", response.data.token)
                 window.location.href = '/'
             }

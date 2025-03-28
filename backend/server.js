@@ -27,7 +27,7 @@ async function hashPassword(password) {
 
 const db = mysql.createConnection({
     host: "127.0.0.1",
-    port: "3307",
+    port: "3306",
     user: "root",
     password: "",
     database: "scratch_and_spin_db"
@@ -178,7 +178,7 @@ app.get('/profile', async function(req,res){
     const authHeader = req.headers['authorization']
     
     if(!authHeader || !authHeader.startsWith("Bearer ")){
-        return res.status(401).json({error: "Token nem lett megadva!"})
+        return res.status(403).json({error: "Token nem lett megadva!"})
     }
 
     const token = authHeader.split(" ")[1]
