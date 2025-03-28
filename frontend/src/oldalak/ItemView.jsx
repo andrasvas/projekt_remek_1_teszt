@@ -77,8 +77,8 @@ const ItemView = () => {
         
         <div className="row all-container">
 
-            <div className='col-md-4 col-lg-3 '>
-                <div className='row p-0'>
+            <div className='col-md-4 col-lg-3'>
+                <div className='row p-0 m-0'>
                 <div key={listing.vinyl_id} className='card m-0 p-md-3'>
 
                     <div className='main-brand'>

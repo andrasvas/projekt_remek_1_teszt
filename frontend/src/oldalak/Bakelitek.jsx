@@ -54,6 +54,7 @@ const Vinyls = () => {
                 placeholder="Kereső"
                 value={term}
                 onChange={searchChange}
+                className='m-4 search-bar main-brand border-3 p-1'
             />
 
             <div className='container-fluid'>
