@@ -298,11 +298,11 @@ app.post('/addtocart', async function(req,res){
     }
 })
 
-app.delete('/delete_cart_item/:itemId',async function(req,res){
-    const {vinylId} = req.params
+app.delete('/delete_cart_item',async function(req,res){
+    console.log(req.body, "Request body")
+    console.log(req.headers, "Request headers")
     const authHeader = req.headers['authorization']
-
-    console.log(vinylId)
+    const vinylId = req.body.vinyl_id;
 
     if(!authHeader || !authHeader.startsWith("Bearer ")){
         console.error("Sikertelen meghivás.")
@@ -353,8 +353,8 @@ app.delete('/delete_cart_item/:itemId',async function(req,res){
 
         })
     }
-    catch{
-
+    catch(err){
+        console.log(err)
     }
 })
 

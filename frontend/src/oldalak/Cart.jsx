@@ -63,9 +63,12 @@ function Cart(){
     },[userToken])
 
     const DeleteItem = (vinylId) => {
-        axios.delete(`http://localhost:5000/delete_cart_item/${vinylId}`,{
+        axios.delete(`http://localhost:5000/delete_cart_item`, {
             headers: {
                 Authorization: `Bearer ${userToken}`
+            },
+            data: {
+                vinyl_id: vinylId
             }
         })
         .then(response => {
