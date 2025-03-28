@@ -47,7 +47,7 @@ function About(){
         </div>  
             <div className="container">
                 <div className="row">
-                        <div className="col-4 p-3" >
+                        <div className="col-sm-4 p-3" >
                             <h2 className="default-text m-auto">Gombos Benedek Zsombor</h2>
                             <div className=" d-flex justify-content-center">
                                 <div className='h-25 mb-4'>
@@ -59,7 +59,7 @@ function About(){
                             </div>
                         </div>
 
-                        <div className="col-4 p-3">
+                        <div className="col-sm-4 p-3">
                             <h2 className="m-auto">Vasilescu András László</h2>
                             <div className="d-flex justify-content-center  ">
                                 <div className='h-25 mb-4'>
@@ -71,7 +71,7 @@ function About(){
                             </div>
                         </div>
                             
-                        <div className="col-4 p-3">
+                        <div className="col-sm-4 p-3">
                             <h2 className="m-auto">Oláh Gergő</h2>
                             <div className="d-flex justify-content-center">
                                 <div className='h-25 mb-4'>
@@ -87,11 +87,12 @@ function About(){
                         </div>
                 </div>
                     </div>
-                    <div className="bg-danger container">
+                    <div className="container">
                         <div className="row">
                             <h3 className="m-auto my-2">Social media ikonok: <a target="_blank" href="https://icons8.com/">Icons8</a></h3>
                             <h3 className="m-auto my-2">Fontok: <a target="_blank" href="https://www.dafont.com/">DaFont</a></h3>
-                            <h5 className="bg-warning m-auto my-4">Minden album tartalma a mű készítőjének/készítőinek a tulajdonában van.</h5>
+                            <h3 className="m-auto my-2">Egyéb ikonok: <a target="_blank" href="https://fontawesome.com/">Font Awesome</a></h3>
+                            <h5 className=" m-auto my-4">Minden album tartalma a mű készítőjének/készítőinek a tulajdonában van.</h5>
                         </div>
                     </div>
             </div>
