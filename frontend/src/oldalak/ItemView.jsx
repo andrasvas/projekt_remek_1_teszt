@@ -29,26 +29,35 @@ const ItemView = () => {
 
     const AddToCart = () =>{
         try{
-            axios.post("http://localhost:5000/addtocart", {
-                vinyl_id: listing.vinyl_id
-            }, {
-                headers: {
-                    Authorization: `Bearer ${userToken}`
-                }
-            })
-            .then(response => {
-                if(response){
-                    console.log(response)
-                    window.location.href = "/cart"
-                }
-            })
-            .catch(error => {
-                console.error(error)
-            })
-        }
+            if(userToken){
+                axios.post("http://localhost:5000/addtocart", {
+                    vinyl_id: listing.vinyl_id
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${userToken}`
+                    }
+                })
+                .then(response => {
+                    if(response){
+                        console.log(response)
+                        window.location.href = "/cart"
+                    }
+                    else{
+                        window.location.href = "/signin"
+                    }
+                })
+                .catch(error => {
+                    console.error(error)
+                })
+            }
+            else{
+                window.location.href = "/signin"
+            }
+            }
         catch(err){
             console.log(err)
         }
+            
     }
 
     if (loading) return <p>Kérem várjon...</p>
