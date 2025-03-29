@@ -27,7 +27,7 @@ async function hashPassword(password) {
 
 const db = mysql.createConnection({
     host: "127.0.0.1",
-    port: "3307",
+    port: "3306",
     user: "root",
     password: "",
     database: "scratch_and_spin_db"
@@ -212,6 +212,7 @@ app.get('/profile', async function(req,res){
 app.post('/addtocart', async function(req,res){
     console.log("Hozzáadás a kosárhoz...")
     const vinyl_id = req.body.vinyl_id
+    const vinyl_qty = req.body.vinyl_qty
     const authHeader = req.headers['authorization']
 
     if(!authHeader || !authHeader.startsWith("Bearer ")){
@@ -265,7 +266,7 @@ app.post('/addtocart', async function(req,res){
             db.query(`SELECT cart_id,vinyl_id,qty FROM cart_item WHERE cart_id = ? AND vinyl_id = ?`,[cartId,vinyl_id], (err,results) => {
                 if(results.length == 0){
                     console.log("Nincs még benne, kosárhoz adás")
-                    db.query(`INSERT INTO cart_item (cart_id,vinyl_id,qty) VALUES (?,?,?)`,[cartId,vinyl_id,1],(err,result) => {
+                    db.query(`INSERT INTO cart_item (cart_id,vinyl_id,qty) VALUES (?,?,?)`,[cartId,vinyl_id,vinyl_qty],(err,result) => {
                         if(err){
                             console.log(err)
                             return res.status(500).json({error: "Nem sikerült hozzáadni a kosárhoz."})
@@ -277,8 +278,8 @@ app.post('/addtocart', async function(req,res){
                 }
                 else{
                     db.query(`UPDATE cart_item
-                    SET qty = (qty+1)
-                    WHERE cart_id = ? AND vinyl_id = ?`,[cartId,vinyl_id],(err,result) =>{
+                    SET qty = (qty+?)
+                    WHERE cart_id = ? AND vinyl_id = ?`,[vinyl_qty,cartId,vinyl_id],(err,result) =>{
                         if(err){
                             console.log(err)
                             return res.status(500).json({error: "Nem sikerült hozzáadni a kosárhoz."})

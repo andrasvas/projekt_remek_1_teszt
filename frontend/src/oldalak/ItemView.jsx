@@ -31,14 +31,14 @@ const ItemView = () => {
 
     const HandleChange = (e) =>{
         setQty(e.target.value)
-        console.log(qty)
     }
 
     const AddToCart = () =>{
         try{
             if(userToken){
                 axios.post("http://localhost:5000/addtocart", {
-                    vinyl_id: listing.vinyl_id
+                    vinyl_id: listing.vinyl_id,
+                    vinyl_qty: qty
                 }, {
                     headers: {
                         Authorization: `Bearer ${userToken}`
