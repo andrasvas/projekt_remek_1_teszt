@@ -360,6 +360,67 @@ app.delete('/delete_cart_item',async function(req,res){
     }
 })
 
+app.put('/update_cart', async function(req,res){
+    const authHeader = req.headers['authorization']
+    const vinylId = req.body.vinyl_id
+    const newQty = req.body.qty
+
+    if(!authHeader || !authHeader.startsWith("Bearer ")){
+        console.error("Sikertelen törlés.")
+        return res.status(401).json({error: "Token nem lett megadva!"})
+    }
+    
+    const token = authHeader.split(" ")[1]
+    console.log(`Kapott token: ${token}`)
+
+    if(!token){
+        console.log("Token nem található!")
+        return res.status(401).json({message: "Token nem található!"})
+    }
+
+    try{
+        const decodedToken = jwt.verify(token,SecretKey)
+        const userEmail = decodedToken.user_email
+
+        db.query(`SELECT cart_item.cart_id
+            FROM cart_item
+            INNER JOIN cart
+            ON cart.cart_id = cart_item.cart_id
+            INNER JOIN users
+            ON users.user_id = cart.user_id
+            WHERE users.user_email = ?`,[userEmail],(err,result) => {
+                if(err){
+                    console.log(err)
+                    return res.status(500).json({error: "Nem sikerült törölni a kosárból."})
+                }
+    
+                if(result.length == 0){
+                    console.log("Kosár nem található!")
+                    return res.status(404).json({error: "Kosár nem található!"})
+                }
+    
+                const cartId = result[0].cart_id
+                console.log(`Kosár azonosito:${cartId}`)
+
+                db.query(`UPDATE cart_item
+                    SET qty = ?
+                    WHERE cart_id = ? AND vinyl_id = ?`,[newQty,cartId,vinylId],(err,result) =>{
+                        if(err){
+                            console.log(err)
+                            return res.status(500).json({error: "Nem sikerült frissiteni a kosarat."})
+                        }
+
+                        console.log("Kosár frissítve!")
+                        return res.status(200).json({message: "Kosár sikeresen frissítve."})
+                    })
+
+            })
+    }
+    catch(err){
+
+    }
+})
+
 app.delete('/clearcart',async function(req,res){
     const authHeader = req.headers['authorization']
 

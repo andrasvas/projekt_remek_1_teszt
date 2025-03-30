@@ -33,8 +33,32 @@ function Cart(){
     }
 
     const GetTotalPrice = (list) => {
-        return list.reduce((sum, item) => sum + item.price, 0);
-    }
+        return list.reduce((sum, item) => sum + (item.price * item.qty), 0)
+    }    
+
+    const ChangeQuantity = (e, vinylId) => {
+        const newQty = parseInt(e.target.value, 10);
+        
+        if (newQty < 1) return; // Ne engedjünk 0 vagy negatív értéket
+    
+        const updatedData = data.map(item => 
+            item.vinyl_id === vinylId ? { ...item, qty: newQty } : item
+        );
+    
+        setData(updatedData);
+    
+        // Küldjük el a szervernek a frissített mennyiséget
+        axios.put("http://localhost:5000/update_cart", {
+            vinyl_id: vinylId,
+            qty: newQty
+        }, { headers: { Authorization: `Bearer ${userToken}` }})
+        .then(response => {
+            console.log(response.data.message);
+        })
+        .catch(err => {
+            console.error(err);
+        });
+    };
 
     const OrderItems = () => {
 
@@ -50,6 +74,7 @@ function Cart(){
                     if(response.data.length == 0){
                         console.log("A kosár üres")
                         setData(response.data)
+                        console.log(data)
                     }
                     else{
                         console.log(response.data)
@@ -101,9 +126,16 @@ function Cart(){
                             <button onClick={() => DeleteItem(item.vinyl_id)}>Törlés</button>
                         </div>
                         <div className="mx-5">
-                            <button><FaPlus/></button>
+                            <input 
+                            type="number" 
+                            min="1"
+                            onChange={(e) => ChangeQuantity(e, item.vinyl_id)} 
+                            value={item.qty} 
+                            name={item.vinyl_id}
+                            />
+                            {/* <button><FaPlus/></button>
                             <p>Mennyiség: {item.qty}</p>
-                            <button><FaMinus/></button>
+                            <button><FaMinus/></button> */}
                         </div>
                     </div>
                 ))
