@@ -500,7 +500,7 @@ app.get('/cart', async function(req,res){
         const decodedToken = jwt.verify(token,SecretKey)
         const userEmail = decodedToken.user_email
 
-        db.query(`SELECT vinyls.vinyl_id, vinyls.vinyl_name, vinyls.image_path,cart_item.qty,(vinyls.price*cart_item.qty) as "price",users.user_email 
+        db.query(`SELECT vinyls.vinyl_id, vinyls.vinyl_name, vinyls.image_path,cart_item.qty,vinyls.price,users.user_email 
         FROM cart_item
         INNER JOIN vinyls
         ON vinyls.vinyl_id = cart_item.vinyl_id

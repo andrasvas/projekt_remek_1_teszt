@@ -33,7 +33,7 @@ function Cart(){
     }
 
     const GetTotalPrice = (list) => {
-        return list.reduce((sum, item) => sum + (item.price * item.qty), 0)
+        return list.reduce((sum, item) => sum + (item.price * Number(item.qty || 1)), 0)
     }    
 
     const ChangeQuantity = (e, vinylId) => {
