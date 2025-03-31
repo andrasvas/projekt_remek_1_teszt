@@ -25,6 +25,9 @@ div{
     transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
     border-radius: 2px;
 }
+.secondary-accent{
+  background-color: var(--accent-second) !important;
+}
 
 .div-title{
     display: grid;
@@ -39,6 +42,7 @@ div{
       --card-bg: #c1a9f8;
       --primary: #a385e8;
       --accent: #7641f2;
+      --accent-second: #b141f2;
       }
 
       *{
@@ -60,6 +64,13 @@ div{
         transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
       }
 
+      .secondary-accent{
+        background-color: var(--accent-second);
+      }
+      .secondary-accent:hover, .secondary-accent:focus{
+        background-color: #fff;
+      }
+
       .search-bar{
         border-color: var(--accent);
       }
@@ -72,6 +83,7 @@ div{
         --card-bg: #453961;
         --primary: #341778;
         --accent: #430dbf;
+        --accent-second: #b141f2;
       }
 
       *{
@@ -93,8 +105,25 @@ div{
         transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
       }
 
+      .secondary-accent{
+        background-color: var(--accent-second);
+      }
+      .secondary-accent:hover, .secondary-accent:focus{
+        background-color: #fff;
+      }
+
       .search-bar{
         border-color: var(--accent);
       }
     }
     
+    @media only screen and (max-width: 424px) {
+      .spotify-responsive{
+        height: 152px;
+      }
+    }
+    @media only screen and (min-width: 425px){
+      .spotify-responsive{
+        height: 152px;
+      }
+    }

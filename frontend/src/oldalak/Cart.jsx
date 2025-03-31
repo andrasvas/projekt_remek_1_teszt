@@ -112,30 +112,36 @@ function Cart(){
     }
 
     return(
-        <div className='all-container'>
+        <div className='all-container container'>
             {data.length > 0 ? (
                 data.map((item) => (
-                    <div key={item.vinyl_id} className="card m-3 row">
-                        <div>
-                            
-                        </div>
-                            <img className="cart_img border rounded border-black" src={`./src/album_covers/${item.image_path}`} alt="" />
-                        <div>
-                            <h4>{item.vinyl_name}</h4>
-                            <p>Ár: {item.price}$</p>
-                            <button onClick={() => DeleteItem(item.vinyl_id)}>Törlés</button>
-                        </div>
-                        <div className="mx-5">
-                            <input 
-                            type="number" 
-                            min="1"
-                            onChange={(e) => ChangeQuantity(e, item.vinyl_id)} 
-                            value={item.qty} 
-                            name={item.vinyl_id}
-                            />
-                            {/* <button><FaPlus/></button>
-                            <p>Mennyiség: {item.qty}</p>
-                            <button><FaMinus/></button> */}
+                    <div key={item.vinyl_id} className="card m-3 container">
+                        <div className="row">
+                            <img className="cart_img border rounded border-black col-3" src={`./src/album_covers/${item.image_path}`} alt="" />
+                            <div className="container col bg-info">
+                                <div className="row bg-warning justify-content-center align-items-center">
+                                    <div className="col-8 bg-danger">
+                                        <h4>{item.vinyl_name}</h4>
+                                        <p>Ár: {item.price}$</p>
+                                    </div>
+                                    <div className="col-4">
+                                        <input
+                                            type="number" 
+                                            min="1"
+                                            onChange={(e) => ChangeQuantity(e, item.vinyl_id)} 
+                                            value={item.qty} 
+                                            name={item.vinyl_id}
+                                        />
+                                        <button className="main-brand purchaseBtn mx-2" onClick={() => DeleteItem(item.vinyl_id)}>Törlés</button>
+                                    </div>
+                                    
+                                    {/* <div>
+                                        <button><FaPlus/></button>
+                                        <p>Mennyiség: {item.qty}</p>
+                                        <button><FaMinus/></button>
+                                    </div> */}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 ))

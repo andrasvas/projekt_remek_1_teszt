@@ -25,6 +25,7 @@ function Navbar(){
 
             <nav ref={navRef} className="main-nav-container flex w-100">
                 <div className="flex nav-container">
+                    <a className="link hover-black" href="/">Main Page</a>
                     <a className="link hover-black" href="/about">About</a>
                     {isLoggedIn?<a className='link hover-black' href='/cart'>Cart</a>:null}
                     {isLoggedIn?null:<a className="link hover-black" href="/signin">Sign In</a>}

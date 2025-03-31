@@ -94,7 +94,7 @@ const ItemView = () => {
                         min={1}
                         value={qty}
                         onChange={HandleChange} />
-                        <button className='purchaseBtn main-brand' onClick={AddToCart}>Kosárba vele!</button>
+                        <Link className='purchaseBtn main-brand' onClick={AddToCart}>Kosárba</Link>
                     </div>
                 </div>
                 </div>
@@ -111,7 +111,7 @@ const ItemView = () => {
                     <p className='m-0 h4'>Lemez mérete: {listing.vinyl_size} ujj</p>
                     <p className='m-0 mb-2 h4'>Kiadási év: {listing.vinyl_release}</p>
                     
-                    <Spotify height={"152px"} wide link={`${listing.spotify_link}`} />
+                    <Spotify className='spotify-responsive' wide link={`${listing.spotify_link}`} />
 
 
                 </div>

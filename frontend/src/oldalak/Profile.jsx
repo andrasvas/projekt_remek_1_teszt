@@ -52,11 +52,10 @@ function Profile(){
 
     return(
         <div className='all-container'>
-            <div className='card'>
-                <div className='justify-content-center bg-success '>
-                    <div className='dropdown img-thumbnail'>
-                        <img className='droppic' src={`../src/pfp_pics/${userData.user_pfp_id}.png`} alt="nincs profilkép" />
-                        {/* <div className='dropdown-content'>
+            <div className='card p-4'>
+                <div className='m-0 p-0 row'>
+                    <img className='droppic col-md-4 col-xs-1 p-1 img-thumbnail' src={`../src/pfp_pics/${userData.user_pfp_id}.png`} alt="nincs profilkép" />
+                    <div className='dropdown-content position-absolute'>
                             <Link to={`changepfp/${userData.user_id}/1`}><img src="../src/pfp_pics/1.png" alt="" /></Link>
                             <Link to={`changepfp/${userData.user_id}/2`}><img src="../src/pfp_pics/2.png" alt="" /></Link>
                             <Link to={`changepfp/${userData.user_id}/3`}><img src="../src/pfp_pics/3.png" alt="" /></Link>
@@ -69,18 +68,24 @@ function Profile(){
                             <Link to={`changepfp/${userData.user_id}/10`}><img src="../src/pfp_pics/10.png" alt="" /></Link>
                             <Link to={`changepfp/${userData.user_id}/11`}><img src="../src/pfp_pics/11.png" alt="" /></Link>
                             <Link to={`changepfp/${userData.user_id}/12`}><img src="../src/pfp_pics/12.png" alt="" /></Link>
-                        </div> */}
-                    </div>
-                    <div className='bg-info'>
-                        <h2>Üdv, {userData.user_first_name}</h2>
-                        <h3>Adatok:</h3>
-                        <h4>{userData.user_email}</h4>
-                        <h4>{userData.user_first_name}</h4>
-                        <h4>{userData.user_last_name}</h4>
+                        </div>
+                    <div className='col container'>
+                        <div className='mb-4'>
+                                <h2>Üdv, {userData.user_first_name}</h2>
+                                <h3>Adatok:</h3>
+                        </div>
+                        <div className='mb-2'>
+                            <h4>{userData.user_email}</h4>
+                            <h4>{userData.user_first_name}</h4>
+                            <h4>{userData.user_last_name}</h4>
+                        </div>
                     </div>
                 </div>
+                <div>
+                    <button className='main-brand purchaseBtn mx-3' onClick={LogOut}>Kijelentkezés</button>
+                    <button className='main-brand purchaseBtn mx-3' onClick={LogOut}>Jelszó megváltoztatása</button>
+                </div>
 
-            <button onClick={LogOut}>Kijelentkezés</button>
             </div>
         </div>
     )
