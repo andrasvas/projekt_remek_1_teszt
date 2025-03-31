@@ -29,6 +29,11 @@ div{
   background-color: var(--accent-second) !important;
 }
 
+.dropdown-content{
+  display: none;
+  position: absolute;
+}
+
 .div-title{
     display: grid;
     place-items: center;

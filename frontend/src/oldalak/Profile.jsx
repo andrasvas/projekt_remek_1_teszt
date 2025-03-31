@@ -54,8 +54,8 @@ function Profile(){
         <div className='all-container'>
             <div className='card p-4'>
                 <div className='m-0 p-0 row'>
-                    <img className='droppic col-md-4 col-xs-1 p-1 img-thumbnail' src={`../src/pfp_pics/${userData.user_pfp_id}.png`} alt="nincs profilkép" />
-                    <div className='dropdown-content position-absolute'>
+                    <img className='droppic col-md-4 col-xs-1 p-1 img-thumbnail' onClick={showPfp} src={`../src/pfp_pics/${userData.user_pfp_id}.png`} alt="nincs profilkép" />
+                    <div className='dropdown-content'>
                             <Link to={`changepfp/${userData.user_id}/1`}><img src="../src/pfp_pics/1.png" alt="" /></Link>
                             <Link to={`changepfp/${userData.user_id}/2`}><img src="../src/pfp_pics/2.png" alt="" /></Link>
                             <Link to={`changepfp/${userData.user_id}/3`}><img src="../src/pfp_pics/3.png" alt="" /></Link>

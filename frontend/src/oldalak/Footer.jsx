@@ -8,6 +8,7 @@ import tiktokIcon from '../assets/icons8-tiktok.svg'
 import twitterIcon from '../assets/icons8-twitter-bird.svg'
 import youtubeIcon from '../assets/icons8-youtube.svg'
 import githubIcon from '../assets/icons8-github.svg'
+import {FaTwitter, FaFacebook, FaYoutube, FaInstagram, FaTiktok, FaGithub} from 'react-icons/fa'
 
 function Footer(){
 
@@ -22,22 +23,22 @@ function Footer(){
                     
                     <div className="pa3 flex items-center justify-between w-md-50 mt-0 pt-0">
                         <div className='mb-4 col-md-2 col-sm-4'>
-                            <a target='_blank' rel='noopener noreferrer' href="https://facebook.com"><img className='w-75 black-icon' src={fbIcon} alt="" /></a>
+                            <a target='_blank' rel='noopener noreferrer' href="https://facebook.com"><FaFacebook className='black-icon-footer'/></a>
                         </div>
                         <div className='mb-4 col-md-2 col-sm-4'>
-                            <a target='_blank' rel='noopener noreferrer' href="https://instagram.com"><img className='w-75 black-icon' src={instaIcon} alt="" /></a>
+                            <a target='_blank' rel='noopener noreferrer' href="https://instagram.com"><FaInstagram className='black-icon-footer'/></a>
                         </div>
                         <div className='mb-4 col-md-2 col-sm-4'>
-                            <a target='_blank' rel='noopener noreferrer' href="https://vm.tiktok.com/ZNddPsL1x/"><img className='w-75 black-icon' src={tiktokIcon} alt="" /></a>
+                            <a target='_blank' rel='noopener noreferrer' href="https://vm.tiktok.com/ZNddPsL1x/"><FaTiktok className='black-icon-footer'/></a>
                         </div>
                         <div className='mb-4 col-md-2 col-sm-4'>
-                            <a target='_blank' rel='noopener noreferrer' href="https://x.com"><img className='w-75 black-icon' src={twitterIcon} alt="" /></a>
+                            <a target='_blank' rel='noopener noreferrer' href="https://x.com"><FaTwitter className='black-icon-footer'/></a>
                         </div>
                         <div className='mb-4 col-md-2 col-sm-4'>
-                            <a target='_blank' rel='noopener noreferrer' href="https://www.youtube.com/@FreestyleMaci"><img className='w-75 black-icon' src={youtubeIcon} alt="" /></a>
+                            <a target='_blank' rel='noopener noreferrer' href="https://www.youtube.com/@FreestyleMaci"><FaYoutube className='black-icon-footer'/></a>
                         </div>
                         <div className='mb-4 col-md-2 col-sm-4'>
-                            <a target='_blank' rel='noopener noreferrer' href="https://github.com/andrasvas/projekt_remek_1_teszt"><img className='w-75 black-icon' src={githubIcon} alt="" /></a>
+                            <a target='_blank' rel='noopener noreferrer' href="https://github.com/andrasvas/projekt_remek_1_teszt"><FaGithub className='black-icon-footer'/></a>
                         </div>
                     </div>
                 </div>

@@ -275,6 +275,11 @@ header .nav-btn{
         font-size: 1.5rem;
     }
 }
+.black-icon-footer{
+    width: 2rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
 
 @media only screen and (max-width: 426px){
     .scratch-text{
@@ -308,7 +313,9 @@ header .nav-btn{
       main-nav-container{
         background-color: var(--background);
       }
-    
+      .black-icon:hover{
+        background-color: var(--card-bg);
+    }
     }
     
     @media (prefers-color-scheme: dark) {
@@ -356,6 +363,6 @@ header .nav-btn{
         -webkit-filter: invert();
     }
     .black-icon:hover{
-        size: 110%;
+        background-color: var(--accent);
     }
     }
