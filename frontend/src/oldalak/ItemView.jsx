@@ -70,8 +70,24 @@ const ItemView = () => {
     }
 
     if (loading) return <p>Kérem várjon...</p>
-    if (error) return <p style={{color : "red"}}>{error}</p>
-    if (!listing) return <p>Nem találtuk amit keresel, nézz vissza később!</p>
+    if (error) return (
+        <div className="all-container row">
+            <div className='align-items-center justify-content-center m-auto'>
+                <img className='img-responsive m-auto' src="../src/assets/cat_question.png" alt=""/>
+            </div>
+            <h1 className='main-brand'>{error}</h1>
+            <p>Nem találtuk amit keresel, nézz vissza később!</p>
+        </div>
+    )
+    if (!listing) return (
+        <div className="all-container row">
+            <div className='align-items-center justify-content-center m-auto'>
+                <img className='img-responsive m-auto' src="../src/assets/cat_question.png" alt=""/>
+            </div>
+            <h1 className='main-brand'>404</h1>
+            <p>Nem találtuk amit keresel, nézz vissza később!</p>
+        </div>
+    )
 
     return (
         

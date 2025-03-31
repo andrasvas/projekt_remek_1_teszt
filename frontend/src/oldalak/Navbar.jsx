@@ -4,9 +4,7 @@ import { useRef } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import {FaBars, FaTimes} from "react-icons/fa"
-import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom';
 import snpLogo from '../assets/a_logo.png'
-import cartIcon from '../assets/shopping-cart-outline.svg'
 
 function Navbar(){
     var isLoggedIn = window.localStorage.getItem("userToken")
