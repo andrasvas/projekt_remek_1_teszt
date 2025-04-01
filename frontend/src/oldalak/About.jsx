@@ -1,14 +1,9 @@
 import "./Bakelitek.css"
 import {Link} from 'react-router-dom'
-import fbIcon from '../assets/icons8-facebook.svg'
-import instaIcon from '../assets/icons8-instagram.svg'
-import tiktokIcon from '../assets/icons8-tiktok.svg'
-import twitterIcon from '../assets/icons8-twitter-bird.svg'
-import youtubeIcon from '../assets/icons8-youtube.svg'
-import githubIcon from '../assets/icons8-github.svg'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
+import { FaGitAlt, FaGithub, FaInstagram, FaYoutube, FaYoutubeSquare } from "react-icons/fa"
 
 function About(){
 
@@ -39,8 +34,11 @@ function About(){
                         <p className="m-auto secondary-brand">Kellemes lemezlejátszást!</p>
                         <div className="row">
                             <div className="col-3 col-md-4"></div>
-                            <img className="col-6 col-md-4" src="./src/assets/cat_waving.png" alt="" />
+                              <img className="col-6 col-md-4" src="./src/assets/cat_waving.png" alt="" />
                             <div className="col-3 col-md-4"></div>
+                            <div>
+                              <img src="./src/assets/cat_guitar.png" alt="" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -51,10 +49,10 @@ function About(){
                             <h2 className="default-text m-auto">Gombos Benedek Zsombor</h2>
                             <div className=" d-flex justify-content-center">
                                 <div className='h-25 mb-4'>
-                                    <a target='_blank' rel='noopener noreferrer' href="https://www.youtube.com/@kocsonyaleves"><img className='w-75 black-icon' src={youtubeIcon} alt="" /></a>
+                                    <a target='_blank' rel='noopener noreferrer' href="https://www.youtube.com/@kocsonyaleves"><FaYoutube className='w-75 black-icon'/></a>
                                 </div>
                                 <div className='h-25 mb-4'>
-                                    <a target='_blank' rel='noopener noreferrer' href="https://github.com/kiChi-420"><img className='w-75 black-icon' src={githubIcon} alt="" /></a>
+                                    <a target='_blank' rel='noopener noreferrer' href="https://github.com/kiChi-420"><FaGithub className='black-icon' /></a>
                                 </div>
                             </div>
                         </div>
@@ -63,10 +61,10 @@ function About(){
                             <h2 className="m-auto">Vasilescu András László</h2>
                             <div className="d-flex justify-content-center  ">
                                 <div className='h-25 mb-4'>
-                                    <a target='_blank' rel='noopener noreferrer' href="https://www.youtube.com/@FreestyleMaci"><img className='w-75 black-icon' src={youtubeIcon} alt="" /></a>
+                                    <a target='_blank' rel='noopener noreferrer' href="https://www.youtube.com/@FreestyleMaci"><FaYoutube className='black-icon'/></a>
                                 </div>
                                 <div className='h-25 mb-4'>
-                                    <a target='_blank' rel='noopener noreferrer' href="https://github.com/andrasvas"><img className='w-75 black-icon' src={githubIcon} alt="" /></a>
+                                    <a target='_blank' rel='noopener noreferrer' href="https://github.com/andrasvas"><FaGithub className='black-icon' /></a>
                                 </div>
                             </div>
                         </div>
@@ -75,13 +73,13 @@ function About(){
                             <h2 className="m-auto">Oláh Gergő</h2>
                             <div className="d-flex justify-content-center">
                                 <div className='h-25 mb-4'>
-                                    <a target='_blank' rel='noopener noreferrer' href="https://www.instagram.com/atreyoos?igsh=ang4NWs0Y2hiZzVl"><img className='w-75 black-icon' src={instaIcon} alt="" /></a>
+                                    <a target='_blank' rel='noopener noreferrer' href="https://www.instagram.com/atreyoos?igsh=ang4NWs0Y2hiZzVl"><FaInstagram className='w-75 black-icon'/></a>
                                 </div>
                                 <div className='h-25 mb-4'>
-                                    <a target='_blank' rel='noopener noreferrer' href="https://www.youtube.com/@FreestyleMaci"><img className='w-75 black-icon' src={youtubeIcon} alt="" /></a>
+                                    <a target='_blank' rel='noopener noreferrer' href="https://www.youtube.com/@FreestyleMaci"><FaYoutube className='w-75 black-icon'/></a>
                                 </div>
                                 <div className='h-25 mb-4'>
-                                    <a target='_blank' rel='noopener noreferrer' href="https://github.com/OlaGergo"><img className='w-75 black-icon' src={githubIcon} alt="" /></a>
+                                    <a target='_blank' rel='noopener noreferrer' href="https://github.com/OlaGergo"><FaGithub className='w-75 black-icon' /></a>
                                 </div>
                             </div>
                         </div>

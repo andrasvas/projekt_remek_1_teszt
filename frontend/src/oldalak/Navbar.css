@@ -194,6 +194,11 @@ header{
     height: 80px;
     padding: 0 2rem;
     width: 100%;
+    margin-top: 30px;
+}
+
+header a{
+    border: none;
 }
 
 .nav-container{
@@ -208,6 +213,15 @@ header{
     width: 50px;
 }
 
+#nav-logo {
+    transition: linear 200ms;
+}
+
+#nav-logo:hover, #nav-logo:focus{
+    transform: rotate(-10deg);
+    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 400ms;
+    filter: drop-shadow(0 0 0.75rem var(--accent));
+}
 
 nav a{
     margin: 0 1rem;
@@ -231,19 +245,89 @@ header .nav-btn{
 }
 
 .profile-button img{
-    border: var(--accent) 2px solid;
+    border-radius: 2px;
+    border: var(--text) solid 2px;
     transition: linear 200ms;
 }
 
 .profile-button img:hover, .profile-button img:focus{
-    border: var(--text) 3px solid;
-    transition: cubic-bezier(0.215, 0.610, 0.355, 1) 400ms;
-    transform: rotate(5deg);
+    transform: rotate(-10deg);
+    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 400ms;
+    filter: drop-shadow(0 0 0.75rem var(--accent));
 }
-
 
 .main-nav-container{
     justify-content: end;
+}
+
+.scratch-text{
+    font-family: ultrakill;
+    transition: linear 200ms;
+}
+
+.scratch-text:hover, .scratch-text:focus{
+    transition: cubic-bezier(.17,1.61,.32,-0.59) 400ms;
+    color: #fff;
+    filter: drop-shadow(0 0 0.75rem #fff);
+}
+
+.cat-sleeping:hover, .cat-sleeping:focus{
+    animation: purring 1s infinite;
+}
+
+#nav-logo{
+    animation: levitating 2s infinite;
+}
+
+@keyframes levitating {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(-5px);}
+    100% {transform: translateY(0);}
+}
+
+@keyframes purring {
+    0% {transform: translate(0);}
+    2%{transform: translate(-1px,1px);}
+    4%{transform: translate(-1px,-1px);}
+    6%{transform: translate(1px,1px);}
+    8%{transform: translate(1px,-1px);}
+    10%{transform: translate(-1px,1px);}
+    12%{transform: translate(-1px,1px);}
+    14%{transform: translate(-1px,-1px);}
+    16%{transform: translate(1px,1px);}
+    18%{transform: translate(1px,-1px);}
+    20%{transform: translate(-1px,1px);}
+    22%{transform: translate(-1px,-1px);}
+    24%{transform: translate(1px,1px);}
+    26%{transform: translate(1px,-1px);}
+    28%{transform: translate(-1px,1px);}
+    30%{transform: translate(-1px,-1px);}
+    
+    
+    31%{transform: translate(0px);}
+    59%{transform: translate(0px);}
+    
+    60%{transform: translate(-1px,1px);}
+    62%{transform: translate(-1px,-1px);}
+    64%{transform: translate(1px,1px);}
+    66%{transform: translate(1px,-1px);}
+    68%{transform: translate(-1px,1px);}
+    70%{transform: translate(-1px,1px);}
+    72%{transform: translate(-1px,-1px);}
+    74%{transform: translate(1px,1px);}
+    76%{transform: translate(1px,-1px);}
+    78%{transform: translate(-1px,1px);}
+    80%{transform: translate(-1px,-1px);}
+    82%{transform: translate(1px,1px);}
+    84%{transform: translate(1px,-1px);}
+    86%{transform: translate(-1px,1px);}
+    88%{transform: translate(-1px,-1px);}
+    90%{transform: translate(1px,1px);}
+    92%{transform: translate(1px,-1px);}
+    94%{transform: translate(-1px,1px);}
+    96%{transform: translate(-1px,-1px);}
+    98%{transform: translate(1px,1px);}
+    100%{transform: translate(0);}
 }
 
 @media only screen and (max-width: 1024px){
@@ -282,10 +366,6 @@ header .nav-btn{
         transform: translateY(-100vh);
     }
 
-    header .responsive_nav{
-        transform: none;
-    }
-
     nav .nav-close-btn{
         position: absolute;
         top: 2rem;
@@ -300,6 +380,12 @@ header .nav-btn{
     width: 2rem;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+    transition: cubic-bezier(0.68, 0.55, 0.265, 1.55) 750ms;
+}
+.black-icon-footer:hover, .black-icon-footer:focus{
+    transition: cubic-bezier(0.215, 0.610, 0.355, 1) 400ms;
+    transform: rotate(15deg);
+    filter: drop-shadow(0 0 0.75rem var(--accent));
 }
 
 @media only screen and (max-width: 426px){
@@ -335,12 +421,21 @@ header .nav-btn{
         background-color: var(--background);
       }
       .black-icon:hover{
-        background-color: var(--card-bg);
+        transition: cubic-bezier(0.215, 0.610, 0.355, 1) 400ms;
+        transform: rotate(5deg);
+        filter: drop-shadow(0 0 0.75rem var(--accent));
     }
-    .profile-button img:hover, .profile-button img:focus{
-        border-color: var(--background);
+
+    #nav-logo:hover, #nav-logo:focus{
+        filter: drop-shadow(0 0 0.75rem var(--accent));
     }
     
+    .profile-button img:hover, .profile-button img:focus{
+        transition: cubic-bezier(0.215, 0.610, 0.355, 1) 400ms;
+        transform: rotate(5deg);
+        filter: drop-shadow(0 0 0.75rem var(--accent));
+    }
+
 }
     
     @media (prefers-color-scheme: dark) {
@@ -388,6 +483,17 @@ header .nav-btn{
         -webkit-filter: invert();
     }
     .black-icon:hover{
-        background-color: var(--accent);
+        transition: cubic-bezier(0.215, 0.610, 0.355, 1) 400ms;
+        transform: rotate(5deg);
+        filter: drop-shadow(0 0 0.75rem var(--text));
     }
+    #nav-logo:hover, #nav-logo:focus{
+        filter: drop-shadow(0 0 0.75rem var(--text));
     }
+
+    .profile-button img:hover, .profile-button img:focus{
+        transform: rotate(10deg);
+        transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 400ms;
+        filter: drop-shadow(0 0 0.75rem var(--text));
+    }
+}

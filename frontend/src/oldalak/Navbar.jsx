@@ -6,6 +6,7 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 import {FaBars, FaTimes} from "react-icons/fa"
 import axios from 'axios'
 import snpLogo from '../assets/a_logo.png'
+import catShadow from '../assets/cat_shadow.png'
 
 function Navbar(){
     const [user,setUser] = useState(null)
@@ -31,17 +32,20 @@ function Navbar(){
 
     return(
         <header>
-            <a className="link white-70 no-underline flex items-center p-3" href="/">
-                <img className='img-responsive p-0' style={{width: "80px"}} src={snpLogo} alt="" />
-                <h3 className='main-brand main-brand-hover scratch-text'>Scratch N' Spin</h3>
+            <a className="no-underline flex items-center p-3 cat-logo-scratch-container" href="/">
+            <div>
+                <img id='nav-logo' className='p-0' style={{width: "80px"}} src={snpLogo} alt="" />
+                <img className='p-0' style={{width: "80px"}} src={catShadow} alt="" />
+            </div>
+                <h3 className='scratch-text'>Scratch N' Spin</h3>
             </a>
 
             <nav ref={navRef} className="main-nav-container flex w-100">
                 <div className="flex nav-container">
-                    <a className="link hover-black" href="/">Main Page</a>
-                    <a className="link hover-black" href="/about">About</a>
-                    {user?<a className='link hover-black' href='/cart'>Cart</a>:null}
-                    {user?null:<a className="link hover-black" href="/signin">Sign In</a>}
+                    <a className="hover-black" href="/">Main Page</a>
+                    <a className="hover-black" href="/about">About</a>
+                    {user?<a className='hover-black' href='/cart'>Cart</a>:null}
+                    {user?null:<a className="hover-black" href="/signin">Sign In</a>}
                     {user?null:<a className="bg-animate hover-bg-white hover-black-pill no-underline pv2 ph4 br-pill" href="/signup">Sign Up</a>}
                     {user?<a className="profile-button" href="/profile"><img src={`../src/pfp_pics/${user.user_pfp_id}.png`} alt="" /></a>:null}
                     <button className='nav-btn nav-close-btn' onClick={showNavbar}>
