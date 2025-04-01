@@ -9,6 +9,7 @@ const Vinyls = () => {
     const [data, setData] = useState([]);
     const [term, setTerm] = useState("");
     const [filteredData, setFilteredData] = useState([]);
+    const userToken = window.localStorage.getItem("userToken")
 
     useEffect(() => {
         axios.get("http://127.0.0.1:5000/vinyls")

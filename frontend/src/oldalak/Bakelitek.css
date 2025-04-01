@@ -40,6 +40,10 @@ div{
 
 }
 
+.spotify-responsive{
+  height: 152px;
+}
+
 @media (prefers-color-scheme: light) {
     :root{
       --text: #111014;
@@ -119,16 +123,5 @@ div{
 
       .search-bar{
         border-color: var(--accent);
-      }
-    }
-    
-    @media only screen and (max-width: 424px) {
-      .spotify-responsive{
-        height: 152px;
-      }
-    }
-    @media only screen and (min-width: 425px){
-      .spotify-responsive{
-        height: 152px;
       }
     }
