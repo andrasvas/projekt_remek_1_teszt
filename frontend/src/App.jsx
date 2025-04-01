@@ -25,6 +25,7 @@ function App() {
   //   }
   //   else {
   //     setDarkMode(true)
+  
   //   }
   // }
 
@@ -37,7 +38,7 @@ function App() {
             <Route path="/item/:itemId" element={<ItemView />}/>
             {/* <Route path="/item/:genre" element={<MoreLikeThis />}/> */}
             <Route path="/signup" element={<Signup/>}/>
-            <Route path="/profile" element={isLogged?<Profile/>:<Signin></Signin>}/>
+            <Route path="/profile" element={<Profile/>}/>
             <Route path="/signin" element={isLogged?<Profile/>:<Signin/>}></Route>
             <Route path="/about" element={<About/>}></Route>
             <Route path='/cart' element={<Cart/>}></Route>

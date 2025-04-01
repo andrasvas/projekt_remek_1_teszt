@@ -3,11 +3,16 @@ const mysql = require("mysql2")
 const cors = require("cors")
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcryptjs")
+const cookieParser = require('cookie-parser')
 
 const app = express()
 const router = express.Router();
+app.use(cookieParser())
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true
+}))
 
 const SecretKey = "let_me_break_it_down_for_you_mark"
 
@@ -27,7 +32,7 @@ async function hashPassword(password) {
 
 const db = mysql.createConnection({
     host: "127.0.0.1",
-    port: "3306",
+    port: "3307",
     user: "root",
     password: "",
     database: "scratch_and_spin_db"
@@ -169,19 +174,37 @@ app.post('/login', async function (req, res){
         }
     
         console.log("Felhasználó bejelentkezett.");
-        const token = jwt.sign({ user_email }, SecretKey, { expiresIn: "1h" });
-        return res.json({ token });
+        const token = jwt.sign({ user_email }, SecretKey, { expiresIn: "1h" })
+
+        res.cookie("authToken", token, {
+            httpOnly: true,
+            secure: false,
+            sameSite: "strict",
+            maxAge:3600000,
+        })
+
+        return res.json({ message: "Sikeres bejelentkezés" });
     });
 });
 
+app.post('/logout', (req, res) => {
+    console.log("Kijelentkezés...")
+    res.clearCookie("authToken", {
+        httpOnly: true,
+        secure: false,
+        sameSite: "strict"
+    });
+    return res.status(200).json({ message: "Sikeresen kijelentkeztél!" });
+});
+
 app.get('/profile', async function(req,res){
-    const authHeader = req.headers['authorization']
+    console.log("Kapott sütik:",req.cookies)
+    const token = req.cookies.authToken
     
-    if(!authHeader || !authHeader.startsWith("Bearer ")){
+    if(!token){
         return res.status(403).json({error: "Token nem lett megadva!"})
     }
 
-    const token = authHeader.split(" ")[1]
     console.log("Kapott token:",token)
 
     try{
@@ -200,6 +223,7 @@ app.get('/profile', async function(req,res){
             }
             else{
                 const user = result[0]
+                console.log(user)
                 return res.json(user)
             }
         })

@@ -23,12 +23,14 @@ function SignIn(){
         axios.post("http://localhost:5000/login", {
             user_email: formData.logEmail,
             user_password: formData.logPassword
+        }, {
+            withCredentials: true
         })
         .then(response => {
             if(response){
                 console.log("Sikeres bejelentkezés!")
+                console.log(document.cookie)
                 alert("Sikeres bejelentkezés!")
-                window.localStorage.setItem("userToken", response.data.token)
                 window.location.href = '/'
             }
         })

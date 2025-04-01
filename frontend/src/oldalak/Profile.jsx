@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 
 
 function Profile(){
-    const userToken = window.localStorage.getItem("userToken")
     const [userData,setUserData] = useState({
         user_email:"",
         user_pfp_id:"",
@@ -16,39 +15,21 @@ function Profile(){
     })
 
     function LogOut(){
-        window.localStorage.removeItem("isLoggedIn")
-        window.localStorage.removeItem("userToken")
-
-        window.location.href = "/"
+        axios.post("http://localhost:5000/logout",{withCredentials: true})
     }
 
-    useEffect(() => {
-        if (userToken) {
-          console.log("Token létezik:", userToken)
-        } else {
-          console.log("Nincs token, irány a bejelentkezés!")
-          window.location.href = "/signin"
-        }
-      }, [])
-
     useEffect(() =>{
-        if(userToken){
-            axios.get("http://127.0.0.1:5000/profile",{
-            headers: {
-                Authorization: `Bearer ${userToken}`
-            }
-            })
-            .then(response => {
-                if(response){
-                    console.log(response.data)
-                    setUserData(response.data)
-                }
-            })
-            .catch(error => {
-                console.log(error)
-            })
-        }
-    },[userToken])
+        axios.get("http://localhost:5000/profile", {
+            withCredentials: true  // Fontos! Engedélyezi a cookie küldését a kérésben
+        })
+        .then(response => {
+            console.log("Profil adatok:", response.data);
+            setUserData(response.data)
+        })
+        .catch(error => {
+            console.error("Hiba történt:", error.response?.data || error);
+        });
+    },[])
 
     return(
         <div className='all-container'>
