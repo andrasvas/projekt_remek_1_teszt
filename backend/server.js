@@ -326,16 +326,17 @@ app.post('/addtocart', async function(req,res){
 
 app.delete('/delete_cart_item',async function(req,res){
     const vinyl_id = req.body.vinyl_id
-    const authHeader = req.headers['authorization']
+    const token = req.cookies.authToken
+    // const authHeader = req.headers['authorization']
 
-    console.log(vinyl_id, "vinyl id-je")
+    // console.log(vinyl_id, "vinyl id-je")
 
-    if(!authHeader || !authHeader.startsWith("Bearer ")){
-        console.error("Sikertelen meghivás.")
-        return res.status(401).json({error: "Token nem lett megadva!"})
-    }
+    // if(!authHeader || !authHeader.startsWith("Bearer ")){
+    //     console.error("Sikertelen meghivás.")
+    //     return res.status(401).json({error: "Token nem lett megadva!"})
+    // }
 
-    const token = authHeader.split(" ")[1]
+    // const token = authHeader.split(" ")[1]
     console.log(`Kapott token: ${token}`)
 
     if(!token){

@@ -46,10 +46,6 @@ const ItemView = () => {
                         console.log(response)
                         window.location.href = "/cart"
                     }
-                    else{
-                        console.log(response)
-                        
-                    }
                 })
                 .catch(error => {
                     console.error(error)

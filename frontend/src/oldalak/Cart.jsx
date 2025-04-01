@@ -105,24 +105,19 @@ function Cart(){
     }
 
     const DeleteItem = (vinylId) => {
-        axios.delete(`http://localhost:5000/delete_cart_item`,{
-        headers: {
-            Authorization: `Bearer ${userToken}`
-        },
-        data: {
+        axios.post("http://localhost:5000/delete_cart_item", {
             vinyl_id: vinylId
-        }})
+        }, {
+            withCredentials: true
+        })
         .then(response => {
+            console.log("Körte")
             if(response){
                 console.log(response)
-                alert(response.data.message)
-                window.location.href = "/cart"
             }
         })
-        .catch(err => {
-            if(err){
-                console.log(err)
-            }
+        .catch(error => {
+            console.error(error)
         })
     }
 
