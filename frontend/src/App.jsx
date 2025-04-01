@@ -53,7 +53,6 @@ function App() {
             <Route path="/signin" element={user?<Profile/>:<Signin/>}></Route>
             <Route path="/about" element={<About/>}></Route>
             <Route path='/cart' element={<Cart/>}></Route>
-            <Route Component={Error}></Route>
           </Routes>
           <Footer/>
       </BrowserRouter>
