@@ -65,27 +65,38 @@ function Cart(){
     }
 
     useEffect(() => {
-        if(userToken){
-            axios.get("http://localhost:5000/cart",{headers:{
-                Authorization:`Bearer ${userToken}`
-            }})
-            .then(response => {
-                if(response){
-                    if(response.data.length == 0){
-                        console.log("A kosár üres")
-                        setData(response.data)
-                        console.log(data)
-                    }
-                    else{
-                        console.log(response.data)
-                        setData(response.data)
-                    }
-                }
-            })
-        }
-        else{
-            window.location.href = "/signin"
-        }
+        axios.get("http://localhost:5000/cart", {
+            withCredentials: true
+        })
+        .then(response => {
+            console.log("Profil adatok:", response.data);
+            setUserData(response.data)
+        })
+        .catch(error => {
+            console.error("Hiba történt:", error.response?.data || error);
+        });
+
+        // if(userToken){
+        //     axios.get("http://localhost:5000/cart",{headers:{
+        //         Authorization:`Bearer ${userToken}`
+        //     }})
+        //     .then(response => {
+        //         if(response){
+        //             if(response.data.length == 0){
+        //                 console.log("A kosár üres")
+        //                 setData(response.data)
+        //                 console.log(data)
+        //             }
+        //             else{
+        //                 console.log(response.data)
+        //                 setData(response.data)
+        //             }
+        //         }
+        //     })
+        // }
+        // else{
+        //     window.location.href = "/signin"
+        // }
         
     },[userToken])
 

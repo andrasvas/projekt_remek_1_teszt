@@ -10,7 +10,7 @@ const router = express.Router();
 app.use(cookieParser())
 app.use(express.json())
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "http://localhost:5173",//EZ EGYEZZEN MEG AMI A WEBEN VAN, KULONBEN NEM FOG MENNI A PROGRAM!!!!
     credentials: true
 }))
 
@@ -237,14 +237,15 @@ app.post('/addtocart', async function(req,res){
     console.log("Hozzáadás a kosárhoz...")
     const vinyl_id = req.body.vinyl_id
     const vinyl_qty = req.body.vinyl_qty
-    const authHeader = req.headers['authorization']
+    const token = req.cookies.authToken
+    // const authHeader = req.headers['authorization']
 
-    if(!authHeader || !authHeader.startsWith("Bearer ")){
-        console.error("Sikertelen hozzáadás.")
-        return res.status(401).json({error: "Token nem lett megadva!"})
-    }
+    // if(!authHeader || !authHeader.startsWith("Bearer ")){
+    //     console.error("Sikertelen hozzáadás.")
+    //     return res.status(401).json({error: "Token nem lett megadva!"})
+    // }
     
-    const token = authHeader.split(" ")[1]
+    // const token = authHeader.split(" ")[1]
     console.log(`Kapott token: ${token}`)
 
     if(!token || !vinyl_id){
@@ -505,15 +506,17 @@ app.delete('/clearcart',async function(req,res){
 
 app.get('/cart', async function(req,res){
     console.log("Kosár megjelenitése...")
-    const authHeader = req.headers['authorization']
 
-    if(!authHeader || !authHeader.startsWith("Bearer ")){
-        console.error("Sikertelen meghivás.")
-        return res.status(401).json({error: "Token nem lett megadva!"})
-    }
+    const token = req.cookies.authToken
+    // const authHeader = req.headers['authorization']
 
-    const token = authHeader.split(" ")[1]
-    console.log(`Kapott token: ${token}`)
+    // if(!authHeader || !authHeader.startsWith("Bearer ")){
+    //     console.error("Sikertelen meghivás.")
+    //     return res.status(401).json({error: "Token nem lett megadva!"})
+    // }
+
+    // const token = authHeader.split(" ")[1]
+    // console.log(`Kapott token: ${token}`)
 
     if(!token){
         console.log("Token vagy vinyl_id nem található!")

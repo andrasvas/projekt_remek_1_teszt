@@ -35,20 +35,16 @@ const ItemView = () => {
 
     const AddToCart = () =>{
         try{
-            if(userToken){
-                axios.post("http://localhost:5000/addtocart", {
+            axios.post("http://localhost:5000/addtocart", {
                     vinyl_id: listing.vinyl_id,
                     vinyl_qty: qty
                 }, {
-                    headers: {
-                        Authorization: `Bearer ${userToken}`
-                    }
+                    withCredentials: true
                 })
                 .then(response => {
                     console.log("Körte")
                     if(response){
                         console.log(response)
-                        window.location.href = "/cart"
                     }
                     else{
                         console.log(response)
@@ -58,11 +54,7 @@ const ItemView = () => {
                 .catch(error => {
                     console.error(error)
                 })
-            }
-            else{
-                window.location.href = "/signin"
-            }
-            }
+        }
         catch(err){
             console.log(err)
         }
