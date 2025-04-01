@@ -14,7 +14,6 @@ const ItemView = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null)
     const [qty,setQty] = useState(1)
-    const userToken = window.localStorage.getItem("userToken")
 
     useEffect(() => {
         axios.get(`http://127.0.0.1:5000/vinyls/${itemId}`)
@@ -45,14 +44,16 @@ const ItemView = () => {
                     console.log("Körte")
                     if(response){
                         console.log(response)
+                        window.location.href = "/cart"
                     }
                     else{
                         console.log(response)
-                        window.location.href = "/signin"
+                        
                     }
                 })
                 .catch(error => {
                     console.error(error)
+                    window.location.href = "/signin"
                 })
         }
         catch(err){

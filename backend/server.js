@@ -447,14 +447,16 @@ app.put('/update_cart', async function(req,res){
 })
 
 app.delete('/clearcart',async function(req,res){
-    const authHeader = req.headers['authorization']
+    const token = req.cookies.authToken
 
-    if(!authHeader || !authHeader.startsWith("Bearer ")){
-        console.error("Sikertelen törlés.")
-        return res.status(401).json({error: "Token nem lett megadva!"})
-    }
+    // const authHeader = req.headers['authorization']
+
+    // if(!authHeader || !authHeader.startsWith("Bearer ")){
+    //     console.error("Sikertelen törlés.")
+    //     return res.status(401).json({error: "Token nem lett megadva!"})
+    // }
     
-    const token = authHeader.split(" ")[1]
+    // const token = authHeader.split(" ")[1]
     console.log(`Kapott token: ${token}`)
 
     if(!token){
