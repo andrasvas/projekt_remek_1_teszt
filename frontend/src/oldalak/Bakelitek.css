@@ -20,7 +20,7 @@ div{
 
 .purchaseBtn{
     background-color: var(--accent);
-    color: var(--alt-text);
+    color: var(--text);
     padding: 0.3rem;
     transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
     border-radius: 2px;

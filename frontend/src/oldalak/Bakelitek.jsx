@@ -3,13 +3,15 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
-import { Link } from 'react-router-dom';
+import { Link, isRouteErrorResponse } from 'react-router-dom';
 
 const Vinyls = () => {
     const [data, setData] = useState([]);
     const [term, setTerm] = useState("");
     const [filteredData, setFilteredData] = useState([]);
     const userToken = window.localStorage.getItem("userToken")
+    const [error, setError] = useState(null)
+
 
     useEffect(() => {
         axios.get("http://127.0.0.1:5000/vinyls")
@@ -76,9 +78,10 @@ const Vinyls = () => {
             
     }
 
+    if (isRouteErrorResponse(error)){
 
-    return (
-        <div className='all-container'>
+        return (
+            <div className='all-container'>
             {/* <div className='row'>
                 <div className='div-title container-fluid col-md-6'>
                     <h1>Scratch 'n Spin</h1>
@@ -94,12 +97,12 @@ const Vinyls = () => {
                 onChange={searchChange}
                 className='m-4 search-bar main-brand border-3 p-1'
                 id='search-field'
-            />
+                />
 
             <div className='container-fluid'>
                 <article className='row justify-content-center'>
                     {filteredData.map(vinyl => (    
-
+                        
                         <div key={vinyl.vinyl_id} className='col-xs-6 col-sm-6 col-md-4 col-lg-3 p-1'>
                             <div className='card'>
 
@@ -125,30 +128,32 @@ const Vinyls = () => {
 
             {/* <table>
                 <thead>
-                    <tr>
-                        <th>Album neve</th>
-                        <th>Előadó</th>
-                        <th>Hossza</th>
-                        <th>Dalok</th>
-                        <th>Színe</th>
+                <tr>
+                <th>Album neve</th>
+                <th>Előadó</th>
+                <th>Hossza</th>
+                <th>Dalok</th>
+                <th>Színe</th>
                         <th>Műfaj</th>
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
                     {filteredData.map(vinyl => (
                         <tr key={vinyl.vin_id}>
-                            <td>{vinyl.vin_name}</td>
-                            <td>{vinyl.artist}</td>
-                            <td>{vinyl.runtime} perc</td>
-                            <td>{vinyl.tracks}</td>
-                            <td>{vinyl.color}</td>
-                            <td>{vinyl.genre}</td>
+                        <td>{vinyl.vin_name}</td>
+                        <td>{vinyl.artist}</td>
+                        <td>{vinyl.runtime} perc</td>
+                        <td>{vinyl.tracks}</td>
+                        <td>{vinyl.color}</td>
+                        <td>{vinyl.genre}</td>
                         </tr>
-                    ))}
-                </tbody>
-            </table> */}
+                        ))}
+                        </tbody>
+                    </table> */}
         </div>
     );
-};
+} 
+    else if (error instanceof Error){return <Error/>}
+}
 
 export default Vinyls;
