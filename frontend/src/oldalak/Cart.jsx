@@ -7,25 +7,65 @@ import { useState } from "react";
 import {FaPlus, FaMinus} from "react-icons/fa"
 
 function Cart(){
-    const userToken = window.localStorage.getItem("userToken")
+    //const userToken = window.localStorage.getItem("userToken")
     const [data,setData] = useState([])
+
+    useEffect(() => {
+        axios.get("http://localhost:5000/cart", {
+            withCredentials: true
+        })
+        .then(response => {
+            console.log("Kosár adatok:", response.data);
+            setData(response.data)
+        })
+        .catch(error => {
+            console.error("Hiba történt:", error.response?.data || error);
+        });
+
+        // if(userToken){
+        //     axios.get("http://localhost:5000/cart",{headers:{
+        //         Authorization:`Bearer ${userToken}`
+        //     }})
+        //     .then(response => {
+        //         if(response){
+        //             if(response.data.length == 0){
+        //                 console.log("A kosár üres")
+        //                 setData(response.data)
+        //                 console.log(data)
+        //             }
+        //             else{
+        //                 console.log(response.data)
+        //                 setData(response.data)
+        //             }
+        //         }
+        //     })
+        // }
+        // else{
+        //     window.location.href = "/signin"
+        // }
+        
+    },[])
 
     const ClearCart = () => {
         const confirmClear = confirm("Biztosan törölni szeretnéd a kosarad teljes tartalmát?")
 
         if(confirmClear === true){
-            axios.delete("http://localhost:5000/clearcart",{headers:{Authorization: `Bearer ${userToken}`}})
+            axios.delete("http://localhost:5000/clearcart", {
+                withCredentials: true 
+            })
             .then(response => {
-                if(response){
-                    console.log(response)
-                    alert(response.data.message)
-                    window.location.href = "/"
+                if (response) {
+                    console.log(response);
+                    alert(response.data.message);
+                    window.location.href = "/cart";
                 }
             })
             .catch(err => {
-                if(err)
-                console.log(err)
-            })
+                if (err) {
+                    console.log(err); // Hibakezelés
+                }
+            });
+            
         }
         else{
             console.log("Kosár törlés megszakitva")
@@ -64,61 +104,20 @@ function Cart(){
 
     }
 
-    useEffect(() => {
-        axios.get("http://localhost:5000/cart", {
+    const DeleteItem = (vinylId) => {
+        axios.post("http://localhost:5000/delete_cart_item", {
+            vinyl_id: vinylId
+        }, {
             withCredentials: true
         })
         .then(response => {
-            console.log("Kosár adatok:", response.data);
-            setUserData(response.data)
-        })
-        .catch(error => {
-            console.error("Hiba történt:", error.response?.data || error);
-        });
-
-        // if(userToken){
-        //     axios.get("http://localhost:5000/cart",{headers:{
-        //         Authorization:`Bearer ${userToken}`
-        //     }})
-        //     .then(response => {
-        //         if(response){
-        //             if(response.data.length == 0){
-        //                 console.log("A kosár üres")
-        //                 setData(response.data)
-        //                 console.log(data)
-        //             }
-        //             else{
-        //                 console.log(response.data)
-        //                 setData(response.data)
-        //             }
-        //         }
-        //     })
-        // }
-        // else{
-        //     window.location.href = "/signin"
-        // }
-        
-    },[userToken])
-
-    const DeleteItem = (vinylId) => {
-        axios.delete(`http://localhost:5000/delete_cart_item`,{
-        headers: {
-            Authorization: `Bearer ${userToken}`
-        },
-        data: {
-            vinyl_id: vinylId
-        }})
-        .then(response => {
+            console.log("Körte")
             if(response){
                 console.log(response)
-                alert(response.data.message)
-                window.location.href = "/cart"
             }
         })
-        .catch(err => {
-            if(err){
-                console.log(err)
-            }
+        .catch(error => {
+            console.error(error)
         })
     }
 
