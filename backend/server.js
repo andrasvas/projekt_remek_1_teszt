@@ -62,7 +62,7 @@ app.get("/vinyls", (req, res) => {
         `,
       (err, results) => {
          if (err) return res.status(500).json(err);
-         res.json(results);
+         return res.json(results);
       }
    );
 });
@@ -467,16 +467,16 @@ app.delete("/delete_cart_item", async function (req, res) {
 });
 
 app.put("/update_cart", async function (req, res) {
-   const authHeader = req.headers["authorization"];
+   // const authHeader = req.headers["authorization"];
    const vinylId = req.body.vinyl_id;
    const newQty = req.body.qty;
+   const token = req.cookies.authToken
+   // if (!authHeader || !authHeader.startsWith("Bearer ")) {
+   //    console.error("Sikertelen törlés.");
+   //    return res.status(401).json({ error: "Token nem lett megadva!" });
+   // }
 
-   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      console.error("Sikertelen törlés.");
-      return res.status(401).json({ error: "Token nem lett megadva!" });
-   }
-
-   const token = authHeader.split(" ")[1];
+   // const token = authHeader.split(" ")[1];
    console.log(`Kapott token: ${token}`);
 
    if (!token) {

@@ -11,17 +11,16 @@ function Cart() {
    const [data, setData] = useState([]);
 
    useEffect(() => {
-      axios
-         .get("http://localhost:5000/cart", {
+      axios.get("http://localhost:5000/cart", {
             withCredentials: true,
          })
-         .then((response) => {
-            console.log("Kosár adatok:", response.data);
-            setData(response.data);
-         })
-         .catch((error) => {
-            console.error("Hiba történt:", error.response?.data || error);
-         });
+      .then((response) => {
+         console.log("Kosár adatok:", response.data);
+         setData(response.data);
+      })
+      .catch((error) => {
+         console.error("Hiba történt:", error.response?.data || error);
+      });
 
       // if(userToken){
       //     axios.get("http://localhost:5000/cart",{headers:{
@@ -52,25 +51,41 @@ function Cart() {
       );
 
       if (confirmClear === true) {
-         axios
-            .delete("http://localhost:5000/clearcart", {
-               withCredentials: true,
-            })
-            .then((response) => {
-               if (response) {
-                  console.log(response);
-                  alert(response.data.message);
-                  window.location.href = "/cart";
-               }
-            })
-            .catch((err) => {
-               if (err) {
-                  console.log(err); // Hibakezelés
-               }
-            });
+         axios.delete("http://localhost:5000/clearcart", {
+            withCredentials: true,
+         })
+         .then((response) => {
+            if (response) {
+               console.log(response);
+               alert(response.data.message);
+               window.location.href = "/cart";
+            }
+         })
+         .catch((err) => {
+            if (err) {
+               console.log(err); // Hibakezelés
+            }
+         });
       } else {
          console.log("Kosár törlés megszakitva");
       }
+   };
+
+   const DeleteItem = (vinylId) => {
+      axios.delete("http://localhost:5000/delete_cart_item", {
+         data: { vinyl_id: vinylId }, // A törlendő elem adatait a `data` kulcs alá kell rakni
+         withCredentials: true,
+     })
+     .then((response) => {
+         console.log("Körte");
+         if (response) {
+             console.log(response)
+             window.location.href = "/cart"
+         }
+     })
+     .catch((error) => {
+         console.error(error);
+     });
    };
 
    const GetTotalPrice = (list) => {
@@ -92,46 +107,22 @@ function Cart() {
       setData(updatedData);
 
       // Küldjük el a szervernek a frissített mennyiséget
-      axios
-         .put(
-            "http://localhost:5000/update_cart",
-            {
-               vinyl_id: vinylId,
-               qty: newQty,
-            },
-            { headers: { Authorization: `Bearer ${userToken}` } }
-         )
-         .then((response) => {
-            console.log(response.data.message);
-         })
-         .catch((err) => {
-            console.error(err);
-         });
+      axios.put("http://localhost:5000/update_cart", {
+         vinyl_id: vinylId,
+         qty: newQty,
+     }, {
+         withCredentials: true,
+     })
+     .then((response) => {
+         console.log(response.data.message);
+     })
+     .catch((err) => {
+         console.error(err);
+     });
+         
    };
 
    const OrderItems = () => {};
-
-   const DeleteItem = (vinylId) => {
-      axios
-         .post(
-            "http://localhost:5000/delete_cart_item",
-            {
-               vinyl_id: vinylId,
-            },
-            {
-               withCredentials: true,
-            }
-         )
-         .then((response) => {
-            console.log("Körte");
-            if (response) {
-               console.log(response);
-            }
-         })
-         .catch((error) => {
-            console.error(error);
-         });
-   };
 
    return (
       <div className="all-container container">
@@ -193,7 +184,7 @@ function Cart() {
                   <h4 className="main-brand mt-5">A kosár üres.</h4>
                   <button
                      className="main-brand purchaseBtn m-3"
-                     onClick={() => (window.location.href = "/bakelitek")}
+                     onClick={() => (window.location.href = "/")}
                   >
                      Bakelitek
                   </button>
