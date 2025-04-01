@@ -22,6 +22,13 @@ function Navbar(){
         navRef.current.classList.toggle("responsive_nav");
     }
 
+    const userData = useState({
+        user_email:"",
+        user_pfp_id:"",
+        user_last_name:"",
+        user_first_name:""
+    })
+
     return(
         <header>
             <a className="link white-70 no-underline flex items-center p-3" href="/">
@@ -36,7 +43,7 @@ function Navbar(){
                     {user?<a className='link hover-black' href='/cart'>Cart</a>:null}
                     {user?null:<a className="link hover-black" href="/signin">Sign In</a>}
                     {user?null:<a className="bg-animate hover-bg-white hover-black-pill no-underline pv2 ph4 br-pill" href="/signup">Sign Up</a>}
-                    {user?<a className="link hover-black" href="/profile">My Profile</a>:null}
+                    {user?<a className="link hover-black" href="/profile"><img src={`../src/pfp_pics/${userData.user_pfp_id}.png`} alt="" /></a>:null}
                     <button className='nav-btn nav-close-btn' onClick={showNavbar}>
                         <FaTimes/>
                     </button>

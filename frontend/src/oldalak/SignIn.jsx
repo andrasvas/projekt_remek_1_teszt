@@ -50,33 +50,35 @@ function SignIn(){
 
     return(
         <>
-        <div className='d-flex justify-content-center all-container'>
-            <div className='card p-5'>
-                <form onSubmit={Login}>
-                    <input type="email"
-                    className='m-1 w-100'
-                    required
-                    onChange={HandleChange}
-                    placeholder='E-mail'
-                    name="logEmail"
-                    value={formData.logEmail} />
+        <div className='container justify-content-center bg-warning m-0 p-0 all-container'>
+            <div className='row justify-content-center'>
+                <div className='card p-md-5 p-auto m-0 col-lg-5 col-md-8'>
+                    <form onSubmit={Login}>
+                        <input type="email"
+                        className='m-1 w-100'
+                        required
+                        onChange={HandleChange}
+                        placeholder='E-mail'
+                        name="logEmail"
+                        value={formData.logEmail} />
 
-                    <br />
-                    
-                    <input type="password"
-                    className='m-1 w-100'
-                    required
-                    onChange={HandleChange}
-                    placeholder='Jelszó'
-                    name="logPassword"
-                    value={formData.logPassword} />
+                        <br />
+                        
+                        <input type="password"
+                        className='m-1 w-100'
+                        required
+                        onChange={HandleChange}
+                        placeholder='Jelszó'
+                        name="logPassword"
+                        value={formData.logPassword} />
 
-                    <br />
+                        <br />
 
-                    <input type="submit" 
-                    className='m-1 mt-4 purchaseBtn main-brand w-100'
-                    value="Bejelentkezem" />
-                </form>
+                        <input type="submit" 
+                        className='m-1 mt-4 purchaseBtn main-brand w-100'
+                        value="Bejelentkezem" />
+                    </form>
+                </div>
             </div>
         </div>
 
