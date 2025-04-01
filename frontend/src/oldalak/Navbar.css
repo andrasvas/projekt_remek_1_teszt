@@ -204,6 +204,10 @@ header{
     font-weight: 750;
 }
 
+.nav-container img{
+    width: 50px;
+}
+
 
 nav a{
     margin: 0 1rem;
@@ -220,6 +224,23 @@ header .nav-btn{
     opacity: 0;
     font-size: 1.8rem;
 }
+
+.profile-button{
+    padding: 0;
+    margin-right: 0;
+}
+
+.profile-button img{
+    border: var(--accent) 2px solid;
+    transition: linear 200ms;
+}
+
+.profile-button img:hover, .profile-button img:focus{
+    border: var(--text) 3px solid;
+    transition: cubic-bezier(0.215, 0.610, 0.355, 1) 400ms;
+    transform: rotate(5deg);
+}
+
 
 .main-nav-container{
     justify-content: end;
@@ -316,7 +337,11 @@ header .nav-btn{
       .black-icon:hover{
         background-color: var(--card-bg);
     }
+    .profile-button img:hover, .profile-button img:focus{
+        border-color: var(--background);
     }
+    
+}
     
     @media (prefers-color-scheme: dark) {
       :root{
