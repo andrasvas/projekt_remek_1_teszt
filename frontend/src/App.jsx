@@ -3,6 +3,7 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 import './App.css'
 
 import Bakelitek from './oldalak/Bakelitek.jsx'
+import axios from 'axios'
 import ItemView from './oldalak/ItemView.jsx'
 import Error from './oldalak/Error'
 import Navbar from './oldalak/Navbar'
@@ -14,9 +15,19 @@ import Footer from './oldalak/Footer'
 import Cart from './oldalak/Cart'
 import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom'
 import MoreLikeThis from './oldalak/MoreLikeThis'
+import { useEffect, useState } from 'react'
 
 function App() {
-  const isLogged = window.localStorage.getItem("userToken")
+  // const isLogged = window.localStorage.getItem("userToken")
+  const [user,setUser] = useState(null)
+
+    useEffect(() => {
+        axios.get("http://localhost:5000/profile",{withCredentials: true})
+            .then(res => setUser(res.data))
+            .catch(() => setUser(null))
+    },[])
+
+
   // const [isDarkMode, setDarkMode] = useState(false)
   
   // function toggleDarkMode(isDarkMode){
@@ -39,7 +50,7 @@ function App() {
             {/* <Route path="/item/:genre" element={<MoreLikeThis />}/> */}
             <Route path="/signup" element={<Signup/>}/>
             <Route path="/profile" element={<Profile/>}/>
-            <Route path="/signin" element={isLogged?<Profile/>:<Signin/>}></Route>
+            <Route path="/signin" element={user?<Profile/>:<Signin/>}></Route>
             <Route path="/about" element={<About/>}></Route>
             <Route path='/cart' element={<Cart/>}></Route>
             <Route Component={Error}></Route>

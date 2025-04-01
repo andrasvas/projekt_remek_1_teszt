@@ -69,7 +69,7 @@ function Cart(){
             withCredentials: true
         })
         .then(response => {
-            console.log("Profil adatok:", response.data);
+            console.log("Kosár adatok:", response.data);
             setUserData(response.data)
         })
         .catch(error => {
