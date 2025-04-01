@@ -10,10 +10,13 @@ const Error = () => {
 
     return (
         <>
-            <div className='all-container'>
-                <img src={QuestionCat} alt="" />
-                <h1>Ez az oldal nem létezik: 404</h1>
+        <div className="all-container row">
+            <div className='align-items-center justify-content-center m-auto'>
+                <img className='img-responsive m-auto' src="../src/assets/cat_question.png" alt=""/>
             </div>
+            <h1 className='main-brand'>{error}</h1>
+            <p>Nem találtuk amit keresel, nézz vissza később!</p>
+        </div>
         </>
     );
 };
