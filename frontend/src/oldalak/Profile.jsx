@@ -15,7 +15,14 @@ function Profile(){
     })
 
     function LogOut(){
-        axios.post("http://localhost:5000/logout",{withCredentials: true})
+        axios.post("http://localhost:5000/logout", {}, { withCredentials: true })
+    .then(response => {
+        console.log(response.data.message);
+        window.location.href = "/signin"
+    })
+    .catch(error => {
+        console.error("Hiba történt:", error.response?.data || error);
+    });
     }
 
     useEffect(() =>{

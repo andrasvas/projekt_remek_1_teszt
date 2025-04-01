@@ -4,10 +4,18 @@ import { useRef } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import {FaBars, FaTimes} from "react-icons/fa"
+import axios from 'axios'
 import snpLogo from '../assets/a_logo.png'
 
 function Navbar(){
-    var isLoggedIn = window.localStorage.getItem("userToken")
+    const [user,setUser] = useState(null)
+
+    useEffect(() => {
+        axios.get("http://localhost:5000/profile",{withCredentials: true})
+            .then(res => setUser(res.data))
+            .catch(() => setUser(null))
+    },[])
+    //var isLoggedIn = window.localStorage.getItem("userToken")
     const navRef = useRef();
 
     const showNavbar = () =>{
@@ -25,10 +33,10 @@ function Navbar(){
                 <div className="flex nav-container">
                     <a className="link hover-black" href="/">Main Page</a>
                     <a className="link hover-black" href="/about">About</a>
-                    {isLoggedIn?<a className='link hover-black' href='/cart'>Cart</a>:null}
-                    {isLoggedIn?null:<a className="link hover-black" href="/signin">Sign In</a>}
-                    {isLoggedIn?null:<a className="bg-animate hover-bg-white hover-black-pill no-underline pv2 ph4 br-pill" href="/signup">Sign Up</a>}
-                    {isLoggedIn?<a className="link hover-black" href="/profile">My Profile</a>:null}
+                    {user?<a className='link hover-black' href='/cart'>Cart</a>:null}
+                    {user?null:<a className="link hover-black" href="/signin">Sign In</a>}
+                    {user?null:<a className="bg-animate hover-bg-white hover-black-pill no-underline pv2 ph4 br-pill" href="/signup">Sign Up</a>}
+                    {user?<a className="link hover-black" href="/profile">My Profile</a>:null}
                     <button className='nav-btn nav-close-btn' onClick={showNavbar}>
                         <FaTimes/>
                     </button>
