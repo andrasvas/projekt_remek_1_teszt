@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import { Link } from 'react-router-dom';
 
-
 function Profile(){
     const [userData,setUserData] = useState({
         user_email:"",
@@ -48,6 +47,20 @@ function Profile(){
         });
     },[])
 
+    const ChangeProfilePicture = (profilePicId) => {
+        axios.post('http://localhost:5000/change_pfp', 
+    { imgId: profilePicId }, // Ez a request body
+    { withCredentials: true } // Ez a konfiguráció
+)
+.then(response => {
+    console.log(response.data);
+    window.location.href = "/profile"
+})
+.catch(error => {
+    console.error(error);
+});
+     }
+
     return(
         <div className='all-container'>
             <div className='card p-4'>
@@ -55,7 +68,7 @@ function Profile(){
                     <img className='droppic col-md-4 col-xs-1 p-1 img-thumbnail' onClick={showPfps} src={`../src/pfp_pics/${userData.user_pfp_id}.png`} alt="nincs profilkép" />
                     <div id='pfps' className="dropdown-content justify-content-center display-none">
                         <div>
-                            <button className='pfp-button' to={`changepfp/${userData.user_id}/1`}><img className='pfp-images' src="../src/pfp_pics/1.png" alt="" /></button>
+                            <button className='pfp-button' onClick={() => {ChangeProfilePicture(1)}} to={`changepfp/${userData.user_id}/1`}><img className='pfp-images' src="../src/pfp_pics/1.png" alt="" /></button>
                             <button className='pfp-button' to={`changepfp/${userData.user_id}/2`}><img className='pfp-images' src="../src/pfp_pics/2.png" alt="" /></button>
                             <button className='pfp-button' to={`changepfp/${userData.user_id}/3`}><img className='pfp-images' src="../src/pfp_pics/3.png" alt="" /></button>
                             <button className='pfp-button' to={`changepfp/${userData.user_id}/4`}><img className='pfp-images' src="../src/pfp_pics/4.png" alt="" /></button>

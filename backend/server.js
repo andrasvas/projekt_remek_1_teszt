@@ -33,7 +33,7 @@ async function hashPassword(password) {
 
 const db = mysql.createConnection({
    host: "127.0.0.1",
-   port: "3307",
+   port: "3306",
    user: "root",
    password: "",
    database: "scratch_and_spin_db",
@@ -662,6 +662,35 @@ app.get("/cart", async function (req, res) {
       console.log(err);
    }
 });
+
+app.post('/change_pfp', async function(req,res){
+   console.log("Profil kép megváltoztatása")
+   const imgId = req.body.imgId
+   const token = req.cookies.authToken
+
+   if (!token) {
+      console.log("Token nem található!");
+      return res.status(401).json({ message: "Token nem található!" });
+   }
+
+   try{
+      const decodedToken = jwt.verify(token, SecretKey);
+      const userEmail = decodedToken.user_email;
+
+      db.query("UPDATE users SET user_pfp_id = ? WHERE users.user_email = ?",[imgId,userEmail],(err,result) => {
+         if(err){
+            return res.status(400).json({error: "Rossz keres"})
+         }
+         return res.status(200).json({message: "Sikeres profilkép csere!"})
+      })
+
+   }
+   catch(err){
+      console.log(err)
+   }
+
+   
+})
 
 router.get("/userProfile", async function (req, res) {
    console.log("Felhasználói adatok lekérése...");
