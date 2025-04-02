@@ -194,7 +194,8 @@ header{
     height: 80px;
     padding: 0 2rem;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 header a{
@@ -215,6 +216,7 @@ header a{
 
 #nav-logo {
     transition: linear 200ms;
+    margin-right: 1rem;
 }
 
 #nav-logo:hover, #nav-logo:focus{
@@ -330,6 +332,10 @@ header .nav-btn{
     100%{transform: translate(0);}
 }
 
+.responsive_nav{
+    transform: translateY(0);
+}
+
 @media only screen and (max-width: 1024px){
     nav{
         z-index: 1
@@ -342,6 +348,8 @@ header .nav-btn{
     .main-nav-container{
         justify-content: center;
         align-content: center;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
     }
 
     .nav-container{
@@ -349,6 +357,15 @@ header .nav-btn{
         height: 25rem;
         justify-content: space-around;
     }
+    
+    .nav-container:only-child{
+        opacity: 1;
+    }
+
+    /* header{
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    } */
 
     header nav{
         position: fixed;
@@ -362,6 +379,7 @@ header .nav-btn{
         justify-content: center;
         gap: 1.5rem;
         background-color: var(--card-bg);
+        opacity: 0.9;
         transition: cubic-bezier(0.215, 0.610, 0.355, 1) 750ms;
         transform: translateY(-100vh);
     }

@@ -29,9 +29,48 @@ div{
   background-color: var(--accent-second) !important;
 }
 
-.dropdown-content{
+.droppic{
+  transition: linear 75ms;
+}
+
+.droppic:hover{
+  transition: linear 200ms;
+  filter: sepia();
+  cursor: pointer;
+  border-color: var(--accent);
+  background-color: var(--accent);
+}
+
+.display-none{
   display: none;
+}
+
+.display-flex{
+  display: flex;
+}
+
+.dropdown-content{
+  margin: 0;
+  padding: 1rem;
   position: absolute;
+  width: fit-content;
+  left: 10.5cm;
+  right: 1cm;
+  flex-wrap: wrap;
+  background-color: var(--primary);
+  border: var(--text) 2px solid;
+  border-radius: 1%;
+}
+
+.pfp-images{
+  margin: 0;
+  height: 10rem;
+  width: 10rem;
+}
+
+.pfp-button{
+  margin: 0;
+  padding: 0;
 }
 
 .div-title{
@@ -125,3 +164,32 @@ div{
         border-color: var(--accent);
       }
     }
+
+@media only screen and (max-width: 1024px){
+  .dropdown-content{
+    left: 10cm;
+  }
+}
+@media only screen and (max-width: 768px){
+  .dropdown-content{
+    left: 250px;
+  }
+  .pfp-images{
+    margin: 0;
+    height: 5rem;
+    width: 5rem;
+  }
+}
+@media only screen and (max-width: 426px){
+  .dropdown-content{
+    left: 0;
+    right: 0;
+    top: 0;
+    flex-direction: row;
+  }
+  .pfp-images{
+    margin: 0;
+    height: 6.5rem;
+    width: 6.5rem;
+  }
+}
