@@ -75,7 +75,7 @@ function SignUp() {
     return (
         <>
             <div className='d-flex justify-content-center all-container' id='signup-container'>
-                <div className='card p-3 w-75 '>
+                <div className='card p-3 w-75 col'>
                     <form onSubmit={Register}>
                         <input type="text"
                         className='m-1'
@@ -129,8 +129,9 @@ function SignUp() {
                         placeholder='Jelszó megerősitése' />
 
                         <br />
+                        <p className='m-auto'>A jelszónak rendelkeznie kell legalább 8 karakterrel, egy számmal és egy speciális karakterrel (&, @, #, %)</p>
                         <br />
-
+                        
                         <input type="submit" className='m-4 purchaseBtn main-brand' value="Regisztráció"></input>
                     </form>
 
@@ -139,6 +140,8 @@ function SignUp() {
 
             <div>
                 <a href="/signin">Van már fiókod?</a>
+                <br />
+                <p></p>
             </div>
         </>
     );

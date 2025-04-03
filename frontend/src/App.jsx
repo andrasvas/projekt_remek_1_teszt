@@ -13,6 +13,7 @@ import About from './oldalak/About.jsx'
 import Profile from './oldalak/Profile'
 import Footer from './oldalak/Footer'
 import Cart from './oldalak/Cart'
+import Purchase from './oldalak/Purchase'
 import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom'
 import MoreLikeThis from './oldalak/MoreLikeThis'
 import { useEffect, useState } from 'react'
@@ -53,6 +54,7 @@ function App() {
             <Route path="/signin" element={user?<Profile/>:<Signin/>}></Route>
             <Route path="/about" element={<About/>}></Route>
             <Route path='/cart' element={<Cart/>}></Route>
+            <Route path='/purchase' element={<Purchase/>}></Route>
             <Route Component={Error} element={<Error/>}></Route>
           </Routes>
           <Footer/>

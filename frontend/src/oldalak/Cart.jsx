@@ -202,7 +202,7 @@ function Cart() {
                   >
                      Kosár törlése
                   </button>
-                  <button className="purchaseBtn main-brand m-3">
+                  <button className="purchaseBtn main-brand m-3" onClick={() => (window.location.href = "/purchase")}>
                      Megrendelés
                   </button>
                </div>

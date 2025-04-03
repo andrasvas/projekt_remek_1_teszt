@@ -67,19 +67,20 @@ function Profile(){
                 <div className='m-0 p-0 row'>
                     <img className='droppic col-md-4 col-xs-1 p-1 img-thumbnail' onClick={showPfps} src={`../src/pfp_pics/${userData.user_pfp_id}.png`} alt="nincs profilkép" />
                     <div id='pfps' className="dropdown-content justify-content-center display-none">
+                        <h2 className='main-brand'>Profilkép változtatása</h2>
                         <div>
                             <button className='pfp-button' onClick={() => {ChangeProfilePicture(1)}} to={`changepfp/${userData.user_id}/1`}><img className='pfp-images' src="../src/pfp_pics/1.png" alt="" /></button>
-                            <button className='pfp-button' to={`changepfp/${userData.user_id}/2`}><img className='pfp-images' src="../src/pfp_pics/2.png" alt="" /></button>
-                            <button className='pfp-button' to={`changepfp/${userData.user_id}/3`}><img className='pfp-images' src="../src/pfp_pics/3.png" alt="" /></button>
-                            <button className='pfp-button' to={`changepfp/${userData.user_id}/4`}><img className='pfp-images' src="../src/pfp_pics/4.png" alt="" /></button>
-                            <button className='pfp-button' to={`changepfp/${userData.user_id}/5`}><img className='pfp-images' src="../src/pfp_pics/5.png" alt="" /></button>
-                            <button className='pfp-button' to={`changepfp/${userData.user_id}/6`}><img className='pfp-images' src="../src/pfp_pics/6.png" alt="" /></button>
-                            <button className='pfp-button' to={`changepfp/${userData.user_id}/7`}><img className='pfp-images' src="../src/pfp_pics/7.png" alt="" /></button>
-                            <button className='pfp-button' to={`changepfp/${userData.user_id}/8`}><img className='pfp-images' src="../src/pfp_pics/8.png" alt="" /></button>
-                            <button className='pfp-button' to={`changepfp/${userData.user_id}/9`}><img className='pfp-images' src="../src/pfp_pics/9.png" alt="" /></button>
-                            <button className='pfp-button' to={`changepfp/${userData.user_id}/10`}><img className='pfp-images' src="../src/pfp_pics/10.png" alt="" /></button>
-                            <button className='pfp-button' to={`changepfp/${userData.user_id}/11`}><img className='pfp-images' src="../src/pfp_pics/11.png" alt="" /></button>
-                            <button className='pfp-button' to={`changepfp/${userData.user_id}/12`}><img className='pfp-images' src="../src/pfp_pics/12.png" alt="" /></button>
+                            <button className='pfp-button' onClick={() => {ChangeProfilePicture(2)}} to={`changepfp/${userData.user_id}/2`}><img className='pfp-images' src="../src/pfp_pics/2.png" alt="" /></button>
+                            <button className='pfp-button' onClick={() => {ChangeProfilePicture(3)}} to={`changepfp/${userData.user_id}/3`}><img className='pfp-images' src="../src/pfp_pics/3.png" alt="" /></button>
+                            <button className='pfp-button' onClick={() => {ChangeProfilePicture(4)}} to={`changepfp/${userData.user_id}/4`}><img className='pfp-images' src="../src/pfp_pics/4.png" alt="" /></button>
+                            <button className='pfp-button' onClick={() => {ChangeProfilePicture(5)}} to={`changepfp/${userData.user_id}/5`}><img className='pfp-images' src="../src/pfp_pics/5.png" alt="" /></button>
+                            <button className='pfp-button' onClick={() => {ChangeProfilePicture(6)}} to={`changepfp/${userData.user_id}/6`}><img className='pfp-images' src="../src/pfp_pics/6.png" alt="" /></button>
+                            <button className='pfp-button' onClick={() => {ChangeProfilePicture(7)}} to={`changepfp/${userData.user_id}/7`}><img className='pfp-images' src="../src/pfp_pics/7.png" alt="" /></button>
+                            <button className='pfp-button' onClick={() => {ChangeProfilePicture(8)}} to={`changepfp/${userData.user_id}/8`}><img className='pfp-images' src="../src/pfp_pics/8.png" alt="" /></button>
+                            <button className='pfp-button' onClick={() => {ChangeProfilePicture(9)}} to={`changepfp/${userData.user_id}/9`}><img className='pfp-images' src="../src/pfp_pics/9.png" alt="" /></button>
+                            <button className='pfp-button' onClick={() => {ChangeProfilePicture(10)}} to={`changepfp/${userData.user_id}/10`}><img className='pfp-images' src="../src/pfp_pics/10.png" alt="" /></button>
+                            <button className='pfp-button' onClick={() => {ChangeProfilePicture(11)}} to={`changepfp/${userData.user_id}/11`}><img className='pfp-images' src="../src/pfp_pics/11.png" alt="" /></button>
+                            <button className='pfp-button' onClick={() => {ChangeProfilePicture(12)}} to={`changepfp/${userData.user_id}/12`}><img className='pfp-images' src="../src/pfp_pics/12.png" alt="" /></button>
                         </div>
                         <div>
                             <button className='main-brand purchaseBtn' onClick={hidePfps}>Mégsem</button>
