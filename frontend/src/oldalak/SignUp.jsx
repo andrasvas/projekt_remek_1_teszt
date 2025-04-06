@@ -123,6 +123,7 @@ function SignUp() {
                         value={formData.regPassword} />
 
                         <input type="password"
+                        className='m-1'
                         required
                         onChange={(e) => {SetConPassword(e.target.value)}} 
                         name="confirm_password" 
