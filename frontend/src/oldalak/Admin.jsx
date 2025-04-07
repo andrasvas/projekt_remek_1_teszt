@@ -90,6 +90,7 @@ const Purchase = () => {
                         <br />
                         <br />
                         <input type="submit" className='m-4 purchaseBtn main-brand' value="Regisztráció"></input>
+                        
                     </form>
 
                 </div>

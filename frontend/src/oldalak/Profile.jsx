@@ -12,6 +12,7 @@ function Profile(){
         user_last_name:"",
         user_first_name:""
     })
+    const isAdmin = useState()
 
     function LogOut(){
         axios.post("http://localhost:5000/logout", {}, { withCredentials: true })
@@ -93,6 +94,7 @@ function Profile(){
                         <div className='mb-2'>
                             <h4>Email címed: {userData.user_email}</h4>
                             <h4>Neved: {userData.user_first_name} {userData.user_last_name}</h4>
+                            <h4>Admin: {userData.user_is_admin}</h4>
                         </div>
                     </div>
                 </div>

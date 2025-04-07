@@ -33,7 +33,7 @@ async function hashPassword(password) {
 
 const db = mysql.createConnection({
    host: "127.0.0.1",
-   port: "3306",
+   port: "3307",
    user: "root",
    password: "",
    database: "scratch_and_spin_db",
@@ -257,7 +257,7 @@ app.get("/profile", async function (req, res) {
       const userEmail = decodedToken.user_email;
 
       db.query(
-         `SELECT user_id, user_last_name, user_first_name, user_email, user_pfp_id FROM users WHERE user_email = ?`,
+         `SELECT user_id, user_last_name, user_first_name, user_email, user_pfp_id, user_is_admin FROM users WHERE user_email = ?`,
          [userEmail],
          async (err, result) => {
             if (err) {
