@@ -8,8 +8,16 @@ const Purchase = () => {
 
     return(
         <>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut impedit reprehenderit assumenda molestiae exercitationem cupiditate laboriosam cumque ipsam consequatur consectetur iusto tempora, quia, est nihil ut nam. Quisquam, deleniti voluptatibus.</p> 
-    </>
+            <form action="">
+                <input type="text" placeholder="*Település"/>
+                <br />
+                <input type="text" placeholder='*Utca, házszám' />
+                <br />
+                <input type="text" placeholder='Emelet,ajtó' />
+                <br />
+                <input type="submit" value="Rendelés" />
+            </form>
+        </>
     )
     
 }

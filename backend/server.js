@@ -114,7 +114,7 @@ app.post("/register", async function (req, res) {
    const user_firstname = req.body.user_firstname;
    const user_lastname = req.body.user_lastname;
    const user_phonenum = req.body.user_phonenum;
-   const user_pfp_id = Math.random() * 10 + 2 + 1;
+   const user_pfp_id = Math.random() * 10 + 1 + 1;
 
    db.query(
       `SELECT count(*) AS 'count' FROM users WHERE user_phone_number = ? OR user_email = ?`,
