@@ -118,11 +118,9 @@ function Cart() {
      })
      .catch((err) => {
          console.error(err);
-     });
+     })
          
-   };
-
-   const OrderItems = () => {};
+   }
 
    return (
       <div className="all-container container">
@@ -202,7 +200,7 @@ function Cart() {
                   >
                      Kosár törlése
                   </button>
-                  <button className="purchaseBtn main-brand m-3" onClick={() => (window.location.href = "/purchase")}>
+                  <button className="purchaseBtn main-brand m-3" onClick={() => {window.location.href = "/purchase"}}>
                      Megrendelés
                   </button>
                </div>

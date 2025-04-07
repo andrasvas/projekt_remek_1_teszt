@@ -15,11 +15,11 @@ function SignUp() {
     }
 
     function CheckPassword(password,confirmPassword){
-        var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*?])[a-zA-Z0-9!@#$%^&*?]{6,16}$/;
+        var regularExpression = /^(?=.*[0-9])[a-zA-Z0-9]{6,16}$/
     
         if(password.length < 8) return alert("A jelszó nem elég hosszú, minimum 8 karakter kell hogy legyen!")
         if(password !== confirmPassword) return alert("A jelszavak nem egyeznek!")
-        if(regularExpression.test(password) == false) return alert("Nincs benne minimum egy szám vagy egy speciális karakter!")
+        if(regularExpression.test(password) == false) return alert("A jelszó nem felel meg a követelményeknek!")
         
         return true
     }
@@ -130,7 +130,7 @@ function SignUp() {
                         placeholder='Jelszó megerősitése' />
 
                         <br />
-                        <p className='m-auto'>A jelszónak rendelkeznie kell legalább 8 karakterrel, egy számmal és egy speciális karakterrel (&, @, #, %)</p>
+                        <p className='m-auto'>A jelszónak rendelkeznie kell legalább 8 karakterrel és egy számmal</p>
                         <br />
                         
                         <input type="submit" className='m-4 purchaseBtn main-brand' value="Regisztráció"></input>
