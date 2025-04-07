@@ -1,4 +1,4 @@
-import "./Bakelitek.css"
+import '../css/Bakelitek.css'
 import {Link} from 'react-router-dom'
 
 import 'bootstrap/dist/css/bootstrap.min.css'

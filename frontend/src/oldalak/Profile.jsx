@@ -1,4 +1,4 @@
-import './Bakelitek.css'
+import '../css/Bakelitek.css'
 import React, {useEffect, useState, useRef, useCallback, useContext, useId} from "react";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -35,6 +35,21 @@ function Profile(){
         document.getElementById("pfps").classList = "dropdown-content justify-content-center display-none"
     }
 
+    const adminPage = () => {
+        window.location.href = "/admin"
+    }
+
+    const handleAdmin = useCallback(() => {
+        console.log("A felhasználó admin? " + userData.user_is_admin)
+        if (userData.user_is_admin == 1) {
+            return <button className='main-brand purchaseBtn mx-3' onClick={adminPage}>Admin felület</button>;
+        } 
+        else {
+            return;
+        }},
+        [userData.user_is_admin]);
+
+
     useEffect(() =>{
         axios.get("http://localhost:5000/profile", {
             withCredentials: true  // Fontos! Engedélyezi a cookie küldését a kérésben
@@ -61,6 +76,7 @@ function Profile(){
     console.error(error);
 });
      }
+     
 
     return(
         <div className='all-container'>
@@ -87,22 +103,21 @@ function Profile(){
                             <button className='main-brand purchaseBtn' onClick={hidePfps}>Mégsem</button>
                         </div>
                     </div>
-                    <div className='col-md-5 bg-warning container'>
+                    <div className='col-md-5 container'>
                         <div className='mb-4'>
                                 <h2>Üdv, {userData.user_first_name}</h2>
                         </div>
                         <div className='mb-2'>
                             <h4>Email címed: {userData.user_email}</h4>
                             <h4>Neved: {userData.user_first_name} {userData.user_last_name}</h4>
-                            <h4>Admin: {userData.user_is_admin}</h4>
                         </div>
                     </div>
                 </div>
                 <div>
                     <button className='main-brand purchaseBtn mx-3' onClick={LogOut}>Kijelentkezés</button>
                     <button className='main-brand purchaseBtn mx-3' onClick={LogOut}>Jelszó megváltoztatása</button>
+                    {handleAdmin(userData.user_is_admin)}
                 </div>
-
             </div>
         </div>
     )

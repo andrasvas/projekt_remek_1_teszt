@@ -1,5 +1,5 @@
-import "./Navbar.css";
-import "./Bakelitek.css";
+import '../css/Navbar.css'
+import '../css/Bakelitek.css'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import snpLogo from "../assets/cat_sleeping.png";

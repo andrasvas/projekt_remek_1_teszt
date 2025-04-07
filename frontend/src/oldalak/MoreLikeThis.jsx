@@ -1,5 +1,5 @@
-import "./Bakelitek.css";
-import "./MoreLikeThis.css";
+import '../css/Bakelitek.css'
+import '../css/MoreLikeThis.css'
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";

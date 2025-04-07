@@ -1,4 +1,4 @@
-import "./Bakelitek.css";
+import '../css/Bakelitek.css'
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";

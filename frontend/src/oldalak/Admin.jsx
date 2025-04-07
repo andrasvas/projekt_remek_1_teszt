@@ -1,28 +1,11 @@
-import './Bakelitek.css'
+import '../css/Bakelitek.css'
 import React, { useState } from "react"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import axios from 'axios'
 
-function SignUp() {
-    function CheckPhoneNumber(phonenum){
-        var regularExpression = /[a-z]/i
+function Admin() {
 
-        if(phonenum.length > 15 || phonenum.length < 11) return alert("A telefon szám nem elég hosszú!")
-        if(regularExpression.test(phonenum) === true) return alert("A telefonszám nem tartalmazhat betűt!")
-
-        return true
-    }
-
-    function CheckPassword(password,confirmPassword){
-        var regularExpression = /^(?=.*[0-9])[a-zA-Z0-9]{6,16}$/
-    
-        if(password.length < 8) return alert("A jelszó nem elég hosszú, minimum 8 karakter kell hogy legyen!")
-        if(password !== confirmPassword) return alert("A jelszavak nem egyeznek!")
-        if(regularExpression.test(password) == false) return alert("A jelszó nem felel meg a követelményeknek!")
-        
-        return true
-    }
 
     const [formData, setFormData] = useState({
         regEmail:"",
@@ -75,65 +58,147 @@ function SignUp() {
     return (
         <>
             <div className='d-flex justify-content-center all-container' id='signup-container'>
-                <div className='card p-3 w-75 col'>
+                <div className='card p-3 w-75 col justify-content-center align-items-center'>
+                    <h1 className='main-brand'>Új lemez feltöltése</h1>
                     <form onSubmit={Register}>
-                        <input type="text"
+                        <input type="number"
                         className='m-1'
                         required
                         onChange={HandleChange}
-                        placeholder='Keresztnév'
-                        name="regFirstname"
-                        value={formData.regFirstname} />
+                        placeholder='Lemezek darabszáma'
+                        name="vinylAmount"/>
 
                         <input type="text"
                         className='m-1 mb-3'
                         required 
                         onChange={HandleChange} 
-                        placeholder='Vezetéknév' 
-                        name="regLastname"
-                        value={formData.regLastname} />
+                        placeholder='Művész' 
+                        name="vinylArtist"/>
 
-                        <br />
-
-                        <input type="email"
+                        <input type="text"
                         className='m-1'
                         required 
                         onChange={HandleChange}
-                        name="regEmail"
-                        placeholder='E-mail'
-                        value={formData.regEmail} />
+                        name="vinylColor"
+                        placeholder='Lemez színe'/>
 
-                        <input type="tel"
+                        <input type="text"
                         className='m-1'
                         required 
-                        name="regPhoneNum" 
+                        name="vinylName" 
                         onChange={HandleChange} 
-                        placeholder='Telefonszám' 
-                        value={formData.regPhoneNum} />
+                        placeholder='Album neve'/>
 
-                        <br />
-                        <br />
-
-                        <input type="password" 
+                        <input type="number" 
                         className='m-1'
                         required 
                         onChange={HandleChange} 
-                        name="regPassword" 
-                        placeholder='Jelszó'
-                        value={formData.regPassword} />
+                        name="vinylPrice" 
+                        placeholder='Ár'/>
 
-                        <input type="password"
+                        <input type="number"
                         className='m-1'
                         required
-                        onChange={(e) => {SetConPassword(e.target.value)}} 
-                        name="confirm_password" 
-                        placeholder='Jelszó megerősitése' />
+                        onChange={HandleChange} 
+                        name="vinylInStockSum" 
+                        placeholder='Raktár mennyiség' />
+                                                
+                        <input type="number"
+                        className='m-1'
+                        required
+                        onChange={HandleChange} 
+                        name="vinylRpm" 
+                        placeholder='RPM (általában 33)' />
+
+                        <input type="number"
+                        className='m-1'
+                        required
+                        onChange={HandleChange} 
+                        name="vinylWeight" 
+                        placeholder='Súly (általában 180)' />
+
+                        <input type="number"
+                        className='m-1'
+                        required
+                        onChange={HandleChange} 
+                        name="vinylSize" 
+                        placeholder='Méret (általában 12)' />
+
+                        
+                        <input type="number"
+                        className='m-1'
+                        required
+                        onChange={HandleChange} 
+                        name="vinylReleaseYear" 
+                        placeholder='Megjelenés éve' />
+
+                        <select name="vinylGenre" className='m-1 text-placeholder form-input' style={{ width: '150px', height: '24px'}} required onChange={HandleChange}>
+                            <option value="Metalcore">Metalcore</option>
+                            <option value="Post-Hardcore">Post-Hardcore</option>
+                            <option value="Alternative Rock">Alternative Rock</option>
+                            <option value="Pop Punk">Pop Punk</option>
+                            <option value="Indie Rock">Indie Rock</option>
+                            <option value="Hard Rock">Hard Rock</option>
+                            <option value="Electronic Rock">Electronic Rock</option>
+                            <option value="Progressive Metal">Progressive Metal</option>
+                            <option value="Deathcore">Deathcore</option>
+                            <option value="Synthwave">Synthwave</option>
+                            <option value="Pop">Pop</option>
+                            <option value="Rap">Rap</option>
+                            <option value="Hip-Hop">Hip-Hop</option>
+                            <option value="R&B">R&B</option>
+                            <option value="Electronic">Electronic</option>
+                            <option value="Trash Metal">Trash Metal</option>
+                        </select>
+
+                        <select name="vinylRecordLabel" className='m-1 form-input' style={{ width: '175px', height: '24px' }} required onChange={HandleChange}>
+                            <option value="Roadrunner Records">Roadrunner Records</option>
+                            <option value="Epitaph Records">Epitaph Records</option>
+                            <option value="Fueled by Ramen">Fueled by Ramen</option>
+                            <option value="Hopeless Records">Hopeless Records</option>
+                            <option value="Rise Records">Rise Records</option>
+                            <option value="Fearless Records">Fearless Records</option>
+                            <option value="Spinefarm Records">Spinefarm Records</option>
+                            <option value="Sumerian Records">Sumerian Records</option>
+                            <option value="Nuclear Blast">Nuclear Blast</option>
+                            <option value="Pure Noise Records">Pure Noise Records</option>
+                            <option value="Republic Records">Republic Records</option>
+                            <option value="Capitol Records">Capitol Records</option>
+                            <option value="Island Records">Island Records</option>
+                            <option value="Def Jam Recordings">Def Jam Recordings</option>
+                            <option value="Atlantic Records">Atlantic Records</option>
+                            <option value="Polydor">Polydor</option>
+                            <option value="Octone Records">Octone Records</option>
+                        </select>
 
                         <br />
-                        <p className='m-auto'>A jelszónak rendelkeznie kell legalább 8 karakterrel és egy számmal</p>
+
+                        <textarea style={{width: "50%"}} name="vinylDescription" className='mt-3' required onChange={HandleChange} placeholder='Lemez leírása' />
                         <br />
-                        
-                        <input type="submit" className='m-4 purchaseBtn main-brand' value="Regisztráció"></input>
+                        <input type="submit" className='m-4 purchaseBtn main-brand' value="Új lemez feltöltése"></input>
+                    
+                    <div className="card-dragndrop">
+                        <div className="top">
+                            <p>Kép beszúrása</p>
+                        </div>
+                        <div className="drag-area">
+                            <span className="select">
+                                Ide húzz egy képet
+                            </span>
+                            Húzz ide egy képet vagy {" "}
+                            <span className="select">
+                                Böngéssz
+                            </span>
+                            <input type="file" name='file' className="file" />
+                        </div>
+                        <div className="container">
+                            <div className="image">
+                                <span className="delete">&times;</span>
+                            </div>
+                            <img src="" alt="" />
+                        </div>
+                    </div>
+                    
                     </form>
 
                 </div>
@@ -148,4 +213,4 @@ function SignUp() {
     );
 }
 
-export default SignUp
+export default Admin

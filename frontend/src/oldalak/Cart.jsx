@@ -1,6 +1,6 @@
 import React from "react";
-import "./Bakelitek.css";
-import "./Cart.css";
+import '../css/Bakelitek.css'
+import '../css/Cart.css'
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";

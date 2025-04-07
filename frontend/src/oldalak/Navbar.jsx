@@ -1,4 +1,4 @@
-import './Navbar.css'
+import '../css/Navbar.css'
 import { useEffect, useState} from "react"
 import { useRef } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'

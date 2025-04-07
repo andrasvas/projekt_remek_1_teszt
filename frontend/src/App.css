@@ -14,3 +14,19 @@
 .read-the-docs {
   color: #888;
 }
+
+.card-dragndrop{
+  padding: 10px;
+  box-shadow: 0 0 5px #ffdfdf;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.card-dragndrop .top{
+  text-align: center;
+}
+
+.card-dragndrop p{
+  font-weight: bold;
+  color: var(--text);
+}
