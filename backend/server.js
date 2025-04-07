@@ -688,8 +688,33 @@ app.post('/change_pfp', async function(req,res){
    catch(err){
       console.log(err)
    }
+})
 
-   
+app.post("/order_items", async function (req,res){
+   console.log("Rendelés leadása...")
+   const fullName = req.body.full_name
+   const phoneNumber = req.body.phone_number
+   const city = req.body.city
+   const zipCode = req.body.zip_code
+   const streetAddress = req.body.street_address
+   const note = req.body.note 
+   const token = req.cookies.authToken
+
+   if (!token) {
+      console.log("Token nem található!");
+      return res.status(401).json({ message: "Token nem található!" });
+   }
+
+   try{
+      const decodedToken = jwt.verify(token, SecretKey)
+      const userEmail = decodedToken.user_email
+
+      //db.query(``)
+   }
+
+   catch(err){
+      console.log(err)
+   }
 })
 
 router.get("/userProfile", async function (req, res) {

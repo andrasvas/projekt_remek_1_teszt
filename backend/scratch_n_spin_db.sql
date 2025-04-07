@@ -90,7 +90,7 @@ CREATE TABLE custom_vinyl (
 CREATE TABLE orders (
   order_id INT(11) NOT NULL AUTO_INCREMENT,
   user_id INT(11) DEFAULT NULL,
-  address VARCHAR(255) DEFAULT NULL,
+  address_id VARCHAR(255) DEFAULT NULL,
   status VARCHAR(50) DEFAULT NULL,
   order_date DATETIME DEFAULT NULL,
   PRIMARY KEY (order_id),
@@ -109,6 +109,20 @@ CREATE TABLE order_item (
   FOREIGN KEY (vinyl_id) REFERENCES vinyls(vinyl_id) ON DELETE CASCADE,
   FOREIGN KEY (custom_vinyl_id) REFERENCES custom_vinyl(custom_vinyl_id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE address (
+  `address_id` INT NOT NULL AUTO_INCREMENT,
+  `order_id` INT NOT NULL,
+  `type` ENUM('shipping', 'billing') NOT NULL,
+  `full_name` VARCHAR(50) NOT NULL,
+  `phone` VARCHAR(50) NULL,
+  `zip_code` VARCHAR(20) NOT NULL,
+  `city` VARCHAR(45) NOT NULL,
+  `street_address` VARCHAR(255) NOT NULL,
+  `note` TEXT(255) NULL,
+	`created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`address_id`));
+
  
 INSERT INTO `users` (`user_last_name`, `user_first_name`, `user_phone_number`, `user_email`, `user_password`, `user_pfp_id`, `user_is_admin`) values
 	('Gombos', 'Benedek', '2147483647', 'gomben397@hengersor.hu', '$2b$10$RXik56XTZmvhE1/6315JL.rxbo4BTObHzEcuETgKQ4VNv.TbgpozS', 12, true);
