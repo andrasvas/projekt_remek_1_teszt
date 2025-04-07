@@ -95,32 +95,35 @@ function Cart() {
       );
    };
 
-   const ChangeQuantity = (e, vinylId) => {
-      const newQty = parseInt(e.target.value, 10);
-
-      if (newQty < 1) return; // Ne engedjünk 0 vagy negatív értéket
-
+   const ChangeQuantity = (vinylId, delta) => {
+      const item = data.find((item) => item.vinyl_id === vinylId);
+      if (!item) return;
+   
+      const newQty = item.qty + delta;
+      if (newQty < 1) return;
+   
       const updatedData = data.map((item) =>
          item.vinyl_id === vinylId ? { ...item, qty: newQty } : item
       );
-
+   
       setData(updatedData);
-
-      // Küldjük el a szervernek a frissített mennyiséget
+   
       axios.put("http://localhost:5000/update_cart", {
          vinyl_id: vinylId,
          qty: newQty,
-     }, {
+      }, {
          withCredentials: true,
-     })
-     .then((response) => {
+      })
+      .then((response) => {
          console.log(response.data.message);
-     })
-     .catch((err) => {
+      })
+      .catch((err) => {
          console.error(err);
-     })
-         
-   }
+      });
+   };
+   
+
+   const OrderItems = () => {};
 
    return (
       <div className="all-container container">
@@ -129,18 +132,18 @@ function Cart() {
                <div key={item.vinyl_id} className="card m-3 container">
                   <div className="row">
                      <img
-                        className="cart_img border rounded border-black col-3"
+                        className="cart_img border rounded border-black col-md-3 col-sm-12 p-0"
                         src={`./src/album_covers/${item.image_path}`}
                         alt=""
                      />
                      <div className="container col bg-info">
                         <div className="row bg-warning justify-content-center align-items-center">
-                           <div className="col-8 bg-danger">
+                           <div className="col-md-5 bg-danger">
                               <h4>{item.vinyl_name}</h4>
                               <p>Ár: {item.price}$</p>
                            </div>
-                           <div className="col-4">
-                              <input
+                           <div className="col-md-4">
+                              {/* <input
                                  type="number"
                                  min="1"
                                  onChange={(e) =>
@@ -148,27 +151,27 @@ function Cart() {
                                  }
                                  value={item.qty}
                                  name={item.vinyl_id}
-                              />
+                              /> */}
+                              <div>
+                                 <button onClick={() => ChangeQuantity(item.vinyl_id, 1)}><FaPlus/></button>
+                                 <p>Mennyiség: {item.qty}</p>
+                                 <button onClick={() => ChangeQuantity(item.vinyl_id, -1)}><FaMinus/></button>
+                              </div>
                               <button
-                                 className="main-brand purchaseBtn mx-2"
+                                 className="main-brand purchaseBtn mx-0"
                                  onClick={() => DeleteItem(item.vinyl_id)}
                               >
                                  Törlés
                               </button>
                            </div>
 
-                           {/* <div>
-                                        <button><FaPlus/></button>
-                                        <p>Mennyiség: {item.qty}</p>
-                                        <button><FaMinus/></button>
-                                    </div> */}
                         </div>
                      </div>
                   </div>
                </div>
             ))
          ) : (
-            <div className="flex flex-column justify-content-center align-items-center">
+            <div className="flex flex-column justify-content-center align-items-center mb-5">
                <div
                   className="flex flex-column justify-content-center align-items-center w-50"
                   style={{ height: "45vh" }}
@@ -179,7 +182,7 @@ function Cart() {
                      alt=""
                      style={{ width: "200px" }}
                   />
-                  <h4 className="main-brand mt-5">A kosár üres.</h4>
+                  <h4 className="main-brand mt-5">A kosarad üres.</h4>
                   <button
                      className="main-brand purchaseBtn m-3"
                      onClick={() => (window.location.href = "/")}

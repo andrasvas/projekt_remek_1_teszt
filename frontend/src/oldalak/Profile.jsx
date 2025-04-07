@@ -65,7 +65,7 @@ function Profile(){
         <div className='all-container'>
             <div className='card p-4'>
                 <div className='m-0 p-0 row'>
-                    <img className='droppic col-md-4 col-xs-1 p-1 img-thumbnail' onClick={showPfps} src={`../src/pfp_pics/${userData.user_pfp_id}.png`} alt="nincs profilkép" />
+                    <img className='droppic col-md-3 col-xs-1 p-1 img-thumbnail' onClick={showPfps} src={`../src/pfp_pics/${userData.user_pfp_id}.png`} alt="nincs profilkép" />
                     <div id='pfps' className="dropdown-content justify-content-center display-none">
                         <h2 className='main-brand'>Profilkép változtatása</h2>
                         <div>
@@ -86,15 +86,13 @@ function Profile(){
                             <button className='main-brand purchaseBtn' onClick={hidePfps}>Mégsem</button>
                         </div>
                     </div>
-                    <div className='col container'>
+                    <div className='col-md-5 bg-warning container'>
                         <div className='mb-4'>
                                 <h2>Üdv, {userData.user_first_name}</h2>
-                                <h3>Adatok:</h3>
                         </div>
                         <div className='mb-2'>
-                            <h4>{userData.user_email}</h4>
-                            <h4>{userData.user_first_name}</h4>
-                            <h4>{userData.user_last_name}</h4>
+                            <h4>Email címed: {userData.user_email}</h4>
+                            <h4>Neved: {userData.user_first_name} {userData.user_last_name}</h4>
                         </div>
                     </div>
                 </div>

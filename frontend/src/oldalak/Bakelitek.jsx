@@ -41,6 +41,36 @@ const Vinyls = () => {
         }
     };
 
+    const AddToCart = () => {
+        try {
+           axios
+              .post(
+                 "http://localhost:5000/addtocart",
+                 {
+                    vinyl_id: listing.vinyl_id,
+                    vinyl_qty: qty,
+                 },
+                 {
+                    withCredentials: true,
+                 }
+              )
+              .then((response) => {
+                 console.log("Körte");
+                 if (response) {
+                    console.log(response);
+                    window.location.href = "/cart";
+                 }
+              })
+              .catch((error) => {
+                 console.error(error);
+                 window.location.href = "/signin";
+              });
+        } catch (err) {
+           console.log(err);
+        }
+     };
+  
+
     if (!isRouteErrorResponse(error)){
 
         return (
@@ -80,7 +110,7 @@ const Vinyls = () => {
                             <div className='row'>
                                 <h4 className='main-brand'>${vinyl.price}</h4>
                                     <Link className='purchaseBtn main-brand mb-3' to={`/item/${vinyl.vinyl_id}`}>Megnézem</Link>
-                                    <Link className='purchaseBtn secondary-accent main-brand'>Kosárba</Link>
+                                    <Link className='purchaseBtn secondary-accent main-brand' onClick={AddToCart}>Kosárba</Link>
                             </div>
                             </div>
                         </div>
