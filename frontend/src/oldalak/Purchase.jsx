@@ -69,6 +69,27 @@ const Purchase = () => {
             console.log(data)
         }
         
+        if(deliveryMethod === "courier"){
+            e.preventDefault()
+
+            console.log("Rendelés elküldése...")
+
+            const pickupData = {
+                full_name: data.full_name,
+                phone_number: data.phone_number,
+                street_address: data.street_address,
+                zip_code: data.zip_code,
+                note: data.note,
+                delivery_method: "courier"
+            }
+
+            axios.post("http://localhost:5000/order_items", pickupData, {withCredentials: true})
+            .then(response => {
+                if(response){
+
+                }
+            })
+        }
 
     }
 
@@ -86,10 +107,51 @@ const Purchase = () => {
             </div>
             
             {deliveryMethod === "courier" && (
-                <div className='d-flex flex-column justify-content-center align-items-center'>
-                    <img className='justify-content-center' src={cat_construction} alt="" />
-                    <h4>Sajnáljuk, nem szállítunk futárszolgálatokkal ebben az időben</h4>
-                </div>
+                // <div className='d-flex flex-column justify-content-center align-items-center'>
+                //     <img className='justify-content-center' src={cat_construction} alt="" />
+                //     <h4>Sajnáljuk, nem szállítunk futárszolgálatokkal ebben az időben</h4>
+                // </div>
+
+                <form onSubmit={OrderItems}>
+                    <input 
+                    type="text" 
+                    name="full_name"
+                    value={data.full_name}
+                    onChange={HandleChange} 
+                    required 
+                    placeholder='Teljes név' 
+                    id="" />
+                    <input type="text"
+                    required 
+                    value={data.phone_number} 
+                    onChange={HandleChange} 
+                    placeholder='Telefonszám' 
+                    name="phone_number" 
+                    id="" />
+                    <br />
+                    <input type="text" 
+                    value={data.zip_code}
+                    placeholder='Irányitószám' 
+                    name="zip_code"
+                    onChange={HandleChange} 
+                    id="" />
+                    <input type="text" 
+                    name="street_address"
+                    placeholder='Utca,Házszám'
+                    required
+                    value={data.street_address}
+                    onChange={HandleChange} 
+                    id="" />
+                    <br />
+                    <input type="text"
+                    placeholder='Megjegyzés' 
+                    value={data.note}
+                    onChange={HandleChange}
+                    name="note" 
+                    id="" />
+                    <br />
+                    <input type="submit" value="Rendelés leadása" />
+                </form>
             )}
 
             {deliveryMethod === "store_pickup" && (
