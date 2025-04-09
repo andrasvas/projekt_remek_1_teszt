@@ -42,11 +42,11 @@ function Navbar(){
 
             <nav ref={navRef} className="main-nav-container flex w-100">
                 <div className="flex nav-container">
-                    <a className="hover-black" href="/">Main Page</a>
-                    <a className="hover-black" href="/about">About</a>
-                    {user?<a className='hover-black' href='/cart'>Cart</a>:null}
-                    {user?null:<a className="hover-black" href="/signin">Sign In</a>}
-                    {user?null:<a className="bg-animate hover-bg-white hover-black-pill no-underline pv2 ph4 br-pill" href="/signup">Sign Up</a>}
+                    <a className="hover-black" href="/">Főoldal</a>
+                    <a className="hover-black" href="/about">Rólunk</a>
+                    {user?<a className='hover-black' href='/cart'>Kosár</a>:null}
+                    {user?null:<a className="hover-black" href="/signin">Bejelentkezés</a>}
+                    {user?null:<a className="bg-animate hover-bg-white hover-black-pill no-underline pv2 ph4 br-pill" href="/signup">Regisztrálás</a>}
                     {user?<a className="profile-button" href="/profile"><img src={`../src/pfp_pics/${user.user_pfp_id}.png`} alt="" /></a>:null}
                     <button className='nav-btn nav-close-btn' onClick={showNavbar}>
                         <FaTimes/>

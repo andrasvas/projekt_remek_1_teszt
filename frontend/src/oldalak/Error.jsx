@@ -14,7 +14,7 @@ const Error = () => {
             </div>
             <h1 className="main-brand">404</h1>
             <h4>Sajnáljuk, ez az oldal nem létezik</h4>
-            <button className='mb-5 purchaseBtn main-brand'>Főoldal</button>
+            {/* <button className='mb-5 purchaseBtn main-brand'>Főoldal</button> */}
          </div>
       </>
    );
