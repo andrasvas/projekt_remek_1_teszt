@@ -47,8 +47,8 @@ const Vinyls = () => {
               .post(
                  "http://localhost:5000/addtocart",
                  {
-                    vinyl_id: listing.vinyl_id,
-                    vinyl_qty: qty,
+                    vinyl_id: filteredData.vinyl_id,
+                    vinyl_qty: 1,
                  },
                  {
                     withCredentials: true,
@@ -62,8 +62,8 @@ const Vinyls = () => {
                  }
               })
               .catch((error) => {
-                 console.error(error);
-                 window.location.href = "/signin";
+                  window.location.href = "/signin";
+                  console.error(error);
               });
         } catch (err) {
            console.log(err);

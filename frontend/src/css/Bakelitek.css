@@ -82,6 +82,7 @@ div{
 @media (prefers-color-scheme: light) {
     :root{
       --text: #111014;
+      --light-text: #ecebef;
       --background: #ddcfff;
       --card-bg: #c1a9f8;
       --primary: #a385e8;
@@ -100,6 +101,10 @@ div{
 
       p, h5, h1{
         color: var(--text);
+      }
+
+      .purchaseBtn{
+        color: var(--light-text);
       }
 
       .purchaseBtn:hover, .purchaseBtn:focus{

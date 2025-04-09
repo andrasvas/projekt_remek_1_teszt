@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import axios from 'axios';
+import cat_construction from '../assets/cat_construction.png'
 import {useParams} from 'react-router';
 
 const Purchase = () => {
@@ -73,7 +74,11 @@ const Purchase = () => {
 
     return(
         <>  
-            <h3>Hogyan szeretnéd megkapni a csomagot?</h3>
+        
+        <div className='d-flex justify-content-center all-container' id='signup-container'>
+                <div className='card p-3 w-75 col justify-content-center align-items-center'>
+
+            <h3 className='main-brand'>Hogyan szeretnéd megkapni a csomagot?</h3>
 
             <div>
                 <button onClick={() => {setDeliveryMethod("courier") }}>Futár</button>
@@ -81,8 +86,9 @@ const Purchase = () => {
             </div>
             
             {deliveryMethod === "courier" && (
-                <div>
-                    <p>work in progress</p>
+                <div className='d-flex flex-column justify-content-center align-items-center'>
+                    <img className='justify-content-center' src={cat_construction} alt="" />
+                    <h4>Sajnáljuk, nem szállítunk futárszolgálatokkal ebben az időben</h4>
                 </div>
             )}
 
@@ -125,10 +131,12 @@ const Purchase = () => {
                 <br />
                 <br />
                 <input type="submit" value="Megrendelem" />
-            </form>
+                </form>
+                
+                <p>Vagy vedd át üzletünkbe!</p> */}
 
-            <p>Vagy vedd át üzletünkbe!</p> */}
-
+            </div>
+            </div>
         </>
     )
     

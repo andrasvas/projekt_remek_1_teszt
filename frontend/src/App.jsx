@@ -57,7 +57,7 @@ function App() {
             <Route path='/cart' element={<Cart/>}></Route>
             <Route path='/purchase' element={user?<Purchase/>:<Signin></Signin>}></Route>
             <Route path='/admin' element={<Admin/>}></Route>
-            <Route Component={Error} element={<Error/>}></Route>
+            <Route path='*' element={<Error/>}></Route>
           </Routes>
           <Footer/>
       </BrowserRouter>
