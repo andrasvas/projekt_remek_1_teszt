@@ -18,6 +18,7 @@ import Admin from './oldalak/Admin.jsx'
 import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom'
 import MoreLikeThis from './oldalak/MoreLikeThis'
 import { useEffect, useState } from 'react'
+import AdminBakelitek from './oldalak/AdminBakelitek'
 
 function App() {
   // const isLogged = window.localStorage.getItem("userToken")
@@ -50,6 +51,7 @@ function App() {
             <Route index element={<Bakelitek />}/>
             <Route path="/item/:itemId" element={<ItemView />}/>
             {/* <Route path="/item/:genre" element={<MoreLikeThis />}/> */}
+            <Route path='/admin/vinyls' element={<AdminBakelitek/>}/>
             <Route path="/signup" element={<Signup/>}/>
             <Route path="/profile" element={<Profile/>}/>
             <Route path="/signin" element={user?<Profile/>:<Signin/>}></Route>

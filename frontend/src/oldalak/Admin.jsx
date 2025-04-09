@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import axios from 'axios'
+import AdminBakelitek from './AdminBakelitek'
 
 function Admin() {
 
@@ -200,7 +201,7 @@ function Admin() {
                     </div>
                     
                     </form>
-
+                    <AdminBakelitek/>
                 </div>
             </div>
 
