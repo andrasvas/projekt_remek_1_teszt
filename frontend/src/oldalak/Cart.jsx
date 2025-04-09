@@ -136,9 +136,9 @@ function Cart() {
                         src={`./src/album_covers/${item.image_path}`}
                         alt=""
                      />
-                     <div className="container col bg-info">
-                        <div className="row bg-warning justify-content-center align-items-center">
-                           <div className="col-md-5 bg-danger">
+                     <div className="container col">
+                        <div className="row justify-content-center align-items-center">
+                           <div className="col-md-5">
                               <h4>{item.vinyl_name}</h4>
                               <p>Ár: {item.price}$</p>
                            </div>
