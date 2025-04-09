@@ -692,12 +692,13 @@ app.post('/change_pfp', async function(req,res){
 
 app.post("/order_items", async function (req,res){
    console.log("Rendelés leadása...")
-   const fullName = req.body.full_name
-   const phoneNumber = req.body.phone_number
-   const city = req.body.city
-   const zipCode = req.body.zip_code
-   const streetAddress = req.body.street_address
-   const note = req.body.note 
+   // const fullName = req.body.full_name
+   // const phoneNumber = req.body.phone_number
+   // const city = req.body.city
+   // const zipCode = req.body.zip_code
+   // const streetAddress = req.body.street_address
+   // const note = req.body.note
+   const deliveryMethod = req.body.delivery_method 
    const token = req.cookies.authToken
 
    if (!token) {
@@ -705,15 +706,79 @@ app.post("/order_items", async function (req,res){
       return res.status(401).json({ message: "Token nem található!" });
    }
 
-   try{
-      const decodedToken = jwt.verify(token, SecretKey)
-      const userEmail = decodedToken.user_email
+   if(deliveryMethod == "store_pickup"){
+      const fullName = req.body.full_name
+      const phoneNumber = req.body.phone_number
 
-      //db.query(``)
-   }
+      try{
+         const decodedToken = jwt.verify(token, SecretKey)
+         const userEmail = decodedToken.user_email
 
-   catch(err){
-      console.log(err)
+         console.log("Elso lekerdezes")
+   
+         db.query(`INSERT INTO address (full_name,phone,note) VALUES (?,?,?)`,[fullName,phoneNumber,"bolti atvetel"],(err,results) => {
+            if(err){
+               console.log(err)
+               return res.status(400).json({error: "Rossz kérés!"})
+            }
+
+            const addressId = results.insertId
+            console.log("Siker, masodik jon")
+
+            db.query(`SELECT users.user_id FROM users WHERE users.user_email = ?`,[userEmail],(err,results_users) => {
+               if(err){
+                  console.log(err)
+                  return res.status(400).json({error: "Rossz kérés!"})
+               }
+
+               const userId = results_users[0].user_id
+
+               console.log("Siker, harmadik")
+
+               db.query(`INSERT INTO orders (user_id,address_id,status) VALUES (?,?,?)`,[userId,addressId,"pending"],(err,results_orders) => {
+                  if(err){
+                     console.log(err)
+                     return res.status(400).json({error: "Rossz kérés!"})
+                  }
+
+                  const orderId = results_orders.insertId
+                  console.log("Siker, negyedik")
+
+                  db.query(`SELECT cart_item.vinyl_id, cart_item.qty, (vinyls.price * cart_item.qty) AS "price"
+                  FROM cart_item
+                  INNER JOIN vinyls
+                  ON vinyls.vinyl_id = cart_item.vinyl_id 
+                  INNER JOIN cart 
+                  ON cart.cart_id = cart_item.cart_id
+                  INNER JOIN users
+                  ON cart.user_id = users.user_id
+                  WHERE users.user_email = ?`,[userEmail],(err,results_cart_item) => {
+                     if(results_cart_item.length == 0){
+                        console.log("A kosár üres.")
+                        return res.status(404).json({error: "A kosár üres"})
+                     }
+                     else{
+                        for(item of results_cart_item){
+                           console.log(item)
+                           db.query(`INSERT INTO order_item (order_id,vinyl_id,amount,price) VALUES(?,?,?,?)`,[orderId,item.vinyl_id,item.qty,item.price],(err,results) => {
+                              if(err){
+                                 console.log(err)
+                                 return res.status(404).json({error: "A kosár üres"})
+                              }
+                           })
+                        }
+                        console.log("Sikeres rendelés leadás")
+                        return res.status(200).json({message: "A rendelés leadásra került."})
+                     }
+                  })
+               })
+            })
+         })
+      }
+   
+      catch(err){
+         console.log(err)
+      }
    }
 })
 

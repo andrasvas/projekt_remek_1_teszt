@@ -55,7 +55,7 @@ function App() {
             <Route path="/signin" element={user?<Profile/>:<Signin/>}></Route>
             <Route path="/about" element={<About/>}></Route>
             <Route path='/cart' element={<Cart/>}></Route>
-            <Route path='/purchase' element={<Purchase/>}></Route>
+            <Route path='/purchase' element={user?<Purchase/>:<Signin></Signin>}></Route>
             <Route path='/admin' element={<Admin/>}></Route>
             <Route Component={Error} element={<Error/>}></Route>
           </Routes>

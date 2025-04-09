@@ -103,7 +103,7 @@ CREATE TABLE order_item (
   vinyl_id INT(11) NOT NULL,
   amount INT(11) DEFAULT NULL,
   price INT(11) DEFAULT NULL,
-  custom_vinyl_id INT(11) NOT NULL,
+  custom_vinyl_id INT(11) DEFAULT NULL, --hihi
   PRIMARY KEY (order_id, vinyl_id, custom_vinyl_id),
   FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE,
   FOREIGN KEY (vinyl_id) REFERENCES vinyls(vinyl_id) ON DELETE CASCADE,
@@ -113,11 +113,10 @@ CREATE TABLE order_item (
 CREATE TABLE address (
   `address_id` INT NOT NULL AUTO_INCREMENT,
   `order_id` INT NOT NULL,
-  `type` ENUM('shipping', 'billing') NOT NULL,
+  --`type` ENUM('shipping', 'billing') NOT NULL, ehhez meg kupaktanacs kene
   `full_name` VARCHAR(50) NOT NULL,
   `phone` VARCHAR(50) NULL,
   `zip_code` VARCHAR(20) NOT NULL,
-  `city` VARCHAR(45) NOT NULL,
   `street_address` VARCHAR(255) NOT NULL,
   `note` TEXT(255) NULL,
 	`created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
