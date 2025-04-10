@@ -46,6 +46,7 @@ div{
 }
 
 .dropdown-content{
+  z-index: 99;
   margin: 0;
   padding: 1rem;
   position: absolute;
