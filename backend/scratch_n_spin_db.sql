@@ -103,11 +103,11 @@ CREATE TABLE order_item (
   vinyl_id INT(11) NOT NULL,
   amount INT(11) DEFAULT NULL,
   price INT(11) DEFAULT NULL,
-  custom_vinyl_id INT(11) DEFAULT NULL,
+  -- custom_vinyl_id INT(11) DEFAULT NULL,
   PRIMARY KEY (order_id, vinyl_id, custom_vinyl_id),
   FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE,
   FOREIGN KEY (vinyl_id) REFERENCES vinyls(vinyl_id) ON DELETE CASCADE,
-  FOREIGN KEY (custom_vinyl_id) REFERENCES custom_vinyl(custom_vinyl_id) ON DELETE CASCADE
+  -- FOREIGN KEY (custom_vinyl_id) REFERENCES custom_vinyl(custom_vinyl_id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE address (

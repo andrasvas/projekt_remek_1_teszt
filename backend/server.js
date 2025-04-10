@@ -761,8 +761,29 @@ app.post("/order_items", async function (req,res){
                               }
                            })
                         }
-                        console.log("Sikeres rendelés leadás")
-                        return res.status(200).json({message: "A rendelés leadásra került."})
+
+                        db.query(`SELECT cart.cart_id 
+                        FROM cart 
+                        INNER JOIN users
+                        ON users.user_id = cart.cart_id
+                        WHERE users.user_email = ?`,[userEmail],(err,results_cart_id) => {
+                           if(err){
+                              console.log(err)
+                              return res.status(404).json({error: "A kosár nem található!"})
+                           }
+
+                           const cartId = results_cart_id[0].cart_id
+
+                           db.query(`DELETE FROM cart_item WHERE cart_id = ?`,[cartId],(err,delete_result) => {
+                              if(err){
+                                 console.log(err)
+                                 return res.status(400).json({error: "Rossz kérés!"})
+                              }
+
+                              console.log("Sikeres rendelés leadás")
+                              return res.status(200).json({message: "A rendelés leadásra került."})
+                           })
+                        })
                      }
                   })
                })
@@ -838,10 +859,31 @@ app.post("/order_items", async function (req,res){
                                  console.log(err)
                                  return res.status(404).json({error: "A kosár üres"})
                               }
+
+                              db.query(`SELECT cart.cart_id 
+                                 FROM cart 
+                                 INNER JOIN users
+                                 ON users.user_id = cart.cart_id
+                                 WHERE users.user_email = ?`,[userEmail],(err,results_cart_id) => {
+                                 if(err){
+                                    console.log(err)
+                                    return res.status(404).json({error: "A kosár nem található!"})
+                                 }
+
+                                 const cartId = results_cart_id[0].cart_id
+
+                                 db.query(`DELETE FROM cart_item WHERE cart_id = ?`,[cartId],(err,delete_result) => {
+                                    if(err){
+                                       console.log(err)
+                                       return res.status(400).json({error: "Rossz kérés!"})
+                                    }
+
+                                    console.log("Sikeres rendelés leadás")
+                                    return res.status(200).json({message: "A rendelés leadásra került."})
+                                 })
+                              })
                            })
                         }
-                        console.log("Sikeres rendelés leadás")
-                        return res.status(200).json({message: "A rendelés leadásra került."})
                      }
                   })
                })

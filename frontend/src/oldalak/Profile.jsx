@@ -6,6 +6,8 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 import { Link } from 'react-router-dom';
 
 function Profile(){
+    const [orderHistory,setOrderHistory] = useState([])
+
     const [userData,setUserData] = useState({
         user_email:"",
         user_pfp_id:"",
@@ -17,12 +19,12 @@ function Profile(){
     function LogOut(){
         axios.post("http://localhost:5000/logout", {}, { withCredentials: true })
     .then(response => {
-        console.log(response.data.message);
+        console.log(response.data.message)
         window.location.href = "/signin"
     })
     .catch(error => {
-        console.error("Hiba történt:", error.response?.data || error);
-    });
+        console.error("Hiba történt:", error.response?.data || error)
+    })
     }
 
     const navRef = useRef();
@@ -61,6 +63,10 @@ function Profile(){
         .catch(error => {
             console.error("Hiba történt:", error.response?.data || error);
         });
+    },[])
+
+    useEffect(() => {
+        
     },[])
 
     const ChangeProfilePicture = (profilePicId) => {
@@ -118,6 +124,13 @@ function Profile(){
                     <button className='main-brand purchaseBtn mx-3' onClick={LogOut}>Jelszó megváltoztatása</button>
                     {handleAdmin(userData.user_is_admin)}
                 </div>
+            <div className='card p-4'>
+                <div className="mb-4">
+                    <h2>Rendelések:</h2>
+                </div>
+                
+            </div>
+
             </div>
         </div>
     )

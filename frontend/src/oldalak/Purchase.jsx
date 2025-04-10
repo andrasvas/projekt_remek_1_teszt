@@ -86,7 +86,8 @@ const Purchase = () => {
             axios.post("http://localhost:5000/order_items", pickupData, {withCredentials: true})
             .then(response => {
                 if(response){
-
+                    alert(response.data.message)
+                    window.location.href = "/"
                 }
             })
         }
