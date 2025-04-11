@@ -394,13 +394,13 @@ header .nav-btn{
         font-size: 1.5rem;
     }
 }
-.black-icon-footer{
+.black-icon{
     width: 2rem;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
     transition: cubic-bezier(0.68, 0.55, 0.265, 1.55) 750ms;
 }
-.black-icon-footer:hover, .black-icon-footer:focus{
+.black-icon:hover, .black-icon:focus{
     transition: cubic-bezier(0.215, 0.610, 0.355, 1) 400ms;
     transform: rotate(15deg);
     filter: drop-shadow(0 0 0.75rem var(--accent));
@@ -440,7 +440,7 @@ header .nav-btn{
       }
       .black-icon:hover{
         transition: cubic-bezier(0.215, 0.610, 0.355, 1) 400ms;
-        transform: rotate(5deg);
+        transform: scale(120%);
         filter: drop-shadow(0 0 0.75rem var(--accent));
     }
 

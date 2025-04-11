@@ -93,25 +93,23 @@ const Vinyls = () => {
                 />
 
             <div className='container-fluid'>
-                <article className='row justify-content-center'>
+                <article className='row'>
                     {filteredData.map(vinyl => (    
                         
-                        <div key={vinyl.vinyl_id} className='col-xs-6 col-sm-6 col-md-4 col-lg-3 p-1'>
-                            <div className='card'>
+                        <div key={vinyl.vinyl_id} className='col-xs-6 col-sm-6 col-md-4 col-lg-3 p-1 d-flex justify-content-center'>
+                            <div className='card pb-2'>
+                                <div className='main-brand'>
+                                    <img className='card-img-top border rounded border-black' src={`./src/album_covers/${vinyl.image_path}`} alt=""/>
+                                    <hr />
+                                    <h5>{vinyl.vinyl_artist}<br />-<br />{vinyl.vinyl_name}</h5>
+                                    <p className='p-2'>{vinyl.genre_name}</p>
+                                </div>
 
-
-                            <div className='main-brand'>
-                                <img className='card-img-top border rounded border-black' src={`./src/album_covers/${vinyl.image_path}`} alt=""/>
-                                <hr />
-                                <h5>{vinyl.vinyl_artist}<br />-<br />{vinyl.vinyl_name}</h5>
-                                <p className='p-2'>{vinyl.genre_name}</p>
-                            </div>
-
-                            <div className='row'>
-                                <h4 className='main-brand'>${vinyl.price}</h4>
-                                    <Link className='purchaseBtn main-brand mb-3' to={`/item/${vinyl.vinyl_id}`}>Megnézem</Link>
-                                    <Link className='purchaseBtn secondary-accent main-brand' onClick={AddToCart}>Kosárba</Link>
-                            </div>
+                                <div className='row mt-auto'>
+                                    <h4 className='main-brand'>${vinyl.price}</h4>
+                                        <Link className='purchaseBtn main-brand mb-3' to={`/item/${vinyl.vinyl_id}`}>Megnézem</Link>
+                                        {/* <Link className='purchaseBtn secondary-accent main-brand' onClick={AddToCart}>Kosárba</Link> */}
+                                </div>
                             </div>
                         </div>
 

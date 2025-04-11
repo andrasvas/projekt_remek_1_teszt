@@ -32,13 +32,9 @@ function About(){
                             A Scratch 'N Spin Records abból a vágyból született, hogy ezt a hagyományt életben tartsuk és mindenkinek hozzáférhetővé tegyük.</p>
                         <p className="m-auto main-brand">Minden támogatást és lelkesedőért nagyon hálásak vagyunk és, ha meg is fogtunk a bemutatkozásunkal akkor tarts velünk nyugodtan!</p>
                         <p className="m-auto secondary-brand">Kellemes lemezlejátszást!</p>
-                        <div className="row">
-                            <div className="col-3 col-md-4"></div>
-                              <img className="col-6 col-md-4" src="./src/assets/cat_waving.png" alt="" />
-                            <div className="col-3 col-md-4"></div>
-                            <div>
-                              <img src="./src/assets/cat_guitar.png" alt="" />
-                            </div>
+                        <div className="d-flex justify-content-center my-5">
+                              <img className='mx-5' src="./src/assets/cat_guitar.png" alt="" />
+                              <img className='mx-5' src="./src/assets/cat_waving.png" alt="" />
                         </div>
                     </div>
                 </div>
@@ -49,7 +45,7 @@ function About(){
                             <h2 className="default-text m-auto">Gombos Benedek Zsombor</h2>
                             <div className=" d-flex justify-content-center">
                                 <div className='h-25 mb-4'>
-                                    <a target='_blank' rel='noopener noreferrer' href="https://www.youtube.com/@kocsonyaleves"><FaYoutube className='w-75 black-icon'/></a>
+                                    <a target='_blank' rel='noopener noreferrer' href="https://www.youtube.com/@kocsonyaleves"><FaYoutube className='black-icon'/></a>
                                 </div>
                                 <div className='h-25 mb-4'>
                                     <a target='_blank' rel='noopener noreferrer' href="https://github.com/kiChi-420"><FaGithub className='black-icon' /></a>
@@ -73,13 +69,13 @@ function About(){
                             <h2 className="m-auto">Oláh Gergő</h2>
                             <div className="d-flex justify-content-center">
                                 <div className='h-25 mb-4'>
-                                    <a target='_blank' rel='noopener noreferrer' href="https://www.instagram.com/atreyoos?igsh=ang4NWs0Y2hiZzVl"><FaInstagram className='w-75 black-icon'/></a>
+                                    <a target='_blank' rel='noopener noreferrer' href="https://www.instagram.com/atreyoos?igsh=ang4NWs0Y2hiZzVl"><FaInstagram className='black-icon'/></a>
                                 </div>
                                 <div className='h-25 mb-4'>
-                                    <a target='_blank' rel='noopener noreferrer' href="https://www.youtube.com/@FreestyleMaci"><FaYoutube className='w-75 black-icon'/></a>
+                                    <a target='_blank' rel='noopener noreferrer' href="https://www.youtube.com/@FreestyleMaci"><FaYoutube className='black-icon'/></a>
                                 </div>
                                 <div className='h-25 mb-4'>
-                                    <a target='_blank' rel='noopener noreferrer' href="https://github.com/OlaGergo"><FaGithub className='w-75 black-icon' /></a>
+                                    <a target='_blank' rel='noopener noreferrer' href="https://github.com/OlaGergo"><FaGithub className='black-icon' /></a>
                                 </div>
                             </div>
                         </div>
