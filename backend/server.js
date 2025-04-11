@@ -914,7 +914,21 @@ app.get("/orders", async function (req,res) {
       FROM orders
       INNER JOIN users
       ON users.user_id = orders.user_id
-      WHERE users.user_email = ?`,[userEmail],(err,result))
+      WHERE users.user_email = ?`,[userEmail],(err,result) => {
+         if(err){
+            console.log(err)
+            return res.json({error: err})
+         }
+
+         if(result.length === 0){
+            return res.status(200).json({ message: "Nincsenek rendeléseid!", data: [] })
+         }
+         else{
+            return res.status(200).json(result)
+         }
+
+
+      })
 
       // db.query(`SELECT address.full_name, 
       // address.phone, 
@@ -946,6 +960,7 @@ app.get("/orders", async function (req,res) {
    }
    catch(err){
       console.log(err)
+      return res.status(401).json({ message: "Érvénytelen token!" })
    }
 })
 

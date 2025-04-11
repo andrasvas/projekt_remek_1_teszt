@@ -66,14 +66,24 @@ function Profile(){
     },[])
 
     //order_item tábla megjelenítése
-    // useEffect(() => {
-    //     axios.get("http://localhost:5000/orders",{},{withCredentials: true})
-    //     .then(response => {
-    //         if(response){
-    //             setOrderHistory(response)
-    //         }
-    //     })
-    // },[])
+    useEffect(() => {
+        axios.get("http://localhost:5000/orders", {
+            withCredentials: true
+        })
+        .then(response => {
+            if(response){
+                if(response.data.length === 0){
+
+                }
+                else{
+                    setOrderHistory(response.data)
+                    console.log(response)
+                }
+                    
+                
+            }
+        })
+    },[])
 
     const ChangePassword = (newPassword,confirmNewPassword) => {
 
@@ -137,6 +147,15 @@ function Profile(){
             <div className='card p-4'>
                 <div className="mb-4">
                     <h2>Rendelések:</h2>
+                    {orderHistory.map((item) => {
+                        return(
+                            <div key={item.order_id}>
+                                <h4>Rendelés azonosító: {item.order_id}</h4>
+                                <p>Rendelés státusza: {item.status}</p>
+                                <button>Részletek</button>
+                            </div>
+                        )
+                    })}
                 </div>
                 
             </div>
