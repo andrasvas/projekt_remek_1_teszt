@@ -4,6 +4,9 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import { Link, isRouteErrorResponse } from 'react-router-dom';
+import { FaTrashAlt } from 'react-icons/fa';
+import { FaEye } from 'react-icons/fa';
+import { IconContext } from 'react-icons';
 
 const AdminBakelitek = () => {
     const [data, setData] = useState([]);
@@ -103,9 +106,13 @@ const AdminBakelitek = () => {
                                 <h5 className='w-25'>{vinyl.vinyl_artist}<br />-<br />{vinyl.vinyl_name}</h5>
                                 <p className='p-2'>{vinyl.genre_name}</p>
                                 <h4 className='main-brand'>${vinyl.price}</h4>
-                                <div>
-                                    <Link className='purchaseBtn main-brand' to={`/item/${vinyl.vinyl_id}`}>Megnézem</Link>
-                                    <Link className='purchaseBtn secondary-accent main-brand' onClick={AddToCart}>Kosárba</Link>
+                                <div className='d-flex'>
+                                    <Link className='purchaseBtn main-brand m-1' to={`/item/${vinyl.vinyl_id}`}>
+                                        <IconContext.Provider value={{className: "contactIcon"}}>
+                                            <FaEye/>
+                                        </IconContext.Provider>
+                                    </Link>
+                                    <Link className='purchaseBtn secondary-accent main-brand m-1' onClick={AddToCart}><FaTrashAlt/></Link>
                                 </div>
                             </div>
 

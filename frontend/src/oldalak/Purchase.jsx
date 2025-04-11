@@ -1,10 +1,12 @@
 import '../css/Bakelitek.css'
+import '../css/Purchase.css'
 import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import axios from 'axios';
 import cat_construction from '../assets/cat_construction.png'
 import {useParams} from 'react-router';
+import { FaShuttleVan } from 'react-icons/fa';
 
 const Purchase = () => {
     const [deliveryMethod, setDeliveryMethod] = useState("")
@@ -103,8 +105,8 @@ const Purchase = () => {
             <h3 className='main-brand'>Hogyan szeretnéd megkapni a csomagot?</h3>
 
             <div>
-                <button onClick={() => {setDeliveryMethod("courier") }}>Futár</button>
-                <button onClick={() => {setDeliveryMethod("store_pickup")}}>Boltos átvétel</button>
+                <button className="main-brand purchaseBtn p-md-2 p-3 mx-5" onClick={() => {setDeliveryMethod("courier") }}>Futár</button>
+                <button className="main-brand purchaseBtn p-md-2 p-3 mx-5" onClick={() => {setDeliveryMethod("store_pickup")}}>Boltos átvétel</button>
             </div>
             
             {deliveryMethod === "courier" && (
@@ -113,7 +115,7 @@ const Purchase = () => {
                 //     <h4>Sajnáljuk, nem szállítunk futárszolgálatokkal ebben az időben</h4>
                 // </div>
 
-                <form onSubmit={OrderItems}>
+                    <form onSubmit={OrderItems} className='order-form'>
                     <input 
                     type="text" 
                     name="full_name"
@@ -138,7 +140,7 @@ const Purchase = () => {
                     id="" />
                     <input type="text" 
                     name="street_address"
-                    placeholder='Utca,Házszám'
+                    placeholder='Utca, Házszám'
                     required
                     value={data.street_address}
                     onChange={HandleChange} 
@@ -151,13 +153,15 @@ const Purchase = () => {
                     name="note" 
                     id="" />
                     <br />
-                    <input type="submit" value="Rendelés leadása" />
+                    <input type="submit" 
+                    className='main-brand purchaseBtn'
+                    value="Rendelés leadása" />
                 </form>
             )}
 
             {deliveryMethod === "store_pickup" && (
                 <div>
-                    <form onSubmit={OrderItems}>
+                    <form onSubmit={OrderItems} className='order-form'>
                         <input 
                         type="text" 
                         name="full_name"
@@ -177,6 +181,7 @@ const Purchase = () => {
                         <br />
                         <input 
                         type="submit" 
+                        className='main-brand purchaseBtn'
                         value="Rendelés leadása" />
                     </form>
                 </div>

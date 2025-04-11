@@ -129,7 +129,7 @@ function Cart() {
       <div className="all-container container">
          {data.length > 0 ? (
             data.map((item) => (
-               <div key={item.vinyl_id} className="card m-3 container">
+               <div key={item.vinyl_id} className="card container">
                   <div className="row">
                      <img
                         className="cart_img border rounded border-black col-md-3 col-sm-12 p-0"

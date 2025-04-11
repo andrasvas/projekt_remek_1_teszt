@@ -496,10 +496,6 @@ header .nav-btn{
         transition: background-color .15s ease-in-out;
     }
     
-    .black-icon{
-        filter: invert();
-        -webkit-filter: invert();
-    }
     .black-icon:hover{
         transition: cubic-bezier(0.215, 0.610, 0.355, 1) 400ms;
         transform: rotate(5deg);

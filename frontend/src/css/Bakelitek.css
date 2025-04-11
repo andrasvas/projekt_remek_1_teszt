@@ -45,6 +45,12 @@ div{
   display: none;
 }
 
+.bakelit-lemez{
+  display: flex;
+  justify-content: center;
+  width: 300px;
+}
+
 .dropdown-content{
   z-index: 99;
   margin: 0;
@@ -79,6 +85,11 @@ div{
 .spotify-responsive{
   height: 152px;
 }
+
+.contactIcon.hover{
+  fill: black;
+}
+
 
 @media (prefers-color-scheme: light) {
     :root{

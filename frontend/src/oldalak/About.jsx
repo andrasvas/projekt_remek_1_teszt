@@ -33,8 +33,8 @@ function About(){
                         <p className="m-auto main-brand">Minden támogatást és lelkesedőért nagyon hálásak vagyunk és, ha meg is fogtunk a bemutatkozásunkal akkor tarts velünk nyugodtan!</p>
                         <p className="m-auto secondary-brand">Kellemes lemezlejátszást!</p>
                         <div className="d-flex justify-content-center my-5">
-                              <img className='mx-5' src="./src/assets/cat_guitar.png" alt="" />
-                              <img className='mx-5' src="./src/assets/cat_waving.png" alt="" />
+                              <img className='mx-md-5 mx-sm-2' src="./src/assets/cat_guitar.png" alt="" />
+                              <img className='mx-md-5 mx-sm-2' src="./src/assets/cat_waving.png" alt="" />
                         </div>
                     </div>
                 </div>

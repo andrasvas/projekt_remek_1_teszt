@@ -124,7 +124,8 @@ CREATE TABLE address (
 
  
 INSERT INTO `users` (`user_last_name`, `user_first_name`, `user_phone_number`, `user_email`, `user_password`, `user_pfp_id`, `user_is_admin`) values
-	('ga', 'nig', '2147483647', 'goonboss@citromail.com', '$2b$10$rbhSebH5Y.vV2LiRlF4v0.p0kigJ43.6Jk.5CjcGEJSMlJQ2QDmU6', '5', '1');
+	('Jakab', 'Gipsz', '2147483647', 'goonboss@citromail.com', '$2b$10$rbhSebH5Y.vV2LiRlF4v0.p0kigJ43.6Jk.5CjcGEJSMlJQ2QDmU6', '5', '1');
+    -- pw: ezazadminfiok69
 
 
 INSERT INTO `cart` (`user_id`) VALUE

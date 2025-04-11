@@ -93,10 +93,10 @@ const Vinyls = () => {
                 />
 
             <div className='container-fluid'>
-                <article className='row'>
+                <article className='row justify-content-center'>
                     {filteredData.map(vinyl => (    
                         
-                        <div key={vinyl.vinyl_id} className='col-xs-6 col-sm-6 col-md-4 col-lg-3 p-1 d-flex justify-content-center'>
+                        <div key={vinyl.vinyl_id} className='bakelit-lemez col-xs-6 col-sm-6 col-md-4 col-lg-3 p-1'>
                             <div className='card pb-2'>
                                 <div className='main-brand'>
                                     <img className='card-img-top border rounded border-black' src={`./src/album_covers/${vinyl.image_path}`} alt=""/>
