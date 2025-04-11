@@ -909,7 +909,40 @@ app.get("/orders", async function (req,res) {
       const decodedToken = jwt.verify(token, SecretKey)
       const userEmail = decodedToken.user_email
 
-      
+      db.query(`SELECT orders.order_id,
+      orders.status
+      FROM orders
+      INNER JOIN users
+      ON users.user_id = orders.user_id
+      WHERE users.user_email = ?`,[userEmail],(err,result))
+
+      // db.query(`SELECT address.full_name, 
+      // address.phone, 
+      // address.zip_code,
+      // address.street_address,
+      // address.note,
+      // address.created_at,
+      // order_item.price,
+      // order_item.amount,
+      // vinyls.vinyl_name,
+      // orders.order_id,
+      // orders.status
+      // FROM order_item
+      // INNER JOIN orders
+      // ON orders.order_id = order_item.order_id
+      // INNER JOIN address
+      // ON address.address_id = orders.address_id
+      // INNER JOIN vinyls
+      // ON vinyls.vinyl_id = order_item.vinyl_id
+      // INNER JOIN users
+      // ON orders.user_id = users.user_id
+      // WHERE users.user_email = ?`[userEmail],(err,result) => {
+      //    if(err){
+      //       console.log(err)
+      //       return res.json(err)
+      //    }
+
+      // })
    }
    catch(err){
       console.log(err)
