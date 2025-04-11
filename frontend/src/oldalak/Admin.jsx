@@ -199,7 +199,9 @@ function Admin() {
                     </div>
                     
                     </form>
-                    <AdminBakelitek/>
+                    <div className='mt-5'>
+                        <AdminBakelitek/>
+                    </div>
                 </div>
             </div>
 
