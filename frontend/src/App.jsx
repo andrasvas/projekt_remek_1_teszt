@@ -56,7 +56,7 @@ function App() {
             <Route index element={<Bakelitek />}/>
             <Route path="/item/:itemId" element={<ItemView />}/>
             {/* <Route path="/item/:genre" element={<MoreLikeThis />}/> */}
-            <Route path='/admin/vinyls' element={<AdminBakelitek/>}/>
+            <Route path='/admin/vinyls' element={user?.user_is_admin === 1 ? <AdminBakelitek /> : <Profile />}/>
             <Route path="/signup" element={<Signup/>}/>
             <Route path="/profile" element={user?<Profile/>:<Signin/>}/>
             <Route path="/signin" element={user?<Profile/>:<Signin/>}></Route>

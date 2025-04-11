@@ -6,8 +6,6 @@ import axios from 'axios'
 import AdminBakelitek from './AdminBakelitek'
 
 function Admin() {
-
-
     const [formData, setFormData] = useState({
         regEmail:"",
         regPhoneNum:"",
