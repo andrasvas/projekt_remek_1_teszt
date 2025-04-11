@@ -65,9 +65,19 @@ function Profile(){
         });
     },[])
 
-    useEffect(() => {
-        
-    },[])
+    //order_item tábla megjelenítése
+    // useEffect(() => {
+    //     axios.get("http://localhost:5000/orders",{},{withCredentials: true})
+    //     .then(response => {
+    //         if(response){
+    //             setOrderHistory(response)
+    //         }
+    //     })
+    // },[])
+
+    const ChangePassword = (newPassword,confirmNewPassword) => {
+
+    }
 
     const ChangeProfilePicture = (profilePicId) => {
         axios.post('http://localhost:5000/change_pfp', 

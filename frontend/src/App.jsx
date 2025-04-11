@@ -26,7 +26,12 @@ function App() {
 
     useEffect(() => {
         axios.get("http://localhost:5000/profile",{withCredentials: true})
-            .then(res => setUser(res.data))
+            .then(res =>{
+              if(res){
+                setUser(res.data)
+                console.log(res.data)
+              }
+            } )
             .catch(() => setUser(null))
     },[])
 
@@ -58,7 +63,7 @@ function App() {
             <Route path="/about" element={<About/>}></Route>
             <Route path='/cart' element={<Cart/>}></Route>
             <Route path='/purchase' element={user?<Purchase/>:<Signin></Signin>}></Route>
-            <Route path='/admin' element={<Admin/>}></Route>
+            <Route path='/admin' element={user?.user_is_admin === 1 ? <Admin /> : <Profile />}></Route>
             <Route path='*' element={<Error/>}></Route>
           </Routes>
           <Footer/>

@@ -33,7 +33,7 @@ async function hashPassword(password) {
 
 const db = mysql.createConnection({
    host: "127.0.0.1",
-   port: "3307",
+   port: "3306",
    user: "root",
    password: "",
    database: "scratch_and_spin_db",
@@ -893,6 +893,26 @@ app.post("/order_items", async function (req,res){
       catch(err){
          console.log(err)
       }
+   }
+})
+
+app.get("/orders", async function (req,res) {
+   console.log("Rendelések lekérése...")
+   const token = req.cookies.authToken
+
+   if (!token) {
+      console.log("Token nem található!");
+      return res.status(401).json({ message: "Token nem található!" });
+   }
+
+   try{
+      const decodedToken = jwt.verify(token, SecretKey)
+      const userEmail = decodedToken.user_email
+
+      
+   }
+   catch(err){
+      console.log(err)
    }
 })
 
