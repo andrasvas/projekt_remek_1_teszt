@@ -33,7 +33,7 @@ async function hashPassword(password) {
 
 const db = mysql.createConnection({
    host: "127.0.0.1",
-   port: "3307",
+   port: "3306",
    user: "root",
    password: "",
    database: "scratch_and_spin_db",
@@ -877,13 +877,12 @@ app.post("/order_items", async function (req,res){
                                        console.log(err)
                                        return res.status(400).json({error: "Rossz kérés!"})
                                     }
-
-                                    console.log("Sikeres rendelés leadás")
-                                    return res.status(200).json({message: "A rendelés leadásra került."})
                                  })
                               })
                            })
                         }
+                        console.log("Sikeres rendelés leadás")
+                        return res.status(200).json({message: "A rendelés leadásra került."})
                      }
                   })
                })
@@ -961,6 +960,40 @@ app.get("/orders", async function (req,res) {
    catch(err){
       console.log(err)
       return res.status(401).json({ message: "Érvénytelen token!" })
+   }
+})
+
+app.post("/order_details", async function (req,res){
+   console.log("Rendelés adatainak megjelenitése...")
+   const orderId = req.body.order_id
+
+   try{
+      db.query(`SELECT order_item.order_id,
+               vinyls.vinyl_name,
+               vinyls.image_path,
+               order_item.amount,
+               order_item.price
+               FROM order_item 
+               INNER JOIN vinyls
+               ON vinyls.vinyl_id = order_item.vinyl_id
+               WHERE order_item.order_id = ?`,[orderId],(err,result) => {
+                  if(err){
+                     console.log(err)
+                     return res.status(400).json({error: err})
+                  }
+                  if(result.length === 0){
+                     console.log("A rendelés nem létezik!")
+                     return res.status(404).json({error: "A rendelés nem található!"})
+                  }
+                  else{
+                     console.log("Rendelési adatok megjelenitése sikeres.", result)
+                     return res.json(result)
+                  } 
+
+               })
+   }
+   catch(err){
+      console.log(err)
    }
 })
 

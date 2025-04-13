@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 function Profile(){
     const [orderHistory,setOrderHistory] = useState([])
-
+    const [profileView,setProfileView] = useState("orders")
     const [userData,setUserData] = useState({
         user_email:"",
         user_pfp_id:"",
@@ -15,6 +15,7 @@ function Profile(){
         user_first_name:""
     })
     const isAdmin = useState()
+    const [orderDetails,setOrderDetails] = useState([])
 
     function LogOut(){
         axios.post("http://localhost:5000/logout", {}, { withCredentials: true })
@@ -72,18 +73,24 @@ function Profile(){
         })
         .then(response => {
             if(response){
-                if(response.data.length === 0){
-
-                }
-                else{
-                    setOrderHistory(response.data)
-                    console.log(response)
-                }
-                    
-                
+                setOrderHistory(response.data)
+                console.log(response.data)
             }
         })
     },[])
+
+    const GetOrderDetails = (orderId) => {
+        axios.post("http://localhost:5000/order_details", { order_id: orderId })
+            .then(response => {
+                if (response && response.data && response.data.length > 0) {
+                    setOrderDetails(response.data);
+                    setProfileView("order_item");
+                }
+            })
+            .catch(error => {
+                console.error("Hiba:", error);
+            });
+    }
 
     const ChangePassword = (newPassword,confirmNewPassword) => {
 
@@ -146,16 +153,44 @@ function Profile(){
                 </div>
             <div className='card p-4'>
                 <div className="mb-4">
-                    <h2>Rendelések:</h2>
-                    {orderHistory.map((item) => {
-                        return(
-                            <div key={item.order_id}>
-                                <h4>Rendelés azonosító: {item.order_id}</h4>
-                                <p>Rendelés státusza: {item.status}</p>
-                                <button>Részletek</button>
-                            </div>
-                        )
-                    })}
+                    {profileView === "orders" && 
+                        <div>
+                            <h2>Rendelések:</h2>
+                            {orderHistory.length >  0?
+                                <div>   
+                                    {orderHistory.map((item) => {
+                                    return(
+                                        <div key={item.order_id}>
+                                            <h4>Rendelés azonosító: {item.order_id}</h4>
+                                            <p>Rendelés státusza: {item.status}</p>
+                                            <button onClick={() => { GetOrderDetails(item.order_id) }}>Részletek</button>
+                                        </div>
+                                    )
+                            })}
+                        </div>
+                        :
+                        <div>
+                            <p>Még nincsenek rendeléseid!</p>
+                        </div>}
+                        </div> 
+                    }
+
+                    {profileView === "order_item" && 
+                        <div>
+                            <button onClick={() => {setProfileView("orders")}}>Vissza</button>
+                            {orderDetails.map((item) => {
+                                return(
+                                    <div>
+                                        <img src={`../src/album_covers/${item.image_path}`} alt="" srcset="" />
+                                        <h5>{item.vinyl_name}</h5>
+                                        <p>{item.amount} db</p>
+                                        <p>{item.price}$</p>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    }
+                    
                 </div>
                 
             </div>
