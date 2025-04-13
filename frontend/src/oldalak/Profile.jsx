@@ -16,6 +16,27 @@ function Profile(){
     })
     const isAdmin = useState()
     const [orderDetails,setOrderDetails] = useState([])
+    const [newPassword, setNewPassword] = useState({
+        password:"",
+        confirmPassword:""
+    })
+
+    const HandlePassword = (e) => {
+        setNewPassword({
+            ...newPassword,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    function CheckPassword(password,confirmPassword){
+        var regularExpression = /^(?=.*[0-9])[a-zA-Z0-9]{6,16}$/
+    
+        if(password.length < 8) return alert("A jelszó nem elég hosszú, minimum 8 karakter kell hogy legyen!")
+        if(password !== confirmPassword) return alert("A jelszavak nem egyeznek!")
+        if(regularExpression.test(password) == false) return alert("A jelszó nem felel meg a követelményeknek!")
+        
+        return true
+    }
 
     function LogOut(){
         axios.post("http://localhost:5000/logout", {}, { withCredentials: true })
@@ -92,8 +113,27 @@ function Profile(){
             });
     }
 
-    const ChangePassword = (newPassword,confirmNewPassword) => {
-
+    const ChangePassword = (e) => {
+        e.preventDefault()
+        if(CheckPassword(newPassword.password,newPassword.confirmPassword) === true){
+            console.log("Jelszó változtatás...")
+            axios.post("http://localhost:5000/update_password", 
+                { password: newPassword.password }, 
+                { withCredentials: true }
+            )
+            .then(response => {
+                if (response && response.data && response.data.message) {
+                    alert(response.data.message);
+                }
+            })
+            .catch(error => {
+                console.error("Hiba történt:", error);
+                alert("Hiba történt a jelszó frissítésekor.");
+            });
+        }
+        else{
+            console.error("Jelszó változtatás sikeretelen!")
+        }
     }
 
     const ChangeProfilePicture = (profilePicId) => {
@@ -148,7 +188,7 @@ function Profile(){
                 </div>
                 <div>
                     <button className='main-brand purchaseBtn mx-3' onClick={LogOut}>Kijelentkezés</button>
-                    <button className='main-brand purchaseBtn mx-3' onClick={LogOut}>Jelszó megváltoztatása</button>
+                    <button className='main-brand purchaseBtn mx-3' onClick={() => {setProfileView("new_password")}}>Jelszó megváltoztatása</button>
                     {handleAdmin(userData.user_is_admin)}
                 </div>
             <div className='card p-4'>
@@ -191,6 +231,35 @@ function Profile(){
                         </div>
                     }
                     
+                    {profileView === "new_password" &&
+                        <div>
+                            <button onClick={() => {setProfileView("orders")}}>Vissza</button>
+                            <br />
+                            <form onSubmit={ChangePassword}>
+                                <input 
+                                type="text"
+                                placeholder='Új jelszó'
+                                required 
+                                name="password"
+                                onChange={HandlePassword}
+                                value={newPassword.password} 
+                                id="" 
+                                />
+                                <br />
+                                <input 
+                                type="text"
+                                placeholder='Új jelszó ismét' 
+                                required
+                                value={newPassword.confirmPassword}
+                                onChange={HandlePassword}
+                                name="confirmPassword" 
+                                id="" 
+                                />
+                                <br />
+                                <input type="submit" value="Jelszó megváltoztatása" />
+                            </form>
+                        </div>
+                    }
                 </div>
                 
             </div>

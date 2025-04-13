@@ -284,6 +284,38 @@ app.get("/profile", async function (req, res) {
    }
 });
 
+app.post("/update_password", async function (req,res){
+   console.log("Jelszó modositása...")
+   const password = req.body.password
+   const token = req.cookies.authToken
+
+   if(!token){
+      console.log("Token nem található!")
+      return res.status(404).json({ error: "Token nem található!" })
+   }
+
+   try{
+      const decodedToken = jwt.verify(token, SecretKey)
+      const userEmail = decodedToken.user_email
+
+      const hashedPassword = await hashPassword(password)
+
+      db.query(`UPDATE users
+               SET user_password = ?
+               WHERE users.user_email = ?`,[hashedPassword,userEmail], async (err,results) => {
+                  if(err){
+                     console.error(err)
+                     return res.json({error: err})
+                  }
+
+                  return res.json({message: "Jelszó frissitve!"})
+               })
+   }
+   catch(err){
+      console.log(err)
+   }
+})
+
 app.post("/addtocart", async function (req, res) {
    console.log("Hozzáadás a kosárhoz...");
    const vinyl_id = req.body.vinyl_id;
