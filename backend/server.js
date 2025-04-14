@@ -11,10 +11,15 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(
    cors({
-      origin: "http://localhost:5173", //EZ EGYEZZEN MEG AMI A WEBEN VAN, KULONBEN NEM FOG MENNI A PROGRAM!!!!
+      origin: "*", // Allow all origins for testing. Replace with your computer's IP for production.
       credentials: true,
    })
 );
+app.use((req, res, next) => {
+   console.log("Kapott kérés:", req.method, req.url);
+   console.log("Kapott sütik:", req.cookies);
+   next();
+});
 
 const SecretKey = "let_me_break_it_down_for_you_mark";
 
@@ -32,8 +37,7 @@ async function hashPassword(password) {
 //Adatbázis kapcsolat beállitása
 
 const db = mysql.createConnection({
-   host: "127.0.0.1",
-   port: "3307",
+   port: "3306",
    user: "root",
    password: "",
    database: "scratch_and_spin_db",
@@ -223,7 +227,7 @@ app.post("/login", async function (req, res) {
          res.cookie("authToken", token, {
             httpOnly: true,
             secure: false,
-            sameSite: "strict",
+            sameSite: "lax",
             maxAge: 3600000,
          });
 
@@ -1078,6 +1082,6 @@ module.exports = router;
 //     })
 // })
 
-app.listen(5000, () => {
+app.listen(5000, "0.0.0.0", () => {
    console.log("A szerver fut az 5000-es porton!");
 });
