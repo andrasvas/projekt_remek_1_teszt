@@ -4,11 +4,12 @@ import '../css/Cart.css'
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import { FaPlus, FaMinus } from "react-icons/fa";
+import { FaPlus, FaMinus, FaBold, FaDollarSign } from "react-icons/fa";
 
 function Cart() {
    //const userToken = window.localStorage.getItem("userToken")
    const [data, setData] = useState([]);
+   const [loading, setLoading] = useState(true)
 
    useEffect(() => {
       axios.get("http://localhost:5000/cart", {
@@ -21,6 +22,8 @@ function Cart() {
       .catch((error) => {
          console.error("Hiba történt:", error.response?.data || error);
       });
+
+      
 
       // if(userToken){
       //     axios.get("http://localhost:5000/cart",{headers:{
@@ -116,12 +119,12 @@ function Cart() {
       })
       .then((response) => {
          console.log(response.data.message);
+         console.log("Körte")
       })
       .catch((err) => {
          console.error(err);
       });
    };
-   
 
    const OrderItems = () => {};
 
@@ -129,20 +132,22 @@ function Cart() {
       <div className="all-container container">
          {data.length > 0 ? (
             data.map((item) => (
-               <div key={item.vinyl_id} className="card container">
+               <div key={item.vinyl_id} className="card container my-3 w-auto mx-5">
                   <div className="row">
                      <img
                         className="cart_img border rounded border-black col-md-3 col-sm-12 p-0"
                         src={`./src/album_covers/${item.image_path}`}
                         alt=""
+                        style={{maxWidth: "200px"}}
                      />
-                     <div className="container col">
+                     <div className="container col justify-content-center align-items-center main-brand">
                         <div className="row justify-content-center align-items-center">
-                           <div className="col-md-5">
-                              <h4>{item.vinyl_name}</h4>
-                              <p>Ár: {item.price}$</p>
+                           <div className="col-md-9 d-flex flex-column justify-content-center align-items-center">
+                              <h3>{item.vinyl_name}</h3>
+                              <hr />
+                              <h4>Ár: ${item.price}</h4>
                            </div>
-                           <div className="col-md-4">
+                           <div className="col-md-3">
                               {/* <input
                                  type="number"
                                  min="1"
@@ -152,9 +157,9 @@ function Cart() {
                                  value={item.qty}
                                  name={item.vinyl_id}
                               /> */}
-                              <div>
+                              <div className="flex-column align-items-center">
                                  <button onClick={() => ChangeQuantity(item.vinyl_id, 1)}><FaPlus/></button>
-                                 <p>Mennyiség: {item.qty}</p>
+                                 <p className="p-0 m-1 main-brand">Mennyiség: {item.qty}</p>
                                  <button onClick={() => ChangeQuantity(item.vinyl_id, -1)}><FaMinus/></button>
                               </div>
                               <button
@@ -193,19 +198,27 @@ function Cart() {
             </div>
          )}
 
-         <div>
+         <div className="justify-content-center align-items-center d-flex">
             {data.length > 0 ? (
-               <div>
-                  <p>Teljes ár: {GetTotalPrice(data)}$</p>
-                  <button
-                     className="purchaseBtn main-brand m-3"
-                     onClick={ClearCart}
-                  >
-                     Kosár törlése
-                  </button>
-                  <button className="purchaseBtn main-brand m-3" onClick={() => {window.location.href = "/purchase"}}>
-                     Megrendelés
-                  </button>
+               <div className="align-items-center justify-content-center d-flex flex-column mt-5 w-50">
+                  <div className="d-flex align-items-center">
+                     <h5 className="main-brand">Teljes ár: </h5>
+                     <div className="d-flex align-items-center">
+                        <div></div>
+                        <h3 className="main-brand">${GetTotalPrice(data)}</h3>
+                     </div>
+                  </div>
+                  <div>
+                     <button
+                        className="purchaseBtn main-brand m-3"
+                        onClick={ClearCart}
+                        >
+                        Kosár törlése
+                     </button>
+                     <button className="purchaseBtn main-brand m-3" onClick={() => {window.location.href = "/purchase"}}>
+                        Megrendelés
+                     </button>
+                  </div>
                </div>
             ) : null}
          </div>

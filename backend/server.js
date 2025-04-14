@@ -33,7 +33,7 @@ async function hashPassword(password) {
 
 const db = mysql.createConnection({
    host: "127.0.0.1",
-   port: "3306",
+   port: "3307",
    user: "root",
    password: "",
    database: "scratch_and_spin_db",
@@ -664,7 +664,7 @@ app.get("/cart", async function (req, res) {
       const userEmail = decodedToken.user_email;
 
       db.query(
-         `SELECT vinyls.vinyl_id, vinyls.vinyl_name, vinyls.image_path,cart_item.qty,vinyls.price,users.user_email 
+         `SELECT vinyls.vinyl_artist, vinyls.vinyl_id, vinyls.vinyl_name, vinyls.image_path,cart_item.qty,vinyls.price,users.user_email 
         FROM cart_item
         INNER JOIN vinyls
         ON vinyls.vinyl_id = cart_item.vinyl_id

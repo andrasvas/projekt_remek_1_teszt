@@ -14,8 +14,8 @@ import {
 
 function Footer() {
    return (
-      <nav className="w-100 m-auto" style={{ height: "200px" }}>
-         <div className="d-flex flex-column justify-content-center align-items-center">
+      <nav className="w-100 m-auto mt-5" style={{ height: "150px" }}>
+         <div className="d-flex flex-column justify-content-center align-items-center ">
             <div
                className="justify-content-center m-0"
                style={{ width: "auto" }}
