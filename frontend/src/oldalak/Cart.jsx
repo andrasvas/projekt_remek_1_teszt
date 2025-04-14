@@ -60,7 +60,6 @@ function Cart() {
          .then((response) => {
             if (response) {
                console.log(response);
-               alert(response.data.message);
                window.location.href = "/cart";
             }
          })

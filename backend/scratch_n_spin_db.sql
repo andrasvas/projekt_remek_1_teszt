@@ -128,10 +128,10 @@ INSERT INTO `users` (`user_last_name`, `user_first_name`, `user_phone_number`, `
     -- pw: ezazadminfiok69
 INSERT INTO `users` (`user_last_name`, `user_first_name`, `user_phone_number`, `user_email`, `user_password`, `user_pfp_id`, `user_is_admin`) values
 	('Tomi', 'Egyip', '06205345340', 'asulismodszer@gmail.com', '$2b$10$6SJHAg5ZfSskWIOzKZEiduu8WSR5jFgj0i5.Z.OAodQIYyepATIqe', '2', '1');
-    --pw: darktriad3
+    -- pw: darktriad3
   INSERT INTO `users` (`user_last_name`, `user_first_name`, `user_phone_number`, `user_email`, `user_password`, `user_pfp_id`, `user_is_admin`) values
 	('Darksoul', 'John', '666666666', 'johndarksoul@darksoul.com', '$2b$10$wRWN5KNcLY7aoOHbYMHoLe35wBcoym5iYtzocZvLcrcuE8bQ4uLGO', '7', '1');
-  --pw: johndarksoul13
+	-- pw: johndarksoul13
 
 
 INSERT INTO `cart` (`user_id`) VALUE

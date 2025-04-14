@@ -111,8 +111,8 @@ const AdminBakelitek = () => {
                 <article className='d-flex flex-column'>
                     {filteredData.map(vinyl => (    
                         
-                        <div key={vinyl.vinyl_id} className=''>
-                            <div className='card'>
+                        <div key={vinyl.vinyl_id} className='w-100 m-0'>
+                            <div className='border rounded border-dark p-3 mb-3'>
                             <div className='main-brand flex align-items-center justify-content-between'>
                                 <img className='border rounded border-black' src={`./src/album_covers/${vinyl.image_path}`} alt=""/>
                                 <h5 className='w-25'>{vinyl.vinyl_artist}<br />-<br />{vinyl.vinyl_name}</h5>

@@ -53,7 +53,7 @@ const ItemView = () => {
                console.log("Körte");
                if (response) {
                   console.log(response);
-                  window.location.href = "/cart";
+                  window.location.href="/cart"
                }
             })
             .catch((error) => {

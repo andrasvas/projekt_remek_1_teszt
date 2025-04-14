@@ -50,7 +50,7 @@ const Vinyls = () => {
         if (!loading) {
         return (
             <div className='all-container'>
-                    <h1 className='default-text m-auto main-brand'>Lemezeink raktáron</h1>
+                    <h1 className='default-text m-auto main-brand user-select-none'>Lemezeink raktáron</h1>
                     <input
                         type="text"
                         placeholder="Kereső"
