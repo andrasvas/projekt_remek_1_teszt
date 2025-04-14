@@ -126,6 +126,12 @@ CREATE TABLE address (
 INSERT INTO `users` (`user_last_name`, `user_first_name`, `user_phone_number`, `user_email`, `user_password`, `user_pfp_id`, `user_is_admin`) values
 	('Jakab', 'Gipsz', '2147483647', 'goonboss@citromail.com', '$2b$10$rbhSebH5Y.vV2LiRlF4v0.p0kigJ43.6Jk.5CjcGEJSMlJQ2QDmU6', '5', '1');
     -- pw: ezazadminfiok69
+INSERT INTO `users` (`user_last_name`, `user_first_name`, `user_phone_number`, `user_email`, `user_password`, `user_pfp_id`, `user_is_admin`) values
+	('Tomi', 'Egyip', '06205345340', 'asulismodszer@gmail.com', '$2b$10$6SJHAg5ZfSskWIOzKZEiduu8WSR5jFgj0i5.Z.OAodQIYyepATIqe', '2', '1');
+    --pw: darktriad3
+  INSERT INTO `users` (`user_last_name`, `user_first_name`, `user_phone_number`, `user_email`, `user_password`, `user_pfp_id`, `user_is_admin`) values
+	('Darksoul', 'John', '666666666', 'johndarksoul@darksoul.com', '$2b$10$wRWN5KNcLY7aoOHbYMHoLe35wBcoym5iYtzocZvLcrcuE8bQ4uLGO', '7', '1');
+  --pw: johndarksoul13
 
 
 INSERT INTO `cart` (`user_id`) VALUE

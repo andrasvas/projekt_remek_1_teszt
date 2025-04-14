@@ -42,7 +42,19 @@ const AdminBakelitek = () => {
 
             setFilteredData(filtered);
         }
-    };
+    }
+
+    const DeleteVinyl = (vinylId) => {
+        console.log(vinylId, "azonositóju vinyl törlése...")
+        const removeVinyl = confirm("Biztosan szeretnéd törölni ezt a bakelitet?")
+
+        if(removeVinyl === true){
+            axios.delete("http://localhost:5000/remove_vinyl", {
+                data: { vinyl_id: vinylId },
+                withCredentials: true
+            })
+        }
+    }
 
     const AddToCart = () => {
         try {
@@ -112,7 +124,7 @@ const AdminBakelitek = () => {
                                             <FaEye/>
                                         </IconContext.Provider>
                                     </Link>
-                                    <Link className='purchaseBtn secondary-accent main-brand m-1' onClick={AddToCart}><FaTrashAlt/></Link>
+                                    <Link className='purchaseBtn secondary-accent main-brand m-1' onClick={() => {DeleteVinyl(vinyl.vinyl_id)}}><FaTrashAlt/></Link>
                                 </div>
                             </div>
 
