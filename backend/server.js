@@ -11,7 +11,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(
    cors({
-      origin: "*", // Allow all origins for testing. Replace with your computer's IP for production.
+      origin: "http://localhost:5173", // Allow all origins for testing. Replace with your computer's IP for production.
       credentials: true,
    })
 );
@@ -37,7 +37,8 @@ async function hashPassword(password) {
 //Adatbázis kapcsolat beállitása
 
 const db = mysql.createConnection({
-   port: "3306",
+   host: "127.0.0.1",
+   port: "3307",
    user: "root",
    password: "",
    database: "scratch_and_spin_db",

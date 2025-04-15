@@ -186,9 +186,11 @@ function Profile() {
                         <div className='mb-4'>
                             <h2>Üdv, {userData.user_first_name}</h2>
                         </div>
-                        <div className='mb-2'>
+                        <div className='mb-2 flex-column'>
+                            <div>
+                                <h4>Teljes név: &nbsp;{userData.user_first_name} {userData.user_last_name}</h4>
+                            </div>
                             <h4>Email címed: {userData.user_email}</h4>
-                            <h4>Neved: {userData.user_first_name} {userData.user_last_name}</h4>
                         </div>
                     </div>
                 </div>
@@ -200,17 +202,17 @@ function Profile() {
                 <div className='card p-4'>
                     <div className="mb-4">
                         {profileView === "orders" &&
-                            <div className='container'>
-                                <h2>Rendelések:</h2>
-                                <div>
+                            <div className='container justify-content-center align-items-center flex-column flex bg-info'>
+                                <h2 className='border'>Rendelések:</h2>
+                                <div className='border border-danger w-100'>
                                     {orderHistory.length > 0 ?
                                         <div>
                                             {orderHistory.map((item) => {
                                                 return (
-                                                    <div key={item.order_id} className='d-flex'>
-                                                        <h4 className='col-md-4'>Rendelés azonosító: {item.order_id}</h4>
-                                                        <p className='col'>Rendelés státusza: {item.status}</p>
-                                                        <button className='col-md-3' onClick={() => { GetOrderDetails(item.order_id) }}>Részletek</button>
+                                                    <div key={item.order_id} className='d-flex justify-content-center align-items-center text-center'>
+                                                        <h4 className='col-md-4 m-0'>Rendelés azonosító: {item.order_id}</h4>
+                                                        <p className='col m-0'>Rendelés státusza: {item.status}</p>
+                                                        <button className='col-md-3 purchaseBtn m-0' onClick={() => { GetOrderDetails(item.order_id) }}>Részletek</button>
                                                     </div>
                                                 )
                                             })}
