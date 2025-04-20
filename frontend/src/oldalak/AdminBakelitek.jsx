@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
-import { Link, isRouteErrorResponse } from 'react-router-dom';
+import { Link, href, isRouteErrorResponse } from 'react-router-dom';
 import { FaTrashAlt } from 'react-icons/fa';
 import { FaEye } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
@@ -52,6 +52,13 @@ const AdminBakelitek = () => {
             axios.delete("http://localhost:5000/remove_vinyl", {
                 data: { vinyl_id: vinylId },
                 withCredentials: true
+            })
+            .then(response => {
+                if(response){
+                    console.log(response.data)
+                    alert(response.data.message)
+                    window.location.href = "/admin"
+                }
             })
         }
     }

@@ -38,7 +38,7 @@ async function hashPassword(password) {
 
 const db = mysql.createConnection({
    host: "127.0.0.1",
-   port: "3307",
+   port: "3306",
    user: "root",
    password: "",
    database: "scratch_and_spin_db",
@@ -1031,6 +1031,43 @@ app.post("/order_details", async function (req,res){
    }
    catch(err){
       console.log(err)
+   }
+})
+
+app.delete("/remove_vinyl", async function(req,res) {
+   console.log("Bakelit törlése...")
+
+   const token = req.cookies.authToken
+   const vinyl_id = req.body.vinyl_id
+
+   if(!token){
+      return res.status(401).json({ message: "Token nem található" });
+   }
+
+   try{
+      const decodedToken = jwt.verify(token, SecretKey)
+      const userEmail = decodedToken.user_email
+
+      db.query(`SELECT user_is_admin FROM users WHERE users.user_email = ?`,[userEmail],(err,result) => {
+         if(err){
+            console.log(err)
+            return res.json({error: err})
+         }
+
+         if(result[0].user_is_admin === 1){
+            db.query(`DELETE FROM vinyls WHERE vinyls.vinyl_id = ?`,[vinyl_id],(err,result) => {
+               if(err){
+                  console.log(err)
+                  return res.json({error: err})
+               }
+
+               return res.status(200).json({message: "Sikeres törlés az adatbázisból!"})
+            })
+         }
+      })
+   }
+   catch(err){
+
    }
 })
 
