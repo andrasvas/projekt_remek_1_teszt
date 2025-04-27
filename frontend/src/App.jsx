@@ -56,14 +56,14 @@ function App() {
             <Route index element={<Bakelitek />}/>
             <Route path="/item/:itemId" element={<ItemView />}/>
             {/* <Route path="/item/:genre" element={<MoreLikeThis />}/> */}
-            <Route path='/admin/vinyls' element={user?.user_is_admin === 1 ? <AdminBakelitek /> : <Profile />}/>
+            <Route path='/admin/vinyls' element={user ? (user.user_is_admin === 1 ? <AdminBakelitek /> : <Profile />) : <Signin />}/>
             <Route path="/signup" element={<Signup/>}/>
             <Route path="/profile" element={user?<Profile/>:<Signin/>}/>
             <Route path="/signin" element={user?<Profile/>:<Signin/>}></Route>
             <Route path="/about" element={<About/>}></Route>
             <Route path='/cart' element={<Cart/>}></Route>
             <Route path='/purchase' element={user?<Purchase/>:<Signin></Signin>}></Route>
-            <Route path='/admin' element={user?.user_is_admin === 1 ? <Admin /> : <Profile />}></Route>
+            <Route path='/admin' element={user ? (user.user_is_admin === 1 ? <Admin /> : <Profile />) : <Signin />}></Route>
             <Route path='*' element={<Error/>}></Route>
           </Routes>
           <Footer/>
