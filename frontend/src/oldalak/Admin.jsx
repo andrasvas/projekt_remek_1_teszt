@@ -7,11 +7,21 @@ import AdminBakelitek from './AdminBakelitek'
 
 function Admin() {
     const [formData, setFormData] = useState({
-        regEmail:"",
-        regPhoneNum:"",
-        regFirstname:"",
-        regLastname:"",
-        regPassword:""
+        vinylAmount: "",
+        vinylArtist: "",
+        vinylColor: "",
+        vinylName: "",
+        vinylPrice: "",
+        vinylInStockSum: "",
+        vinylRpm: "",
+        vinylWeight: "",
+        vinylSize: "",
+        vinylReleaseYear: "",
+        vinylGenre: 0,
+        vinylRecordLabel: 0,
+        vinylDescription: "",
+        vinylImagePath: "",
+        spotifyLink: "",
     })
 
     // const [regEmail,SetEmail] = useState("")
@@ -22,44 +32,79 @@ function Admin() {
     const [conPassword,SetConPassword] = useState("")
 
     const HandleChange = (e) => {
+        const { name, value } = e.target;
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value
+            [name]: (name === "vinylGenre" || name === "vinylRecordLabel") ? Number(value) : value
+        });
+    
+        console.log(formData);
+    }
+
+    const UploadVinyl = (e) => {
+        e.preventDefault()
+        console.log("Új bakelit létrehozása...")
+
+        axios.post("http://localhost:5000/upload_vinyl", {
+            vinylAmount: formData.vinylAmount,
+            vinylArtist: formData.vinylArtist,
+            vinylColor: formData.vinylColor,
+            vinylName: formData.vinylName,
+            vinylPrice: formData.vinylPrice,
+            vinylInStockSum: formData.vinylInStockSum,
+            vinylRpm: formData.vinylRpm,
+            vinylWeight: formData.vinylWeight,
+            vinylSize: formData.vinylSize,
+            vinylReleaseYear: formData.vinylReleaseYear,
+            vinylGenre: formData.vinylGenre,
+            vinylRecordLabel: formData.vinylRecordLabel,
+            vinylDescription: formData.vinylDescription,
+            spotifyLink: formData.spotifyLink,
+            vinylImagePath: formData.vinylImagePath
+        },
+        {
+            withCredentials: true
+        })
+        .then(response => {
+            if(response){
+                console.log(response)
+                alert(response.data.message)
+            }
         })
     }
 
-    const Register = (e) => {
-        e.preventDefault()
+    // const Register = (e) => {
+    //     e.preventDefault()
 
-        if(CheckPassword(formData.regPassword,conPassword) === true && CheckPhoneNumber(formData.regPhoneNum) === true){
-            axios.post(`http://localhost:5000/register`, {
-                user_email: formData.regEmail, 
-                user_password: formData.regPassword, 
-                user_firstname: formData.regFirstname, 
-                user_lastname: formData.regLastname, 
-                user_phonenum: formData.regPhoneNum
-            })
-            .then((response) => {
-                if(response){
-                    alert(response.data.message)
-                    window.location.href = '/signin'  
-                }
-            })
-            .catch((error) => {
-                if(error){
-                    console.log(error)
-                    alert(error.response.data.error)
-                }
-            })
-        }
-    } 
+    //     if(CheckPassword(formData.regPassword,conPassword) === true && CheckPhoneNumber(formData.regPhoneNum) === true){
+    //         axios.post(`http://localhost:5000/register`, {
+    //             user_email: formData.regEmail, 
+    //             user_password: formData.regPassword, 
+    //             user_firstname: formData.regFirstname, 
+    //             user_lastname: formData.regLastname, 
+    //             user_phonenum: formData.regPhoneNum
+    //         })
+    //         .then((response) => {
+    //             if(response){
+    //                 alert(response.data.message)
+    //                 window.location.href = '/signin'  
+    //             }
+    //         })
+    //         .catch((error) => {
+    //             if(error){
+    //                 console.log(error)
+    //                 alert(error.response.data.error)
+    //             }
+    //         })
+    //     }
+    // } 
 
     return (
         <>
             <div className='d-flex justify-content-center all-container' id='signup-container'>
                 <div className='card p-3 w-75 col justify-content-center align-items-center'>
                     <h1 className='main-brand'>Új lemez feltöltése</h1>
-                    <form onSubmit={Register}>
+                    <form onSubmit={UploadVinyl}>
                         <input type="number"
                         className='m-1'
                         required
@@ -80,6 +125,13 @@ function Admin() {
                         onChange={HandleChange}
                         name="vinylColor"
                         placeholder='Lemez színe'/>
+
+                        <input type="text"
+                        className='m-1'
+                        required 
+                        onChange={HandleChange}
+                        name="spotifyLink"
+                        placeholder='Spotify link'/>
 
                         <input type="text"
                         className='m-1'
@@ -132,42 +184,42 @@ function Admin() {
                         placeholder='Megjelenés éve' />
 
                         <select name="vinylGenre" className='m-1 text-placeholder form-input' style={{ width: '150px', height: '24px'}} required onChange={HandleChange}>
-                            <option value="Metalcore">Metalcore</option>
-                            <option value="Post-Hardcore">Post-Hardcore</option>
-                            <option value="Alternative Rock">Alternative Rock</option>
-                            <option value="Pop Punk">Pop Punk</option>
-                            <option value="Indie Rock">Indie Rock</option>
-                            <option value="Hard Rock">Hard Rock</option>
-                            <option value="Electronic Rock">Electronic Rock</option>
-                            <option value="Progressive Metal">Progressive Metal</option>
-                            <option value="Deathcore">Deathcore</option>
-                            <option value="Synthwave">Synthwave</option>
-                            <option value="Pop">Pop</option>
-                            <option value="Rap">Rap</option>
-                            <option value="Hip-Hop">Hip-Hop</option>
-                            <option value="R&B">R&B</option>
-                            <option value="Electronic">Electronic</option>
-                            <option value="Trash Metal">Trash Metal</option>
+                            <option value="1">Metalcore</option>
+                            <option value="2">Post-Hardcore</option>
+                            <option value="3">Alternative Rock</option>
+                            <option value="4">Pop Punk</option>
+                            <option value="5">Indie Rock</option>
+                            <option value="6">Hard Rock</option>
+                            <option value="7">Electronic Rock</option>
+                            <option value="8">Progressive Metal</option>
+                            <option value="9">Deathcore</option>
+                            <option value="10">Synthwave</option>
+                            <option value="11">Pop</option>
+                            <option value="12">Rap</option>
+                            <option value="13">Hip-Hop</option>
+                            <option value="14">R&B</option>
+                            <option value="15">Electronic</option>
+                            <option value="16">Thrash Metal</option>
                         </select>
 
                         <select name="vinylRecordLabel" className='m-1 form-input' style={{ width: '175px', height: '24px' }} required onChange={HandleChange}>
-                            <option value="Roadrunner Records">Roadrunner Records</option>
-                            <option value="Epitaph Records">Epitaph Records</option>
-                            <option value="Fueled by Ramen">Fueled by Ramen</option>
-                            <option value="Hopeless Records">Hopeless Records</option>
-                            <option value="Rise Records">Rise Records</option>
-                            <option value="Fearless Records">Fearless Records</option>
-                            <option value="Spinefarm Records">Spinefarm Records</option>
-                            <option value="Sumerian Records">Sumerian Records</option>
-                            <option value="Nuclear Blast">Nuclear Blast</option>
-                            <option value="Pure Noise Records">Pure Noise Records</option>
-                            <option value="Republic Records">Republic Records</option>
-                            <option value="Capitol Records">Capitol Records</option>
-                            <option value="Island Records">Island Records</option>
-                            <option value="Def Jam Recordings">Def Jam Recordings</option>
-                            <option value="Atlantic Records">Atlantic Records</option>
-                            <option value="Polydor">Polydor</option>
-                            <option value="Octone Records">Octone Records</option>
+                            <option value="1">Roadrunner Records</option>
+                            <option value="2">Epitaph Records</option>
+                            <option value="3">Fueled by Ramen</option>
+                            <option value="4">Hopeless Records</option>
+                            <option value="5">Rise Records</option>
+                            <option value="6">Fearless Records</option>
+                            <option value="7">Spinefarm Records</option>
+                            <option value="8">Sumerian Records</option>
+                            <option value="9">Nuclear Blast</option>
+                            <option value="10">Pure Noise Records</option>
+                            <option value="11">Republic Records</option>
+                            <option value="12">Capitol Records</option>
+                            <option value="13">Island Records</option>
+                            <option value="14">Def Jam Recordings</option>
+                            <option value="15">Atlantic Records</option>
+                            <option value="16">Polydor</option>
+                            <option value="17">Octone Records</option>
                         </select>
 
                         <br />

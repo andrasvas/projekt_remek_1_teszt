@@ -802,7 +802,7 @@ app.post("/order_items", async function (req,res){
                         db.query(`SELECT cart.cart_id 
                         FROM cart 
                         INNER JOIN users
-                        ON users.user_id = cart.cart_id
+                        ON users.user_id = cart.user_id
                         WHERE users.user_email = ?`,[userEmail],(err,results_cart_id) => {
                            if(err){
                               console.log(err)
@@ -900,7 +900,7 @@ app.post("/order_items", async function (req,res){
                               db.query(`SELECT cart.cart_id 
                                  FROM cart 
                                  INNER JOIN users
-                                 ON users.user_id = cart.cart_id
+                                 ON users.user_id = cart.user_id
                                  WHERE users.user_email = ?`,[userEmail],(err,results_cart_id) => {
                                  if(err){
                                     console.log(err)
@@ -1067,9 +1067,81 @@ app.delete("/remove_vinyl", async function(req,res) {
       })
    }
    catch(err){
-
+      console.log(err)
    }
 })
+
+app.post("/upload_vinyl", async function (req, res) {
+   console.log("Bakelit feltöltése...");
+   const token = req.cookies.authToken;
+   const vinylAmount = req.body.vinylAmount;
+   const vinylArtist = req.body.vinylArtist;
+   const vinylColor = req.body.vinylColor;
+   const vinylName = req.body.vinylName;
+   const vinylPrice = req.body.vinylPrice;
+   const vinylInStockSum = req.body.vinylInStockSum;
+   const vinylRpm = req.body.vinylRpm;
+   const vinylWeight = req.body.vinylWeight;
+   const vinylSize = req.body.vinylSize;
+   const vinylReleaseYear = req.body.vinylReleaseYear;
+   const genreId = req.body.vinylGenre;  // A genreId-t most közvetlenül a request-ből kapjuk
+   const labelId = req.body.vinylRecordLabel;  // A labelId-t most közvetlenül a request-ből kapjuk
+   const vinylDescription = req.body.vinylDescription;
+   const spotifyLink = req.body.spotifyLink;
+   const vinylImagePath = req.body.vinylImagePath || null;
+
+   if (!token) {
+       return res.status(401).json({ message: "Token nem található" });
+   }
+
+   try {
+       const decodedToken = jwt.verify(token, SecretKey);
+       const userEmail = decodedToken.user_email;
+
+       db.query(`SELECT user_is_admin FROM users WHERE users.user_email = ?`, [userEmail], (err, result) => {
+           if (err) {
+               console.log(err);
+               return res.json({ error: err });
+           }
+           if (result[0].user_is_admin === 1) {
+               // Ha minden rendben van, beszúrjuk az új vinylt
+               db.query(`INSERT INTO vinyls (vinyl_amount, vinyl_artist, vinyl_color, vinyl_name, vinyl_price,
+                  in_stock, vinyl_rpm, vinyl_weight, vinyl_size, genre_id,
+                  vinyl_release, label_id, vinyl_description, image_path, spotify_link)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+               [
+               vinylAmount,
+               vinylArtist,
+               vinylColor,
+               vinylName,
+               vinylPrice,            // Győződj meg róla, hogy a változó neve és az oszlop neve megegyeznek!
+               vinylInStockSum,
+               vinylRpm,
+               vinylWeight,
+               vinylSize,
+               genreId,
+               vinylReleaseYear,
+               labelId,
+               vinylDescription,
+               vinylImagePath || null,  // Ha nincs kép, akkor NULL
+               spotifyLink
+               ], (err, result) => {
+               if (err) {
+                     console.log(err);
+                     return res.status(500).json({ error: err });
+               }
+
+  return res.status(200).json({ message: "Bakelit sikeresen feltöltve!" });
+});
+           }
+       });
+   } catch (err) {
+       console.log(err);
+       return res.status(500).json({ message: "Token validációs hiba", error: err });
+   }
+});
+
+
 
 router.get("/userProfile", async function (req, res) {
    console.log("Felhasználói adatok lekérése...");

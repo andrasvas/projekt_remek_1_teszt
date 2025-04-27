@@ -63,34 +63,34 @@ const AdminBakelitek = () => {
         }
     }
 
-    const AddToCart = () => {
-        try {
-           axios
-              .post(
-                 "http://localhost:5000/addtocart",
-                 {
-                    vinyl_id: filteredData.vinyl_id,
-                    vinyl_qty: 1,
-                 },
-                 {
-                    withCredentials: true,
-                 }
-              )
-              .then((response) => {
-                 console.log("Körte");
-                 if (response) {
-                    console.log(response);
-                    window.location.href = "/cart";
-                 }
-              })
-              .catch((error) => {
-                  window.location.href = "/signin";
-                  console.error(error);
-              });
-        } catch (err) {
-           console.log(err);
-        }
-     };
+    // const AddToCart = () => {
+    //     try {
+    //        axios
+    //           .post(
+    //              "http://localhost:5000/addtocart",
+    //              {
+    //                 vinyl_id: filteredData.vinyl_id,
+    //                 vinyl_qty: 1,
+    //              },
+    //              {
+    //                 withCredentials: true,
+    //              }
+    //           )
+    //           .then((response) => {
+    //              console.log("Körte");
+    //              if (response) {
+    //                 console.log(response);
+    //                 window.location.href = "/cart";
+    //              }
+    //           })
+    //           .catch((error) => {
+    //               window.location.href = "/signin";
+    //               console.error(error);
+    //           });
+    //     } catch (err) {
+    //        console.log(err);
+    //     }
+    //  };
   
 
     if (!isRouteErrorResponse(error)){

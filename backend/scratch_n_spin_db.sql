@@ -136,6 +136,10 @@ INSERT INTO `users` (`user_last_name`, `user_first_name`, `user_phone_number`, `
 
 INSERT INTO `cart` (`user_id`) VALUE
 	(1);
+  INSERT INTO `cart` (`user_id`) VALUE
+	(2);
+  INSERT INTO `cart` (`user_id`) VALUE
+	(3);
  
 -- Feltöltés a labels táblába valós kiadókkal
 INSERT INTO `labels` (`label_name`, `label_link`) VALUES
